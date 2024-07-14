@@ -1,1 +1,21 @@
 # ImHex-Patterns
+
+This repository contains all the currently known patterns of the file formats used by Shadow of War, which can be viewed and edited with the [Imhex Hex Editor](https://github.com/WerWolv/ImHex).
+
+## Table of Contents
+
+### Pattern Files
+|  Name  |      MIME      |                                                                      Path                                                                    |        Description        |
+| :----- | :------------- | :------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------ |
+| ARCH06 |                | [patterns/sow/arch06.hexpat](https://github.com/Shadow-of-War-Modding-Community/ImHex-Patterns/blob/main/patterns/sow/arch06.hexpat)         | Shadow of War ARCH06 File |
+| BNDL   | `sow/bndl`     | [patterns/sow/bndl.hexpat](https://github.com/Shadow-of-War-Modding-Community/ImHex-Patterns/blob/main/patterns/sow/bndl.hexpat)             | Shadow of War BNDL File   |
+| EMBB   | `sow/embb`     | [patterns/sow/embb.hexpat](https://github.com/Shadow-of-War-Modding-Community/ImHex-Patterns/blob/main/patterns/sow/embb.hexpat)             | Shadow of War EMBB File   |
+| FXP    |                | [patterns/sow/fxp.hexpat](https://github.com/Shadow-of-War-Modding-Community/ImHex-Patterns/blob/main/patterns/sow/fxp.hexpat)               | Shadow of War FXP File    |
+| MAT    | `sow/mat`      | [patterns/sow/mat.hexpat](https://github.com/Shadow-of-War-Modding-Community/ImHex-Patterns/blob/main/patterns/sow/mat.hexpat)               | Shadow of War MAT File    |
+| MESH   | `sow/mesh`     | [patterns/sow/mesh.hexpat](https://github.com/Shadow-of-War-Modding-Community/ImHex-Patterns/blob/main/patterns/sow/mesh.hexpat)             | Shadow of War MESH File   |
+| SKEL   | `sow/skel`     | [patterns/sow/skel.hexpat](https://github.com/Shadow-of-War-Modding-Community/ImHex-Patterns/blob/main/patterns/sow/skel.hexpat)             | Shadow of War SKEL File   |
+
+### Magic Files
+|      Name      |                                                                      Path                                                                    |                      Description                      |
+| :------------- | :------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------- |
+| Shadow of War  | [magic/sow_magic](https://github.com/Shadow-of-War-Modding-Community/ImHex-Patterns/blob/main/magic/sow_magic)                               | Contains definitions for files used by Shadow of War  |
