@@ -30,11 +30,11 @@ struct Bone {
     float   c14;
     u32     childCount;
     
-    //char boneName[] @ sizeof(header) + boneNameOffset + 4;
+    char boneName[] @ sizeof(header) + boneNameOffset + 4;
 };
 
 struct Header {
-    char    magic; // SKEL
+    char    magic[4]; // SKEL
     u32     version;
     char    unk1[4]; // ID?
     u32     boneNameSecSize;
