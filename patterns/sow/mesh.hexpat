@@ -21,11 +21,11 @@ enum UVFormat : u32 {
     UVArray44 = 0x00000003,
 };
 
-struct SkipSection {
-    s32 d1;
-    s32 d2;
-    s32 d3;
-    s32 d4;
+struct MatAssignment {
+    s32 model;
+    s32 mesh;   // Constant referenced by meshMatIndices
+    s32 mat;
+    s32 unk;    // Constant referenced by unkMatIndices, SurfaceRecord?
 };
 
 struct MeshInfo {
@@ -218,11 +218,11 @@ struct Header {
 struct MeshDescSection {
     SectionID; // 0xEBAEC3FA
     
-    u32 unknownDataCount;
+    u32 matIndexCount;
     u32 sectionDataCount;
     
-    u32 unknownData1[unknownDataCount];
-    u32 unknownData2[unknownDataCount];
+    s32 unkMatIndices[matIndexCount];
+    s32 meshMatIndices[matIndexCount];
     
     u32 vertSectionSize[sectionDataCount];
     u32 faceSectionSize[sectionDataCount];
@@ -232,37 +232,37 @@ struct MeshDescSection {
 struct MeshInfoSection {
     SectionID; // 0x1A1541BC
     
-    u32 matCount; // Unique Mesh count?
-    u32 skipSecCount;
+    u32 modelCount;
+    u32 matAssignmentCount;
     u32 meshCount;
     u32 subMeshCount;
     
     u32 unknownULong1;
     
     u32 lodSettingsCount;
-    u32 mainLodCount;
+    u32 meshLodCount;
     u32 shadowLodCount;
     
     u32 modelLodCount;
     u32 ULongReadCount;
     
-    float unknownFloat; // SectionID?
+    float unknownFloat; // 400 or 1200, ID for unknown1?
     
     float unknown1[4];
     
     u32 boneCount;
     u32 boneSectionSize;
     
-    u32 matID[matCount]; // Unique Mesh ID?
+    u32 modelID[modelCount];
     
-    SkipSection skipSection[skipSecCount];
+    MatAssignment matAssignments[matAssignmentCount]; // Affects Material Connections
     MeshInfo meshInfo[meshCount];
     SubMeshInfo subMeshInfo[subMeshCount];
     
     u32 lodSectionID; // 0x8E3E068E
     u32 lodSettings[lodSettingsCount]; // Settings related to the LODs
-    float lodThresholds[mainLodCount + shadowLodCount]; // Distance Thresholds for rendering different LODs
-    u32 lodConnections[mainLodCount + shadowLodCount]; // Determines which LODs to render at the corresponding Distance Thresholds
+    float lodThresholds[meshLodCount + shadowLodCount]; // Distance Thresholds for rendering different LODs
+    u32 lodConnections[meshLodCount + shadowLodCount]; // Determines which LODs to render at the corresponding Distance Thresholds
 
     u32 modelLodSectionID; // 0x37D749A6
     ModelLodSettings modelLodSettings[modelLodCount]; // Affects Model LODs Vertex Positions, UVs, and Visibility

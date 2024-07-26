@@ -31,7 +31,7 @@ struct Bone {
     u32     childCount;
     
     char boneName[] @ sizeof(header) + boneNameOffset + 4;
-};
+} [[name(boneName)]];
 
 struct Header {
     char    magic[4]; // SKEL
