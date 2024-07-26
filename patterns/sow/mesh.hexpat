@@ -22,10 +22,10 @@ enum UVFormat : u32 {
 };
 
 struct MatAssignment {
-    s32 modelLod;   // Affects Model LODs?
-    s32 meshIndex;  // Referenced by meshMatIndices
-    s32 meshLod;    // Affects Mesh LODs and Shadow LODs
-    s32 unkIndex;   // Referenced by unkMatIndices
+    s32 model;
+    s32 mesh;   // Constant referenced by meshMatIndices
+    s32 mat;
+    s32 unk;    // Constant referenced by unkMatIndices, SurfaceRecord?
 };
 
 struct MeshInfo {
@@ -232,7 +232,7 @@ struct MeshDescSection {
 struct MeshInfoSection {
     SectionID; // 0x1A1541BC
     
-    u32 matCount; // Unique Mesh count?
+    u32 modelCount;
     u32 matAssignmentCount;
     u32 meshCount;
     u32 subMeshCount;
@@ -253,7 +253,7 @@ struct MeshInfoSection {
     u32 boneCount;
     u32 boneSectionSize;
     
-    u32 matID[matCount]; // Unique Mesh ID?
+    u32 modelID[modelCount];
     
     MatAssignment matAssignments[matAssignmentCount]; // Affects Material Connections
     MeshInfo meshInfo[meshCount];
