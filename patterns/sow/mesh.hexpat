@@ -15,10 +15,12 @@ enum SectionID : u32 {
 };
 
 enum UVFormat : u32 {
-    UVArray52 = 0x00000000,
-    UVArray56 = 0x00000001,
-    UVArray48 = 0x00000002,
-    UVArray44 = 0x00000003,
+    UVArray52A = 0x00000000, // Vertex16 = 48 Bytes | Vertex24 = 52 Bytes
+    UVArray56A = 0x00000001, // Vertex16 = 44 Bytes | Vertex24 = 56 Bytes
+    UVArray48A = 0x00000002, //                     | Vertex24 = 48 Bytes
+    UVArray44A = 0x00000003, //                     | Vertex24 = 44 Bytes
+    UVArray52B = 0x00000004, //                     | Vertex24 = 52 Bytes
+    UVArray48B = 0x00000005, //                     | Vertex24 = 48 Bytes
 };
 
 struct MatAssignment {
