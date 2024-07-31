@@ -16,12 +16,12 @@ enum SectionID : u32 {
 };
 
 enum UVFormat : u32 {
-    UVArray52A = 0x00000000, // Vertex16 = 48 Bytes | Vertex24 = 52 Bytes
-    UVArray56A = 0x00000001, // Vertex16 = 44 Bytes | Vertex24 = 56 Bytes
-    UVArray48A = 0x00000002, //                     | Vertex24 = 48 Bytes
-    UVArray44A = 0x00000003, //                     | Vertex24 = 44 Bytes
-    UVArray52B = 0x00000004, //                     | Vertex24 = 52 Bytes
-    UVArray48B = 0x00000005, //                     | Vertex24 = 48 Bytes
+    UVArray52A = 0x00000000, // Vertex16 = 48 Bytes? | Vertex24 = 52 Bytes?
+    UVArray56A = 0x00000001, // Vertex16 = 44 Bytes? | Vertex24 = 56 Bytes?
+    UVArray48A = 0x00000002, //                      | Vertex24 = 48 Bytes?
+    UVArray44A = 0x00000003, //                      | Vertex24 = 44 Bytes?
+    UVArray52B = 0x00000004, //                      | Vertex24 = 52 Bytes?
+    UVArray48B = 0x00000005, //                      | Vertex24 = 48 Bytes?
 };
 
 struct MatAssignment {
@@ -32,9 +32,9 @@ struct MatAssignment {
 };
 
 struct MeshInfo {
-    u32 vertSecSize;
-    u32 faceSecSize;
-    u32 skinSecSize;
+    u32 vertDataSize;
+    u32 faceDataSize;
+    u32 skinDataSize;
     u32 subMeshCount;
     
     u16 faceCount[16];
@@ -128,6 +128,7 @@ union UV11 {
     float v;
 };
 
+// 44 Bytes
 struct UVArray44 {
     UV01;
     padding[36];
@@ -137,6 +138,7 @@ struct UVArray44 {
         std::error("Wrong size");
 };
 
+// 48 Bytes
 struct UVArray48 {
     UV01;
     padding[40];
@@ -146,6 +148,7 @@ struct UVArray48 {
         std::error("Wrong size");
 };
 
+// 52 Bytes
 struct UVArray52 {
     UV01;
     padding[44];
@@ -155,6 +158,7 @@ struct UVArray52 {
         std::error("Wrong size");
 };
 
+// 56 Bytes
 struct UVArray56 {
     UV01;
     padding[48];
@@ -164,6 +168,7 @@ struct UVArray56 {
         std::error("Wrong size");
 };
 
+// 58 Bytes
 struct UVArray58 {
     UV01;
     padding[50];
