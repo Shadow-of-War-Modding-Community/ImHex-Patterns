@@ -1,21 +1,10 @@
 #pragma description Shadow of War SKEL File
 #pragma MIME sow/skel
 
+import sow.types;
+
 enum SectionID : u32 {
     BONE_SECTION = 0xDCDCFF00,
-};
-
-struct Vector3f {
-    float x;
-    float y;
-    float z;
-};
-
-struct Quaternion {
-    float x;
-    float y;
-    float z;
-    float w;
 };
 
 struct BoundingBox {
