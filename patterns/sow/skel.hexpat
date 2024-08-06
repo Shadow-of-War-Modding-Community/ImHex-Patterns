@@ -1,8 +1,15 @@
 #pragma description Shadow of War SKEL File
 #pragma MIME sow/skel
 
+import sow.types;
+
 enum SectionID : u32 {
     BONE_SECTION = 0xDCDCFF00,
+};
+
+struct BoundingBox {
+    Vector3f min;
+    Vector3f max;
 };
 
 struct UnknownMeshDataBlock {
@@ -19,16 +26,11 @@ struct UnknownMeshData {
 };
 
 struct Bone {
-    u32     boneNameOffset;
-    bool    boneActive;
-    float   c21;
-    float   c22;
-    float   c23;
-    float   c11;
-    float   c12;
-    float   c13;
-    float   c14;
-    u32     childCount;
+    u32         boneNameOffset;
+    bool        boneActive;
+    Vector3f    translation;
+    Quaternion  rotation;
+    u32         childCount;
     
     char boneName[] @ sizeof(header) + boneNameOffset + 4;
 } [[name(boneName)]];
@@ -52,8 +54,7 @@ struct Header {
     s32     unk11; // ID?
     u32     unk12;
     float   unk13; // SectionID?
-    float   unk14[3]; // Transforms?
-    float   unk15[3]; // Transforms?
+    BoundingBox boundingBox;
     
     UnknownMeshData unknownMeshData[meshCount];
 };
