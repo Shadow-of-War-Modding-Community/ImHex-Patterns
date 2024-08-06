@@ -5,6 +5,17 @@ enum SectionID : u32 {
     BONE_SECTION = 0xDCDCFF00,
 };
 
+struct Vector3f {
+    float x;
+    float y;
+    float z;
+};
+
+struct BoundingBox {
+    Vector3f min;
+    Vector3f max;
+};
+
 struct UnknownMeshDataBlock {
     bool    unknownBool1;
     bool    unknownBool2;
@@ -52,8 +63,7 @@ struct Header {
     s32     unk11; // ID?
     u32     unk12;
     float   unk13; // SectionID?
-    float   unk14[3]; // Transforms?
-    float   unk15[3]; // Transforms?
+    BoundingBox boundingBox;
     
     UnknownMeshData unknownMeshData[meshCount];
 };
