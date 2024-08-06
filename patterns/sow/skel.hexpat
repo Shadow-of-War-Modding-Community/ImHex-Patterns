@@ -11,6 +11,13 @@ struct Vector3f {
     float z;
 };
 
+struct Quaternion {
+    float x;
+    float y;
+    float z;
+    float w;
+};
+
 struct BoundingBox {
     Vector3f min;
     Vector3f max;
@@ -30,16 +37,11 @@ struct UnknownMeshData {
 };
 
 struct Bone {
-    u32     boneNameOffset;
-    bool    boneActive;
-    float   c21;
-    float   c22;
-    float   c23;
-    float   c11;
-    float   c12;
-    float   c13;
-    float   c14;
-    u32     childCount;
+    u32         boneNameOffset;
+    bool        boneActive;
+    Vector3f    translation;
+    Quaternion  rotation;
+    u32         childCount;
     
     char boneName[] @ sizeof(header) + boneNameOffset + 4;
 } [[name(boneName)]];
