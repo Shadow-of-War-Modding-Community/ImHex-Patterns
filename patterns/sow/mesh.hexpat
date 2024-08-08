@@ -16,13 +16,77 @@ enum SectionID : u32 {
     MESH_DATA_SECTION = 0x95DBDB69,
 };
 
-enum UVFormat : u32 {
-    UVArray52A = 0x00000000, // Vertex16 = 48 Bytes? | Vertex24 = 52 Bytes?
-    UVArray56A = 0x00000001, // Vertex16 = 44 Bytes? | Vertex24 = 56 Bytes?
-    UVArray48A = 0x00000002, //                      | Vertex24 = 48 Bytes?
-    UVArray44A = 0x00000003, //                      | Vertex24 = 44 Bytes?
-    UVArray52B = 0x00000004, //                      | Vertex24 = 52 Bytes?
-    UVArray48B = 0x00000005, //                      | Vertex24 = 48 Bytes?
+enum Layer : u32 {
+    LAYER_0 = 0, // Vertex16 = 48 Bytes? | Vertex24 = 52 Bytes?
+    LAYER_1 = 1, // Vertex16 = 44 Bytes? | Vertex24 = 56 Bytes?
+    LAYER_2 = 2, //                      | Vertex24 = 48 Bytes?
+    LAYER_3 = 3, //                      | Vertex24 = 44 Bytes?
+    LAYER_4 = 4, //                      | Vertex24 = 52 Bytes?
+    LAYER_5 = 5, //                      | Vertex24 = 48 Bytes?
+};
+
+enum ElementFormat1 : u8 {
+    UNK0  =  0,
+    UNK1  =  1,
+    UNK2  =  2,
+    P4    =  3, // Position 4 Bytes (float32)
+    UNK4  =  4,
+    UNK5  =  5,
+    UNK6  =  6,
+    UNK7  =  7,
+    UNK8  =  8,
+    UNK9  =  9,
+    UNK10 = 10,
+    UNK11 = 11,
+    P2    = 12, // Position 2 Bytes (float16)
+};
+
+enum ElementFormat2 : u8 {
+    UNK0  =  0,
+    UNK1  =  1,
+    UNK2  =  2,
+    UNK3  =  3,
+    UNK4  =  4,
+    UNK5  =  5,
+    UNK6  =  6,
+    UNK7  =  7,
+    UNK8  =  8,
+    UNK9  =  9,
+    UNK10 = 10,
+    UNK11 = 11,
+    UNK12 = 12,
+};
+
+enum ElementFormat3 : u8 {
+    UNK0  =  0,
+    UNK1  =  1,
+    UNK2  =  2,
+    UNK3  =  3,
+    UNK4  =  4,
+    UNK5  =  5,
+    UNK6  =  6,
+    UNK7  =  7,
+    UNK8  =  8,
+    UNK9  =  9,
+    UNK10 = 10,
+    UNK11 = 11,
+    UNK12 = 12,
+};
+
+enum ElementFormat4 : u8 {
+    UNK0  =  0,
+    UNK1  =  1,
+    UNK2  =  2,
+    UNK3  =  3,
+    UNK4  =  4,
+    UNK5  =  5,
+    UNK6  =  6,
+    UNK7  =  7,
+    UNK8  =  8,
+    UNK9  =  9,
+    UNK10 = 10,
+    UNK11 = 11,
+    UNK12 = 12,
 };
 
 struct MatAssignment {
@@ -51,16 +115,16 @@ struct SubMeshInfo {
     u32 skinCount;
     u32 unknown7;
     u32 unknown8;
-    UVFormat UVFormat;
+    u32 layer;
 };
 
 // Affects Model LODs Vertex Positions, Bone Weights, UVs, Normals, and Face Visibility
-struct ModelLodSettings {
-    u32 unknownCount;
-    u8  unknownByte1[unknownCount];
-    u8  unknownByte2[unknownCount];
-    u8  unknownByte3[unknownCount];
-    u8  unknownByte4[unknownCount];
+struct LayerFormat {
+    u32 elementCount;
+    ElementFormat1 elementFormat1[elementCount];
+    ElementFormat2 elementFormat2[elementCount];
+    ElementFormat3 elementFormat3[elementCount];
+    ElementFormat4 elementFormat4[elementCount];
 };
 
 struct Bone {
@@ -131,7 +195,7 @@ union UV11 {
 };
 
 // 44 Bytes
-struct UVArray44 {
+struct LayerElements44 {
     UV01;
     padding[36];
     u32 checkSize;
@@ -141,7 +205,7 @@ struct UVArray44 {
 };
 
 // 48 Bytes
-struct UVArray48 {
+struct LayerElements48 {
     UV01;
     padding[40];
     u32 checkSize;
@@ -151,7 +215,7 @@ struct UVArray48 {
 };
 
 // 52 Bytes
-struct UVArray52 {
+struct LayerElements52 {
     UV01;
     padding[44];
     u32 checkSize;
@@ -161,7 +225,7 @@ struct UVArray52 {
 };
 
 // 56 Bytes
-struct UVArray56 {
+struct LayerElements56 {
     UV01;
     padding[48];
     u32 checkSize;
@@ -171,7 +235,7 @@ struct UVArray56 {
 };
 
 // 58 Bytes
-struct UVArray58 {
+struct LayerElements58 {
     UV01;
     padding[50];
     u32 checkSize;
@@ -192,17 +256,17 @@ struct VertDataSection {
     //try {Vertex16 Vertices16[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];}
     //try {Vertex24 Vertices24[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];}
     
-    //try {UVArray44 UVArray44[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];}
-    //try {UVArray48 UVArray48[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];}
-    //try {UVArray52 UVArray52[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];}
-    //try {UVArray56 UVArray56[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];}
-    //try {UVArray58 UVArray58[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];}
+    //try {LayerElements44 layerElements44[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];}
+    //try {LayerElements48 layerElements48[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];}
+    //try {LayerElements52 layerElements52[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];}
+    //try {LayerElements56 layerElements56[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];}
+    //try {LayerElements58 layerElements58[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];}
         
-    //match (meshInfoSection.subMeshInfo[std::core::array_index()].UVFormat) {
-    //    (UVFormat::UVArray52): UVArray52 UVArray52[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];
-    //    (UVFormat::UVArray56): UVArray56 UVArray56[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];
-    //    (UVFormat::UVArray48): UVArray48 UVArray48[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];
-    //    (UVFormat::UVArray44): UVArray44 UVArray44[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];
+    //match (meshInfoSection.subMeshInfo[std::core::array_index()].layer) {
+    //    (0): LayerElements52 layerElements52[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];
+    //    (1): LayerElements56 layerElements56[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];
+    //    (2): LayerElements48 layerElements48[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];
+    //    (3): LayerElements44 layerElements44[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];
     //}
 };
 
@@ -253,7 +317,7 @@ struct MeshInfoSection {
     u32 meshLodCount;
     u32 shadowLodCount;
     
-    u32 modelLodCount;
+    u32 layerCount;
     u32 ULongReadCount;
     
     float unknownFloat; // 400 or 1200, ID for unknown1?
@@ -273,8 +337,8 @@ struct MeshInfoSection {
     float lodThresholds[meshLodCount + shadowLodCount]; // Distance Thresholds for rendering different LODs
     u32   lodConnections[meshLodCount + shadowLodCount]; // Determines which LODs to render at the corresponding Distance Thresholds
     
-    u32 modelLodSectionID; // 0x37D749A6
-    ModelLodSettings modelLodSettings[modelLodCount]; // Affects Model LODs Vertex Positions, Bone Weights, UVs, Normals, and Face Visibility
+    u32 layerFormatSectionID; // 0x37D749A6
+    LayerFormat layerFormat[layerCount]; // Affects Model LODs Vertex Positions, Bone Weights, UVs, Normals, and Face Visibility
     
     u32  boneSectionID; // 0x93D9A424
     Bone bones[boneCount];
