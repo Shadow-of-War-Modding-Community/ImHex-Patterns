@@ -4,6 +4,7 @@
 #pragma pattern_limit 1000000
 
 import sow.enums;
+import sow.types;
 import type.float16;
 import std.core;
 
@@ -63,11 +64,12 @@ struct ModelLodSettings {
 };
 
 struct Bone {
-    BoneName boneName;
-    s16 boneIndex;
-    u16 boneChild;
-    float a11, a12, a13, a14;
-    float a21, a22, a23, a24;
+    BoneName    boneName;
+    s16         boneIndex;
+    u16         boneChild;
+    Vector3f    translation;
+    Quaternion  rotation;
+    float       scale;
 } [[name(boneName)]];
 
 // 16 Bytes
