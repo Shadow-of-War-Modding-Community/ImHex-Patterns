@@ -13,7 +13,7 @@ This repository contains all the currently known patterns of the file formats us
 | FXP     |                | [patterns/sow/fxp.hexpat](https://github.com/Shadow-of-War-Modding-Community/ImHex-Patterns/blob/main/patterns/sow/fxp.hexpat)               | Shadow of War FXP File     |
 | MAT     | `sow/mat`      | [patterns/sow/mat.hexpat](https://github.com/Shadow-of-War-Modding-Community/ImHex-Patterns/blob/main/patterns/sow/mat.hexpat)               | Shadow of War MAT File     |
 | MESH    | `sow/mesh`     | [patterns/sow/mesh.hexpat](https://github.com/Shadow-of-War-Modding-Community/ImHex-Patterns/blob/main/patterns/sow/mesh.hexpat)             | Shadow of War MESH File    |
-| SCRIPTS | `sow/scripts`  | [patterns/sow/skel.hexpat](https://github.com/Shadow-of-War-Modding-Community/ImHex-Patterns/blob/main/patterns/sow/scripts.hexpat)          | Shadow of War SCRIPTS File |
+| SCRIPTS | `sow/scripts`  | [patterns/sow/scripts.hexpat](https://github.com/Shadow-of-War-Modding-Community/ImHex-Patterns/blob/main/patterns/sow/scripts.hexpat)       | Shadow of War SCRIPTS File |
 | SKEL    | `sow/skel`     | [patterns/sow/skel.hexpat](https://github.com/Shadow-of-War-Modding-Community/ImHex-Patterns/blob/main/patterns/sow/skel.hexpat)             | Shadow of War SKEL File    |
 
 ### Magic Files
