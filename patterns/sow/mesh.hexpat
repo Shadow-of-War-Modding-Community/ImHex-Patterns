@@ -81,51 +81,77 @@ enum ElementFormat4 : u8 {
 };
 
 struct MatAssignment {
-    s32 model;
-    s32 mesh;   // Constant referenced by meshMatIndices
-    s32 mat;
-    s32 unk;    // Constant referenced by unkMatIndices
+    s32 model     [[comment("Index of the model")]];
+    s32 constMesh [[comment("Mesh referenced by \"meshMatIndices\" (Constant)")]];
+    s32 mat       [[comment("Index of the material")]];
+    s32 constUnk  [[comment("Unknown referenced by \"unkMatIndices\" (Constant)")]];
 };
 
 struct MeshInfo {
-    u32 vertDataSize;
-    u32 faceDataSize;
-    u32 skinDataSize;
-    u32 subMeshCount;
-    
-    u16 faceCount[16];
+    u32 vertDataSize  [[comment("Size of the vertex data")]];
+    u32 faceDataSize  [[comment("Size of the face data")]];
+    u32 skinDataSize  [[comment("Size of the skin data")]];
+    u32 subMeshCount  [[comment("Number of submeshes")]];
+    u16 faceCount[16] [[comment("Number of faces")]];
 };
 
 struct SubMeshInfo {
-    u32 offset;
-    u32 vertStart;
-    u32 vertCount;
-    u32 faceStart;
-    u32 faceCount;
-    u32 skinStart;
-    u32 skinCount;
+    u32 dataOffset [[comment("Offset for the data")]];
+    u32 vertOffset [[comment("Offset for the vertices")]];
+    u32 vertCount  [[comment("Number of vertices")]];
+    u32 faceOffset [[comment("Offset for the faces")]];
+    u32 faceCount  [[comment("Number of faces")]];
+    u32 skinOffset [[comment("Offset for the skins")]];
+    u32 skinCount  [[comment("Number of skins")]];
     u32 unknown7;
     u32 unknown8;
-    u32 layer;
+    u32 layer      [[comment("Index of the layer")]];
+};
+
+struct LodThresholds {
+    float meshLodThresholds[parent.parent.meshLodCount]     [[comment("Distance thresholds for mesh LODs")]];
+    float shadowLodThresholds[parent.parent.shadowLodCount] [[comment("Distance thresholds for shadow LODs")]];
+};
+
+struct LodConnections {
+    u32 meshLodConnections[parent.parent.meshLodCount]     [[comment("Connections between mesh LODs and distance thresholds")]];
+    u32 shadowLodConnections[parent.parent.shadowLodCount] [[comment("Connections between shadow LODs and distance thresholds")]];
+};
+
+struct LodSection {
+    u32 lodSectionID; // 0x8E3E068E
+    u32 lodSettings[parent.lodSettingsCount] [[comment("Settings related to the LODs")]];
+    LodThresholds  lodThresholds             [[comment("Distance thresholds for LODs")]];
+    LodConnections lodConnections            [[comment("Connections between LODs and distance thresholds")]];
 };
 
 // Affects Model LODs Vertex Positions, Bone Weights, UVs, Normals, and Face Visibility
 struct LayerFormat {
-    u32 elementCount;
-    ElementFormat1 elementFormat1[elementCount];
-    ElementFormat2 elementFormat2[elementCount];
-    ElementFormat3 elementFormat3[elementCount];
-    ElementFormat4 elementFormat4[elementCount];
+    u32 elementCount                            [[comment("Number of elements")]];
+    ElementFormat1 elementFormat1[elementCount] [[comment("First format definition of the elements")]];
+    ElementFormat2 elementFormat2[elementCount] [[comment("Second format definition of the elements")]];
+    ElementFormat3 elementFormat3[elementCount] [[comment("Third format definition of the elements")]];
+    ElementFormat4 elementFormat4[elementCount] [[comment("Fourth format definition of the elements")]];
+};
+
+struct LayerSection {
+    u32 layerSectionID; // 0x37D749A6
+    LayerFormat layerFormat[parent.layerCount]; // Affects Model LODs Vertex Positions, Bone Weights, UVs, Normals, and Face Visibility
 };
 
 struct Bone {
-    BoneName    boneName;
-    s16         boneIndex;
-    u16         boneChild;
-    Vector3f    translation;
-    Quaternion  rotation;
-    float       scale;
+    BoneName   boneName    [[comment("Name of the bone")]];
+    s16        boneParent  [[comment("Index of the parent bone")]];
+    u16        boneChild   [[comment("Number of child bones")]];
+    Vector3f   translation [[comment("Position of the bone in 3D space")]];
+    Quaternion rotation    [[comment("Rotation of the bone in 3D space")]];
+    float      scale       [[comment("Scaling of the bone in 3D space")]];
 } [[name(boneName)]];
+
+struct BoneSection {
+    u32  boneSectionID; // 0x93D9A424
+    Bone bones[parent.boneCount] [[comment("Collection of bones")]];
+};
 
 // 8 Bytes (float16)
 struct Position8 {
@@ -194,67 +220,47 @@ struct SkinDataSection {
 };
 
 struct Header {
-    char magic[4]; // MMSH
-    u32  version;
-
-    u32 meshDescSectionSize;
-    u32 meshInfoSectionSize;
-    u32 meshDataSectionSize;
+    char magic[4]            [[comment("File signature")]]; // MMSH
+    u32  version             [[comment("File version")]];
+    u32  meshDescSectionSize [[comment("Size of the description section")]];
+    u32  meshInfoSectionSize [[comment("Size of the information section")]];
+    u32  meshDataSectionSize [[comment("Size of the data section")]];
 };
 
 struct MeshDescSection {
     SectionID meshDescSectionID; // 0xEBAEC3FA
-    
-    u32 matIndexCount;
-    u32 dataSectionCount;
-    
-    s32 unkMatIndices[matIndexCount];
-    s32 meshMatIndices[matIndexCount];
-    
-    u32 vertSectionSize[dataSectionCount];
-    u32 faceSectionSize[dataSectionCount];
-    u32 skinSectionSize[dataSectionCount];
+    u32 matIndexCount                     [[comment("Number of material indices")]];
+    u32 dataSectionCount                  [[comment("Number of data sections")]];
+    s32 unkMatIndices[matIndexCount]      [[comment("Unknown material indices")]];
+    s32 meshMatIndices[matIndexCount]     [[comment("Mesh material indices")]];
+    u32 vertSectionSize[dataSectionCount] [[comment("Size of the vertex data section")]];
+    u32 faceSectionSize[dataSectionCount] [[comment("Size of the face data section")]];
+    u32 skinSectionSize[dataSectionCount] [[comment("Size of the skin data section")]];
 };
 
 struct MeshInfoSection {
     SectionID meshInfoSectionID; // 0x1A1541BC
-    
-    u32 modelCount;
-    u32 matAssignmentCount;
-    u32 meshCount;
-    u32 subMeshCount;
-    
-    u32 unknownULong1;
-    
-    u32 lodSettingsCount;
-    u32 meshLodCount;
-    u32 shadowLodCount;
-    
-    u32 layerCount;
-    u32 ULongReadCount;
-    
+    u32   modelCount                                 [[comment("Number of models")]];
+    u32   matAssignmentCount                         [[comment("Number of material assignments")]];
+    u32   meshCount                                  [[comment("Number of meshes")]];
+    u32   subMeshCount                               [[comment("Number of submeshes")]];
+    u32   unknownULong1;
+    u32   lodSettingsCount                           [[comment("Number of LOD settings")]];
+    u32   meshLodCount                               [[comment("Number of mesh LODs")]];
+    u32   shadowLodCount                             [[comment("Number of shadow LODs")]];
+    u32   layerCount                                 [[comment("Number of layers")]];
+    u32   ULongReadCount;
     float unknownFloat; // 400 or 1200, ID for unknown1?
     float unknown1[4];
-    
-    u32 boneCount;
-    u32 boneSectionSize;
-    
-    u32 modelID[modelCount];
-    
-    MatAssignment matAssignments[matAssignmentCount];
-    MeshInfo      meshInfo[meshCount];
-    SubMeshInfo   subMeshInfo[subMeshCount];
-    
-    u32   lodSectionID; // 0x8E3E068E
-    u32   lodSettings[lodSettingsCount]; // Settings related to the LODs
-    float lodThresholds[meshLodCount + shadowLodCount]; // Distance Thresholds for rendering different LODs
-    u32   lodConnections[meshLodCount + shadowLodCount]; // Determines which LODs to render at the corresponding Distance Thresholds
-    
-    u32 layerFormatSectionID; // 0x37D749A6
-    LayerFormat layerFormat[layerCount]; // Affects Model LODs Vertex Positions, Bone Weights, UVs, Normals, and Face Visibility
-    
-    u32  boneSectionID; // 0x93D9A424
-    Bone bones[boneCount];
+    u32   boneCount                                  [[comment("Number of bones")]];
+    u32   boneSectionSize                            [[comment("Size of the bone section")]];    
+    u32   modelID[modelCount]                        [[comment("Hash of the model names")]];
+    MatAssignment matAssignments[matAssignmentCount] [[comment("Material assignments")]];
+    MeshInfo      meshInfo[meshCount]                [[comment("Mesh information")]];
+    SubMeshInfo   subMeshInfo[subMeshCount]          [[comment("Submesh information")]];
+    LodSection    lodSection;
+    LayerSection  layerSection;
+    BoneSection   boneSection;
 };
 
 struct MeshDataSection {
