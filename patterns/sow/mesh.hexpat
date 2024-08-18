@@ -16,20 +16,11 @@ enum SectionID : u32 {
     MESH_DATA_SECTION = 0x95DBDB69,
 };
 
-enum Layer : u32 {
-    LAYER_0 = 0, // Vertex16 = 48 Bytes? | Vertex24 = 52 Bytes?
-    LAYER_1 = 1, // Vertex16 = 44 Bytes? | Vertex24 = 56 Bytes?
-    LAYER_2 = 2, //                      | Vertex24 = 48 Bytes?
-    LAYER_3 = 3, //                      | Vertex24 = 44 Bytes?
-    LAYER_4 = 4, //                      | Vertex24 = 52 Bytes?
-    LAYER_5 = 5, //                      | Vertex24 = 48 Bytes?
-};
-
 enum ElementFormat1 : u8 {
     UNK0  =  0,
     UNK1  =  1,
     UNK2  =  2,
-    P4    =  3, // Position 4 Bytes (float32)
+    P16   =  3, // Position 16 Bytes (float32)
     UNK4  =  4,
     UNK5  =  5,
     UNK6  =  6,
@@ -38,7 +29,7 @@ enum ElementFormat1 : u8 {
     UNK9  =  9,
     UNK10 = 10,
     UNK11 = 11,
-    P2    = 12, // Position 2 Bytes (float16)
+    P8    = 12, // Position 8 Bytes (float16)
 };
 
 enum ElementFormat2 : u8 {
@@ -136,42 +127,30 @@ struct Bone {
     float       scale;
 } [[name(boneName)]];
 
-// 16 Bytes
-struct Vertex16 {
+// 8 Bytes (float16)
+struct Position8 {
     float16 x;
     float16 y;
     float16 z;
     float16 w; // Always 1.0
-    u8 weight1;
-    u8 weight2;
-    u8 weight3;
-    u8 weight4;
-    s8 skinID1;
-    s8 skinID2;
-    s8 skinID3;
-    s8 skinID4;
-    
-    if (w != 1.0)
-        std::error("Wrong size");
 };
 
-// 24 Bytes
-struct Vertex24 {
+// 16 Bytes (float32)
+struct Position16 {
     float x;
     float y;
     float z;
     float w; // Always 1.0
-    u8 weight1;
-    u8 weight2;
-    u8 weight3;
-    u8 weight4;
-    s8 skinID1;
-    s8 skinID2;
-    s8 skinID3;
-    s8 skinID4;
-    
-    if (w != 1.0)
-        std::error("Wrong size");
+};
+
+struct SkinWeight {
+    u8 weight[4];
+    u8 skinID[4];
+};
+
+struct Vertex {
+    Position16 position; // Position should be determined by LayerFormat
+    SkinWeight skinWeight;
 };
 
 union UV00 {
@@ -194,56 +173,6 @@ union UV11 {
     float v;
 };
 
-// 44 Bytes
-struct LayerElements44 {
-    UV01;
-    padding[36];
-    u32 checkSize;
-    
-    if (checkSize != 0xFFFFFFFF)
-        std::error("Wrong size");
-};
-
-// 48 Bytes
-struct LayerElements48 {
-    UV01;
-    padding[40];
-    u32 checkSize;
-    
-    if (checkSize != 0xFFFFFFFF)
-        std::error("Wrong size");
-};
-
-// 52 Bytes
-struct LayerElements52 {
-    UV01;
-    padding[44];
-    u32 checkSize;
-    
-    if (checkSize != 0xFFFFFFFF)
-        std::error("Wrong size");
-};
-
-// 56 Bytes
-struct LayerElements56 {
-    UV01;
-    padding[48];
-    u32 checkSize;
-    
-    if (checkSize != 0xFFFFFFFF)
-        std::error("Wrong size");
-};
-
-// 58 Bytes
-struct LayerElements58 {
-    UV01;
-    padding[50];
-    u32 checkSize;
-    
-    if (checkSize != 0xFFFFFFFF)
-        std::error("Wrong size");
-};
-
 struct Face {
     u16 vertIndex1;
     u16 vertIndex2;
@@ -252,22 +181,6 @@ struct Face {
 
 struct VertDataSection {
     u8 vertData[meshDescSection.vertSectionSize[std::core::array_index()]];
-    
-    //try {Vertex16 Vertices16[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];}
-    //try {Vertex24 Vertices24[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];}
-    
-    //try {LayerElements44 layerElements44[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];}
-    //try {LayerElements48 layerElements48[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];}
-    //try {LayerElements52 layerElements52[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];}
-    //try {LayerElements56 layerElements56[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];}
-    //try {LayerElements58 layerElements58[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];}
-        
-    //match (meshInfoSection.subMeshInfo[std::core::array_index()].layer) {
-    //    (0): LayerElements52 layerElements52[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];
-    //    (1): LayerElements56 layerElements56[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];
-    //    (2): LayerElements48 layerElements48[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];
-    //    (3): LayerElements44 layerElements44[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];
-    //}
 };
 
 struct FaceDataSection {
