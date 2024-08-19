@@ -5,10 +5,12 @@
 
 import sow.enums;
 import sow.types;
-import type.float16;
 import std.core;
+import type.float16;
+import type.color;
 
 using float16 = u16 [[format("type::impl::format_float16")]];
+using RGBA8 = type::RGBA8;
 
 enum SectionID : u32 {
     MESH_DESC_SECTION = 0xEBAEC3FA,
@@ -154,7 +156,7 @@ struct BoneSection {
 };
 
 // 8 Bytes (float16)
-struct Position8 {
+struct Position16 {
     float16 x;
     float16 y;
     float16 z;
@@ -162,61 +164,123 @@ struct Position8 {
 };
 
 // 16 Bytes (float32)
-struct Position16 {
+struct Position32 {
     float x;
     float y;
     float z;
     float w; // Always 1.0
 };
 
-struct SkinWeight {
+struct Weights {
     u8 weight[4];
-    u8 skinID[4];
+    u8 vertexGroupIndex[4];
 };
 
 struct Vertex {
-    Position16 position; // Position should be determined by LayerFormat
-    SkinWeight skinWeight;
+    Position32 position; // Position should be determined by LayerFormat
+    Weights weights;
 };
 
-union UV00 {
+struct UV16Channel_1 {
     u16 u;
     u16 v;
 };
 
-union UV01 {
-    u16   uv1;
-    float uv2;
+struct UV16Channel_2 {
+    float16 u;
+    float16 v;
 };
 
-union UV10 {
-    float uv1;
-    u16   uv2;
+union TextureCoordinate16 {
+    UV16Channel_1 uvChannel_1;
+    UV16Channel_2 uvChannel_2;
 };
 
-union UV11 {
+struct UV32Channel_1 {
+    u32 u;
+    u32 v;
+};
+
+struct UV32Channel_2 {
     float u;
     float v;
 };
 
+union TextureCoordinate32 {
+    UV32Channel_1 uvChannel_1;
+    UV32Channel_2 uvChannel_2;
+};
+
+struct Normal {
+    float x;
+    float y;
+    float z;
+};
+
+struct Tangent {
+    float x;
+    float y;
+    float z;
+};
+
+struct Bitangent {
+    float x;
+    float y;
+    float z;
+};
+
+struct VertexAttributes44 {
+    TextureCoordinate16 textureCoordinate;
+    Normal    normal;
+    Tangent   tangent;
+    Bitangent bitangent;
+    RGBA8     color;
+};
+
+struct VertexAttributes48 {
+    TextureCoordinate32 textureCoordinate;
+    Normal    normal;
+    Tangent   tangent;
+    Bitangent bitangent;
+    RGBA8     color;
+};
+
+struct VertexAttributes52 {
+    TextureCoordinate32 textureCoordinate;
+    padding[4];
+    Normal    normal;
+    Tangent   tangent;
+    Bitangent bitangent;
+    RGBA8     color;
+};
+
+struct VertexAttributes56 {
+    TextureCoordinate32 textureCoordinate;
+    padding[4];
+    padding[4];
+    Normal    normal;
+    Tangent   tangent;
+    Bitangent bitangent;
+    RGBA8     color;
+};
+
 struct Face {
-    u16 vertIndex1;
-    u16 vertIndex2;
-    u16 vertIndex3;
+    u16 index1;
+    u16 index2;
+    u16 index3;
 };
 
-struct VertDataSection {
-    u8 vertData[meshDescSection.vertSectionSize[std::core::array_index()]];
-};
-
-struct FaceDataSection {
-    u8 faceData[meshDescSection.faceSectionSize[std::core::array_index()]];
+struct Mesh {
+    Vertex vertices[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];
     
-    //Face faces[meshInfoSection.subMeshInfo[std::core::array_index()].faceCount / 3];
-};
-
-struct SkinDataSection {
-    u8 skinData[meshDescSection.skinSectionSize[std::core::array_index()]];
+    match (meshInfoSection.subMeshInfo[std::core::array_index()].layer) {
+        (0): VertexAttributes52 vertexAttributes[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];
+        (1): VertexAttributes56 vertexAttributes[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];
+        (2): VertexAttributes48 vertexAttributes[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];
+        (3): VertexAttributes44 vertexAttributes[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];
+        (4): VertexAttributes52 vertexAttributes[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];
+        (5): VertexAttributes48 vertexAttributes[meshInfoSection.subMeshInfo[std::core::array_index()].vertCount];
+    }
 };
 
 struct Header {
@@ -265,10 +329,7 @@ struct MeshInfoSection {
 
 struct MeshDataSection {
     SectionID meshDataSectionID; // 0x95DBDB69
-    
-    VertDataSection vertDataSection[meshDescSection.dataSectionCount];
-    FaceDataSection faceDataSection[meshDescSection.dataSectionCount];
-    SkinDataSection skinDataSection[meshDescSection.dataSectionCount];
+    Mesh meshes[meshInfoSection.subMeshCount];
 };
 
 Header header @ 0x00;
