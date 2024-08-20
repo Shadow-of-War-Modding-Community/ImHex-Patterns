@@ -265,15 +265,15 @@ meshInfoSection:
                 - 4
                 - 5
             elementFormat4: 
-                - 0
-                - 0
-                - 4
-                - 6
-                - 0
-                - 0
-                - 4
-                - 7
-                - 0
+                - 0  # Affects Visibility
+                - 0  # Affects Vertex Positions and Visibility
+                - 4  # Affects Vertex Positions and Visibility
+                - 6  # Affects Visibility
+                - 0  # Affects Visibility
+                - 0  # Affects Vertex Positions and Visibility
+                - 4  # Affects Vertex Positions and Weights
+                - 7  # Affects Visibility
+                - 0  # Affects Visibility
         - 
             elementCount: 8
             elementFormat1: 
