@@ -18,68 +18,46 @@ enum SectionID : u32 {
     MESH_DATA_SECTION = 0x95DBDB69,
 };
 
-enum ElementFormat1 : u8 {
-    UNK0  =  0,
-    UNK1  =  1,
-    UNK2  =  2,
-    P16   =  3, // Position 16 Bytes (float32)
-    UNK4  =  4,
-    UNK5  =  5,
-    UNK6  =  6,
-    UNK7  =  7,
-    UNK8  =  8,
-    UNK9  =  9,
-    UNK10 = 10,
-    UNK11 = 11,
-    P8    = 12, // Position 8 Bytes (float16)
+enum BufferIndex : u8 {
+    BUFFER_0  =  0,
+    BUFFER_1  =  1,
 };
 
-enum ElementFormat2 : u8 {
-    UNK0  =  0,
-    UNK1  =  1,
-    UNK2  =  2,
-    UNK3  =  3,
-    UNK4  =  4,
-    UNK5  =  5,
-    UNK6  =  6,
-    UNK7  =  7,
-    UNK8  =  8,
-    UNK9  =  9,
-    UNK10 = 10,
-    UNK11 = 11,
-    UNK12 = 12,
+enum Type : u8 {
+    UNK0       =  0,
+    UNK1       =  1,
+    VECTOR3F32 =  2,
+    VECTOR4F32 =  3,
+    UINT8      =  4,
+    UNK5       =  5,
+    UNK6       =  6,
+    UNK7       =  7,
+    UNK8       =  8,
+    UINT16     =  9,
+    UNK10      = 10,
+    UNK11      = 11,
+    VECTOR4F16 = 12,
 };
 
-enum ElementFormat3 : u8 {
-    UNK0  =  0,
-    UNK1  =  1,
-    UNK2  =  2,
-    UNK3  =  3,
-    UNK4  =  4,
-    UNK5  =  5,
-    UNK6  =  6,
-    UNK7  =  7,
-    UNK8  =  8,
-    UNK9  =  9,
-    UNK10 = 10,
-    UNK11 = 11,
-    UNK12 = 12,
+enum Element : u8 {
+    POSITION    =  0,
+    NORMAL      =  1,
+    TANGENT     =  2,
+    BITANGENT   =  3,
+    TEXCOORD    =  4,
+    COLOR       =  5,
+    WEIGHT      =  6,
+    VERTEXGROUP =  7,
+    UNK8        =  8,
+    UNK9        =  9,
+    UNK10       = 10,
+    UNK11       = 11,
+    UNK12       = 12,
 };
 
-enum ElementFormat4 : u8 {
-    UNK0  =  0,
-    UNK1  =  1,
-    UNK2  =  2,
-    UNK3  =  3,
-    UNK4  =  4,
-    UNK5  =  5,
-    UNK6  =  6,
-    UNK7  =  7,
-    UNK8  =  8,
-    UNK9  =  9,
-    UNK10 = 10,
-    UNK11 = 11,
-    UNK12 = 12,
+enum Channel : u8 {
+    CHANNEL_0  =  0,
+    CHANNEL_1  =  1,
 };
 
 struct Connection {
@@ -127,18 +105,21 @@ struct LodSection {
     LodConnections lodConnections            [[comment("Connections between the LODs and the Distance Thresholds")]];
 };
 
-// Affects Model LODs Vertex Positions, Bone Weights, UVs, Normals, and Face Visibility
-struct LayerFormat {
-    u32 elementCount                            [[comment("Number of Elements")]];
-    ElementFormat1 elementFormat1[elementCount] [[comment("First Format definition of the Elements")]];
-    ElementFormat2 elementFormat2[elementCount] [[comment("Second Format definition of the Elements")]];
-    ElementFormat3 elementFormat3[elementCount] [[comment("Third Format definition of the Elements")]];
-    ElementFormat4 elementFormat4[elementCount] [[comment("Fourth Format definition of the Elements")]];
+struct ElementLayout {
+    u8        bufferIndex;
+    Type      type;
+    Element   element;
+    u8        channel;
 };
 
-struct LayerSection {
-    u32 layerSectionID; // 0x37D749A6
-    LayerFormat layerFormat[parent.layerCount] [[comment("Format definitions for the Elements")]]; // Affects Model LODs Vertex Positions, Bone Weights, UVs, Normals, and Face Visibility
+struct VertexBufferLayout {
+    u32 elementCount;
+    ElementLayout elementsLayout[elementCount];
+};
+
+struct BufferLayoutSection {
+    u32 bufferLayoutSectionID; // 0x37D749A6
+    VertexBufferLayout vertexBufferLayout[parent.bufferLayoutCount] [[comment("Format definitions for the Elements")]]; // Affects Model LODs Vertex Positions, Bone Weights, UVs, Normals, and Face Visibility
 };
 
 struct Bone {
@@ -177,8 +158,14 @@ struct Weights {
 };
 
 struct Vertex {
-    Position32 position [[comment("Position of the Vertex in 3D space")]]; // Position should be determined by LayerFormat
-    Weights weights     [[comment("Bone Weights for the Vertex")]];
+    match (meshInfoSection.bufferLayoutSection.vertexBufferLayout[0].elementsLayout[0].type, meshInfoSection.bufferLayoutSection.vertexBufferLayout[0].elementsLayout[0].element) {
+        (Type::VECTOR4F16, Element::POSITION): float16 x, y, z, w;
+        (Type::VECTOR4F32, Element::POSITION): float x, y, z, w;
+        (Type::UINT8, Element::WEIGHT): u8 weight[4];
+        (Type::UINT8, Element::VERTEXGROUP): u8 vertexGroupIndex[4];
+    }
+    //Position32 position [[comment("Position of the Vertex in 3D space")]]; // Position should be determined by LayerFormat
+    //Weights weights     [[comment("Bone Weights for the Vertex")]];
 };
 
 struct UV16Channel_1 {
@@ -267,14 +254,14 @@ struct VertexAttributes56 {
 struct VertexArray {
     Vertex vertices[meshInfoSection.meshInfo[std::core::array_index()].verticesCount] [[comment("Vertices in the Mesh")]];
     
-    match (meshInfoSection.subMeshInfo[std::core::array_index()].layer) {
-        (0): VertexAttributes52 vertexAttributes[meshInfoSection.meshInfo[std::core::array_index()].verticesCount] [[comment("Attributes for the Vertex")]];
-        (1): VertexAttributes56 vertexAttributes[meshInfoSection.meshInfo[std::core::array_index()].verticesCount] [[comment("Attributes for the Vertex")]];
-        (2): VertexAttributes48 vertexAttributes[meshInfoSection.meshInfo[std::core::array_index()].verticesCount] [[comment("Attributes for the Vertex")]];
-        (3): VertexAttributes44 vertexAttributes[meshInfoSection.meshInfo[std::core::array_index()].verticesCount] [[comment("Attributes for the Vertex")]];
-        (4): VertexAttributes52 vertexAttributes[meshInfoSection.meshInfo[std::core::array_index()].verticesCount] [[comment("Attributes for the Vertex")]];
-        (5): VertexAttributes48 vertexAttributes[meshInfoSection.meshInfo[std::core::array_index()].verticesCount] [[comment("Attributes for the Vertex")]];
-    }
+    //match (meshInfoSection.subMeshInfo[std::core::array_index()].layer) {
+    //    (0): VertexAttributes52 vertexAttributes[meshInfoSection.meshInfo[std::core::array_index()].verticesCount] [[comment("Attributes for the Vertex")]];
+    //    (1): VertexAttributes56 vertexAttributes[meshInfoSection.meshInfo[std::core::array_index()].verticesCount] [[comment("Attributes for the Vertex")]];
+    //    (2): VertexAttributes48 vertexAttributes[meshInfoSection.meshInfo[std::core::array_index()].verticesCount] [[comment("Attributes for the Vertex")]];
+    //    (3): VertexAttributes44 vertexAttributes[meshInfoSection.meshInfo[std::core::array_index()].verticesCount] [[comment("Attributes for the Vertex")]];
+    //    (4): VertexAttributes52 vertexAttributes[meshInfoSection.meshInfo[std::core::array_index()].verticesCount] [[comment("Attributes for the Vertex")]];
+    //    (5): VertexAttributes48 vertexAttributes[meshInfoSection.meshInfo[std::core::array_index()].verticesCount] [[comment("Attributes for the Vertex")]];
+    //}
 };
 
 struct Face {
@@ -316,7 +303,7 @@ struct MeshInfoSection {
     u32   lodSettingsCount                    [[comment("Number of LOD settings")]];
     u32   meshLodCount                        [[comment("Number of Mesh LODs")]];
     u32   shadowLodCount                      [[comment("Number of Shadow LODs")]];
-    u32   layerCount                          [[comment("Number of Layers")]];
+    u32   bufferLayoutCount                   [[comment("Number of Layers")]];
     u32   ULongReadCount;
     float unknownFloat; // 400 or 1200, ID for unknown1?
     float unknown1[4];
@@ -327,13 +314,14 @@ struct MeshInfoSection {
     LodInfo      lodInfo[lodCount]            [[comment("Information about how the Data for the LODs are stored")]];
     MeshInfo     meshInfo[meshCount]          [[comment("Information about how the Data for the Meshes are stored")]];
     LodSection   lodSection                   [[comment("Section containing Data for the LODs")]];
-    LayerSection layerSection                 [[comment("Section containing Data for the Layers")]];
+    BufferLayoutSection bufferLayoutSection   [[comment("Section containing Data for the Layers")]];
     BoneSection  boneSection                  [[comment("Section containing Data for the Bones")]];
 };
 
 struct MeshDataSection {
     SectionID meshDataSectionID; // 0x95DBDB69
     //Mesh meshes[meshInfoSection.subMeshCount];
+    //VertexArray vertexArray;
 };
 
 Header header @ 0x00                                                                                         [[comment("Header containing File Information")]];
