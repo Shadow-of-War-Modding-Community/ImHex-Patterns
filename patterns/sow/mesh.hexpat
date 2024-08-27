@@ -186,41 +186,6 @@ struct Vertex {
     }
 };
 
-/*struct VertexAttributes44 {
-    TextureCoordinate16 textureCoordinate [[comment("UV Mapping Coordinates for Textures")]];
-    Normal    normal                      [[comment("Normal Vector at the Vertex (For Lighting Calculations)")]];
-    Tangent   tangent                     [[comment("Tangent Vector at the Vertex (Used for Normal Mapping)")]];
-    Bitangent bitangent                   [[comment("Bitangent Vector at the Vertex (Orthogonal to the Normal and Tangent)")]];
-    RGBA8     color                       [[comment("Color of the Vertex")]];
-};
-
-struct VertexAttributes48 {
-    TextureCoordinate32 textureCoordinate [[comment("UV Mapping Coordinates for Textures")]];
-    Normal    normal                      [[comment("Normal Vector at the Vertex (For Lighting Calculations)")]];
-    Tangent   tangent                     [[comment("Tangent Vector at the Vertex (Used for Normal Mapping)")]];
-    Bitangent bitangent                   [[comment("Bitangent Vector at the Vertex (Orthogonal to the Normal and Tangent)")]];
-    RGBA8     color                       [[comment("Color of the Vertex")]];
-};
-
-struct VertexAttributes52 {
-    TextureCoordinate32 textureCoordinate [[comment("UV Mapping Coordinates for Textures")]];
-    padding[4];
-    Normal    normal                      [[comment("Normal Vector at the Vertex (For Lighting Calculations)")]];
-    Tangent   tangent                     [[comment("Tangent Vector at the Vertex (Used for Normal Mapping)")]];
-    Bitangent bitangent                   [[comment("Bitangent Vector at the Vertex (Orthogonal to the Normal and Tangent)")]];
-    RGBA8     color                       [[comment("Color of the Vertex")]];
-};
-
-struct VertexAttributes56 {
-    TextureCoordinate32 textureCoordinate [[comment("UV Mapping Coordinates for Textures")]];
-    padding[4];
-    padding[4];
-    Normal    normal                      [[comment("Normal Vector at the Vertex (For Lighting Calculations)")]];
-    Tangent   tangent                     [[comment("Tangent Vector at the Vertex (Used for Normal Mapping)")]];
-    Bitangent bitangent                   [[comment("Bitangent Vector at the Vertex (Orthogonal to the Normal and Tangent)")]];
-    RGBA8     color                       [[comment("Color of the Vertex")]];
-};*/
-
 struct VertexArray {
     Vertex vertices[meshInfoSection.meshInfo[std::core::array_index()].verticesCount] [[comment("Vertices in the Mesh")]];
 };
