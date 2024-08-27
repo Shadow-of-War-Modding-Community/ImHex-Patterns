@@ -4,14 +4,14 @@
 import std.string;
 
 enum Type : u32 {
-    Vector2f = 0x0000000B,
-    Vector3f = 0x00000002,
-    Vector4f = 0x00000003,
-    Number = 0x00000004,
-    Float = 0x00000005,
-    Boolean = 0x00000006,
-    String = 0x00000008,
-    Texture = 0x00010001,
+    VECTOR3F32 =     2,
+    VECTOR4F32 =     3,
+    NUMBER     =     4,
+    FLOAT      =     5,
+    BOOLEAN    =     6,
+    STRING     =     8,
+    VECTOR2F32 =    11,
+    TEXTURE    = 65537,
 };
 
 struct Vector2f {
@@ -78,16 +78,16 @@ struct Property {
     u32 offset;
 
     match (type) {
-        (Type::Vector2f): Vector2f @ sizeof(header) + offset;
-        (Type::Vector3f):
+        (Type::VECTOR2F32): Vector2f @ sizeof(header) + offset;
+        (Type::VECTOR3F32):
             if (!std::string::starts_with(name, "k_c")) Vector3f @ sizeof(header) + offset;
             else if (std::string::starts_with(name, "k_c")) Color @ sizeof(header) + offset;
-        (Type::Vector4f): Vector4f @ sizeof(header) + offset;
-        (Type::Number): Number @ sizeof(header) + offset;
-        (Type::Float): Float @ sizeof(header) + offset;
-        (Type::Boolean): Boolean @ sizeof(header) + offset;
-        (Type::String): String @ sizeof(header) + offset;
-        (Type::Texture): String @ sizeof(header) + offset;
+        (Type::VECTOR4F32): Vector4f @ sizeof(header) + offset;
+        (Type::NUMBER): Number @ sizeof(header) + offset;
+        (Type::FLOAT): Float @ sizeof(header) + offset;
+        (Type::BOOLEAN): Boolean @ sizeof(header) + offset;
+        (Type::STRING): String @ sizeof(header) + offset;
+        (Type::TEXTURE): String @ sizeof(header) + offset;
     }
 
 } [[name(name)]];

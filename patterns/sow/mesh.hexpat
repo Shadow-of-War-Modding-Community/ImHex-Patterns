@@ -6,11 +6,6 @@
 import sow.enums;
 import sow.types;
 import std.core;
-import type.float16;
-import type.color;
-
-using float16 = u16 [[format("type::impl::format_float16")]];
-using RGBA8 = type::RGBA8;
 
 enum SectionID : u32 {
     MESH_DESC_SECTION = 0xEBAEC3FA,
@@ -18,28 +13,28 @@ enum SectionID : u32 {
     MESH_DATA_SECTION = 0x95DBDB69,
 };
 
-enum BufferIndex : u8 {
+enum Buffer : u8 {
     BUFFER_0  =  0,
     BUFFER_1  =  1,
 };
 
 enum Type : u8 {
-    UNK0       =  0,
-    UNK1       =  1,
+    TYPE0      =  0,
+    VECTOR2F32 =  1,
     VECTOR3F32 =  2,
     VECTOR4F32 =  3,
-    UINT8      =  4,
-    UNK5       =  5,
-    UNK6       =  6,
-    UNK7       =  7,
-    UNK8       =  8,
-    UINT16     =  9,
-    UNK10      = 10,
-    UNK11      = 11,
+    VECTOR4U8  =  4,
+    TYPE5      =  5,
+    TYPE6      =  6,
+    TYPE7      =  7,
+    TYPE8      =  8,
+    VECTOR2U16 =  9,
+    TYPE10     = 10,
+    TYPE11     = 11,
     VECTOR4F16 = 12,
 };
 
-enum Element : u8 {
+enum Attribute : u8 {
     POSITION    =  0,
     NORMAL      =  1,
     TANGENT     =  2,
@@ -48,11 +43,11 @@ enum Element : u8 {
     COLOR       =  5,
     WEIGHT      =  6,
     VERTEXGROUP =  7,
-    UNK8        =  8,
-    UNK9        =  9,
-    UNK10       = 10,
-    UNK11       = 11,
-    UNK12       = 12,
+    ATTRIBUTE8  =  8,
+    ATTRIBUTE9  =  9,
+    ATTRIBUTE10 = 10,
+    ATTRIBUTE11 = 11,
+    ATTRIBUTE12 = 12,
 };
 
 enum Channel : u8 {
@@ -85,7 +80,7 @@ struct MeshInfo {
     u32 vertexGroupsCount  [[comment("Number of Vertex Groups")]];
     u32 unknown7;
     u32 unknown8;
-    u32 layerIndex         [[comment("Index of the layer")]];
+    u32 vertexBufferLayout [[comment("Index of the Vertex Buffer Layout")]];
 };
 
 struct LodThresholds {
@@ -105,21 +100,21 @@ struct LodSection {
     LodConnections lodConnections            [[comment("Connections between the LODs and the Distance Thresholds")]];
 };
 
-struct ElementLayout {
-    u8        bufferIndex;
-    Type      type;
-    Element   element;
-    u8        channel;
+struct AttributeLayout {
+    Buffer    buffer    [[comment("Index of the Buffer")]];
+    Type      type      [[comment("Index of the Tyoe")]];
+    Attribute attribute [[comment("Index of the Attribute")]];
+    Channel   channel   [[comment("Index of the Channel")]];
 };
 
 struct VertexBufferLayout {
-    u32 elementCount;
-    ElementLayout elementsLayout[elementCount];
+    u32 attributeCount                               [[comment("Number of Attributes")]];
+    AttributeLayout attributesLayout[attributeCount] [[comment("Layout of the Attributes")]];
 };
 
-struct BufferLayoutSection {
-    u32 bufferLayoutSectionID; // 0x37D749A6
-    VertexBufferLayout vertexBufferLayout[parent.bufferLayoutCount] [[comment("Format definitions for the Elements")]]; // Affects Model LODs Vertex Positions, Bone Weights, UVs, Normals, and Face Visibility
+struct VertexBufferLayoutSection {
+    u32 vertexBufferLayoutSectionID; // 0x37D749A6
+    VertexBufferLayout vertexBufferLayout[parent.vertexBufferLayoutCount] [[comment("Layout of the Vertex Buffers")]];
 };
 
 struct Bone {
@@ -136,87 +131,62 @@ struct BoneSection {
     Bone bones[parent.boneCount] [[comment("Collection of Bones in the Skeleton")]];
 };
 
-// 8 Bytes (float16)
-struct Position16 {
-    float16 x [[comment("X-Coordinate of the Position")]];
-    float16 y [[comment("Y-Coordinate of the Position")]];
-    float16 z [[comment("Z-Coordinate of the Position")]];
-    float16 w [[comment("W-Component, often used in Homogeneous Coordinates")]]; // Always 1.0
+struct Position<T> {
+    T x [[comment("X-Coordinate of the Position")]];
+    T y [[comment("Y-Coordinate of the Position")]];
+    T z [[comment("Z-Coordinate of the Position")]];
+    T w [[comment("W-Component, often used in Homogeneous Coordinates")]]; // Always 1.0
 };
 
-// 16 Bytes (float32)
-struct Position32 {
-    float x [[comment("X-Coordinate of the Position")]];
-    float y [[comment("Y-Coordinate of the Position")]];
-    float z [[comment("Z-Coordinate of the Position")]];
-    float w [[comment("W-Component, often used in Homogeneous Coordinates")]]; // Always 1.0
+struct Weights<T> {
+    T weight[4] [[comment("Weight associated with a Vertex Group")]];
 };
 
-struct Weights {
-    u8 weight[4]           [[comment("Weight associated with the Vertex Group")]];
-    u8 vertexGroupIndex[4] [[comment("Vertex Group associated with the Weight")]];
+struct VertexGroups<T> {
+    T vertexGroup[4] [[comment("Vertex Group associated with a Weight")]];
+};
+
+struct TextureCoordinate<T> {
+    T u [[comment("U-Coordinate (Horizontal Texture Coordinate)")]];
+    T v [[comment("V-Coordinate (Vertical Texture Coordinate)")]];
+};
+
+struct Normal<T> {
+    T x [[comment("X-Component of the Normal")]];
+    T y [[comment("Y-Component of the Normal")]];
+    T z [[comment("Z-Component of the Normal")]];
+};
+
+struct Tangent<T> {
+    T x [[comment("X-Component of the Tangent")]];
+    T y [[comment("Y-Component of the Tangent")]];
+    T z [[comment("Z-Component of the Tangent")]];
+};
+
+struct Bitangent<T> {
+    T x [[comment("X-Component of the Bitangent")]];
+    T y [[comment("Y-Component of the Bitangent")]];
+    T z [[comment("Z-Component of the Bitangent")]];
+};
+
+struct Color<T> {
+    T r [[comment("Red-Channel of the Color")]];
+    T g [[comment("Blue-Channel of the Color")]];
+    T b [[comment("Green-Channel of the Color")]];
+    T a [[comment("Alpha-Channel of the Color")]];
 };
 
 struct Vertex {
     match (meshInfoSection.bufferLayoutSection.vertexBufferLayout[0].elementsLayout[0].type, meshInfoSection.bufferLayoutSection.vertexBufferLayout[0].elementsLayout[0].element) {
-        (Type::VECTOR4F16, Element::POSITION): float16 x, y, z, w;
-        (Type::VECTOR4F32, Element::POSITION): float x, y, z, w;
-        (Type::UINT8, Element::WEIGHT): u8 weight[4];
-        (Type::UINT8, Element::VERTEXGROUP): u8 vertexGroupIndex[4];
+        (Type::VECTOR4F16, Attribute::POSITION):    Position<float16> position     [[comment("Position of the Vertex in 3D space")]];
+        (Type::VECTOR4F32, Attribute::POSITION):    Position<float>   position     [[comment("Position of the Vertex in 3D space")]];
+        (Type::VECTOR4U8,  Attribute::WEIGHT):      Weights<u8>       weights      [[comment("Weights associated with Vertex Groups")]];
+        (Type::VECTOR4U8,  Attribute::VERTEXGROUP): VertexGroups<u8>  vertexGroups [[comment("Indices of Vertex Groups")]];
+        (Type::VECTOR4U8,  Attribute::COLOR):       Color<u8>         color        [[comment("Color of the Vertex")]];
     }
-    //Position32 position [[comment("Position of the Vertex in 3D space")]]; // Position should be determined by LayerFormat
-    //Weights weights     [[comment("Bone Weights for the Vertex")]];
 };
 
-struct UV16Channel_1 {
-    u16 u [[comment("U-Coordinate (Horizontal Texture Coordinate)")]];
-    u16 v [[comment("V-Coordinate (Vertical Texture Coordinate)")]];
-};
-
-struct UV16Channel_2 {
-    float16 u [[comment("U-Coordinate (Horizontal Texture Coordinate)")]];
-    float16 v [[comment("V-Coordinate (Vertical Texture Coordinate)")]];
-};
-
-union TextureCoordinate16 {
-    UV16Channel_1 uvChannel_1 [[comment("First UV Channel containing Texture Coordinates")]];
-    UV16Channel_2 uvChannel_2 [[comment("Second UV Channel containing Texture Coordinates")]];
-};
-
-struct UV32Channel_1 {
-    u32 u [[comment("U-Coordinate (Horizontal Texture Coordinate)")]];
-    u32 v [[comment("V-Coordinate (Vertical Texture Coordinate)")]];
-};
-
-struct UV32Channel_2 {
-    float u [[comment("U-Coordinate (Horizontal Texture Coordinate)")]];
-    float v [[comment("V-Coordinate (Vertical Texture Coordinate)")]];
-};
-
-union TextureCoordinate32 {
-    UV32Channel_1 uvChannel_1 [[comment("First UV Channel containing Texture Coordinates")]];
-    UV32Channel_2 uvChannel_2 [[comment("Second UV Channel containing Texture Coordinates")]];
-};
-
-struct Normal {
-    float x [[comment("X-Component of the Normal")]];
-    float y [[comment("Y-Component of the Normal")]];
-    float z [[comment("Z-Component of the Normal")]];
-};
-
-struct Tangent {
-    float x [[comment("X-Component of the Tangent")]];
-    float y [[comment("Y-Component of the Tangent")]];
-    float z [[comment("Z-Component of the Tangent")]];
-};
-
-struct Bitangent {
-    float x [[comment("X-Component of the Bitangent")]];
-    float y [[comment("Y-Component of the Bitangent")]];
-    float z [[comment("Z-Component of the Bitangent")]];
-};
-
-struct VertexAttributes44 {
+/*struct VertexAttributes44 {
     TextureCoordinate16 textureCoordinate [[comment("UV Mapping Coordinates for Textures")]];
     Normal    normal                      [[comment("Normal Vector at the Vertex (For Lighting Calculations)")]];
     Tangent   tangent                     [[comment("Tangent Vector at the Vertex (Used for Normal Mapping)")]];
@@ -249,29 +219,16 @@ struct VertexAttributes56 {
     Tangent   tangent                     [[comment("Tangent Vector at the Vertex (Used for Normal Mapping)")]];
     Bitangent bitangent                   [[comment("Bitangent Vector at the Vertex (Orthogonal to the Normal and Tangent)")]];
     RGBA8     color                       [[comment("Color of the Vertex")]];
-};
+};*/
 
 struct VertexArray {
     Vertex vertices[meshInfoSection.meshInfo[std::core::array_index()].verticesCount] [[comment("Vertices in the Mesh")]];
-    
-    //match (meshInfoSection.subMeshInfo[std::core::array_index()].layer) {
-    //    (0): VertexAttributes52 vertexAttributes[meshInfoSection.meshInfo[std::core::array_index()].verticesCount] [[comment("Attributes for the Vertex")]];
-    //    (1): VertexAttributes56 vertexAttributes[meshInfoSection.meshInfo[std::core::array_index()].verticesCount] [[comment("Attributes for the Vertex")]];
-    //    (2): VertexAttributes48 vertexAttributes[meshInfoSection.meshInfo[std::core::array_index()].verticesCount] [[comment("Attributes for the Vertex")]];
-    //    (3): VertexAttributes44 vertexAttributes[meshInfoSection.meshInfo[std::core::array_index()].verticesCount] [[comment("Attributes for the Vertex")]];
-    //    (4): VertexAttributes52 vertexAttributes[meshInfoSection.meshInfo[std::core::array_index()].verticesCount] [[comment("Attributes for the Vertex")]];
-    //    (5): VertexAttributes48 vertexAttributes[meshInfoSection.meshInfo[std::core::array_index()].verticesCount] [[comment("Attributes for the Vertex")]];
-    //}
 };
 
 struct Face {
     u16 index1 [[comment("Index of the first Vertex in this Face")]];
-    u16 index2 [[comment("Index of the second Vertex in this Face")]];;
-    u16 index3 [[comment("Index of the third Vertex in this Face")]];;
-};
-
-struct Mesh {
-    //VertexArray vertexArray @ meshInfoSection.subMeshInfo[std::core::array_index()].vertOffset * sizeof(this);
+    u16 index2 [[comment("Index of the second Vertex in this Face")]];
+    u16 index3 [[comment("Index of the third Vertex in this Face")]];
 };
 
 struct Header {
@@ -295,27 +252,27 @@ struct MeshDescSection {
 
 struct MeshInfoSection {
     SectionID meshInfoSectionID; // 0x1A1541BC
-    u32   lodGroupCount                       [[comment("Number of LOD Groups")]];
-    u32   connectionCount                     [[comment("Number of Connections")]];
-    u32   lodCount                            [[comment("Number of LODs")]];
-    u32   meshCount                           [[comment("Number of Meshes")]];
+    u32   lodGroupCount                                 [[comment("Number of LOD Groups")]];
+    u32   connectionCount                               [[comment("Number of Connections")]];
+    u32   lodCount                                      [[comment("Number of LODs")]];
+    u32   meshCount                                     [[comment("Number of Meshes")]];
     u32   unknownULong1;
-    u32   lodSettingsCount                    [[comment("Number of LOD settings")]];
-    u32   meshLodCount                        [[comment("Number of Mesh LODs")]];
-    u32   shadowLodCount                      [[comment("Number of Shadow LODs")]];
-    u32   bufferLayoutCount                   [[comment("Number of Layers")]];
+    u32   lodSettingsCount                              [[comment("Number of LOD settings")]];
+    u32   meshLodCount                                  [[comment("Number of Mesh LODs")]];
+    u32   shadowLodCount                                [[comment("Number of Shadow LODs")]];
+    u32   vertexBufferLayoutCount                       [[comment("Number of Vertex Buffer Layouts")]];
     u32   ULongReadCount;
     float unknownFloat; // 400 or 1200, ID for unknown1?
     float unknown1[4];
-    u32   boneCount                           [[comment("Number of Bones in the Skeleton")]];
-    u32   boneSectionSize                     [[comment("Size of the Bone Section")]];    
-    u32   lodGroupIDs[lodGroupCount]          [[comment("Hashes of the Names for the LOD Groups")]];
-    Connection   connections[connectionCount] [[comment("Connections between the LOD Groups, LODs, Meshes and Materials")]];
-    LodInfo      lodInfo[lodCount]            [[comment("Information about how the Data for the LODs are stored")]];
-    MeshInfo     meshInfo[meshCount]          [[comment("Information about how the Data for the Meshes are stored")]];
-    LodSection   lodSection                   [[comment("Section containing Data for the LODs")]];
-    BufferLayoutSection bufferLayoutSection   [[comment("Section containing Data for the Layers")]];
-    BoneSection  boneSection                  [[comment("Section containing Data for the Bones")]];
+    u32   boneCount                                     [[comment("Number of Bones in the Skeleton")]];
+    u32   boneSectionSize                               [[comment("Size of the Bone Section")]];    
+    u32   lodGroupIDs[lodGroupCount]                    [[comment("Hashes of the Names for the LOD Groups")]];
+    Connection   connections[connectionCount]           [[comment("Connections between the LOD Groups, LODs, Meshes and Materials")]];
+    LodInfo      lodInfo[lodCount]                      [[comment("Information about where the Data of the LODs are stored")]];
+    MeshInfo     meshInfo[meshCount]                    [[comment("Information about where the Data of the Meshes are stored")]];
+    LodSection   lodSection                             [[comment("Section containing Data for the LODs")]];
+    VertexBufferLayoutSection vertexBufferLayoutSection [[comment("Section containing Data for the Vertex Buffer Layout")]];
+    BoneSection  boneSection                            [[comment("Section containing Data for the Bones")]];
 };
 
 struct MeshDataSection {
