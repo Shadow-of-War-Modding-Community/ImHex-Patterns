@@ -28,7 +28,7 @@ enum Type : u8 {
     TYPE6      =  6,
     TYPE7      =  7,
     TYPE8      =  8,
-    VECTOR2U16 =  9,
+    VECTOR2I16 =  9,
     TYPE10     = 10,
     TYPE11     = 11,
     VECTOR4F16 = 12,
