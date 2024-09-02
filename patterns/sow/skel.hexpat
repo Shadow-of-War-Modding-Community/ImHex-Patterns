@@ -4,7 +4,13 @@
 import sow.types;
 
 enum SectionID : u32 {
-    BONE_SECTION = 0xDCDCFF00,
+    BONE_SECTION    = 0xDCDCFF00,
+    MODEL_SECTION   = 0xDCDCFF01,
+    UNK2_SECTION    = 0xDCDCFF02,
+    INDICES_SECTION = 0xDCDCFF03,
+    CLOTH_SECTION   = 0xDCDCFF04,
+    UNK5_SECTION    = 0xDCDCFF05,
+    UNK9_SECTION    = 0xDCDCFF99,
 };
 
 struct BoundingBox {
@@ -16,13 +22,13 @@ struct UnknownMeshDataBlock {
     bool    unknownBool1;
     bool    unknownBool2;
     float   lodThreshold;
-    u32     unknownUInt;
+    u32     mat;
     s32     unknownInt;
 };
 
 struct UnknownMeshData {
-    u32 unknownMeshDataBlockCount;
-    UnknownMeshDataBlock unknownMeshDataBlock[unknownMeshDataBlockCount] [[inline]];
+    u32 materialAssignmentCount;
+    UnknownMeshDataBlock unknownMeshDataBlock[materialAssignmentCount] [[inline]];
 };
 
 struct Bone {
@@ -44,7 +50,7 @@ struct Header {
     u32     boneCount1;
     char    unk3[4]; // ID?
     s32     unk4; // Animation count?
-    u32     meshCount; // Unique Mesh count?
+    u32     modelCount;
     u32     unk6; // FX count?
     u32     boneCount2;
     s32     unk7;
@@ -56,7 +62,7 @@ struct Header {
     float   unk13; // SectionID?
     BoundingBox boundingBox;
     
-    UnknownMeshData unknownMeshData[meshCount];
+    UnknownMeshData unknownMeshData[modelCount];
 };
 
 struct BoneSection {
