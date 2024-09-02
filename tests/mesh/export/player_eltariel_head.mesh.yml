@@ -1,0 +1,2721 @@
+---
+header: 
+    magic: "MMSH"
+    version: 17
+    meshDescSectionSize: 304
+    meshInfoSectionSize: 7964
+    meshDataSectionSize: 1525217
+meshDescSection: 
+    meshDescSectionID: "SectionID::MESH_DESC_SECTION"
+    matIndexCount: 20
+    dataSectionCount: 11
+    unkMatIndices: 
+        - 3
+        - 3
+        - 3
+        - 1
+        - 3
+        - 1
+        - 3
+        - 1
+        - 3
+        - 3
+        - 1
+        - 3
+        - 3
+        - 3
+        - 1
+        - 3
+        - 3
+        - 3
+        - 3
+        - 3
+    meshMatIndices: 
+        - 0  # Eltariel_Eyes_LOD0
+        - 0  # Eltariel_Eyes_LOD0
+        - -1
+        - 1  # Eltariel_Lashes_LOD0
+        - -1
+        - 2  # Eltariel_Lacrimal_LOD0
+        - -1
+        - 3  # Eltariel_Eyeshadow_LOD0
+        - -1
+        - 4  # Eltariel_Bangs_LOD0
+        - -1
+        - 5  # Eltariel_Head_LOD0
+        - 6  # Eltariel_Head_LOD1
+        - 7  # Eltariel_Head_LOD2
+        - 8  # Eltariel_Head_LOD3
+        - -1
+        - 9  # Eltariel_Mouth_LOD0
+        - -1
+        - 10 # Eltariel_Hair_LOD0
+        - -1
+    vertSectionSize: 
+        - 42560
+        - 18560
+        - 20160
+        - 11016
+        - 96824
+        - 587860
+        - 174284
+        - 111240
+        - 18432
+        - 184348
+        - 69624
+    faceSectionSize: 
+        - 4896
+        - 1944
+        - 2448
+        - 1308
+        - 11424
+        - 93588
+        - 29742
+        - 9138
+        - 942
+        - 26616
+        - 7656
+    skinSectionSize: 
+        - 2
+        - 21
+        - 21
+        - 21
+        - 40
+        - 244
+        - 48
+        - 48
+        - 140
+        - 7
+        - 11
+meshInfoSection: 
+    meshInfoSectionID: "SectionID::MESH_INFO_SECTION"
+    modelCount: 8
+    matAssignmentCount: 20
+    meshCount: 11
+    subMeshCount: 16
+    unknownULong1: 4
+    lodSettingsCount: 88
+    meshLodCount: 6
+    shadowLodCount: 6
+    modelLodCount: 6
+    ULongReadCount: 52
+    unknownFloat: 400
+    unknown1: 
+        - -0.7536783218383789
+        - 72.5957260131836
+        - 1.736495852470398
+        - 16.906991958618164
+    boneCount: 142
+    boneSectionSize: 5680
+    modelID: 
+        - 2498189270 #0 Eltariel_Eyes
+        - 1093688588 #1 Eltariel_Lashes
+        - 3936819967 #2 Eltariel_Lacrimal
+        - 2375838653 #3 Eltariel_Eyeshadow
+        - 4222057415 #4 Eltariel_Bangs
+        - 514781740  #5 Eltariel_Head
+        - 1420061355 #6 Eltariel_Mouth
+        - 511410862  #7 Eltariel_Hair
+    matAssignments: 
+        - 
+            model: 0 # Eltariel_Eyes
+            mesh: 0  # Eltariel_Eyes_LOD0
+            mat: 2   # player_eltariel_eyes.mat
+            unk: 3
+        - 
+            model: 0 # Eltariel_Eyes
+            mesh: 0  # Eltariel_Eyes_LOD0
+            mat: 2   # player_eltariel_eyes.mat
+            unk: 3
+        - 
+            model: 0 # Eltariel_Eyes
+            mesh: -1
+            mat: 0   # player_eltariel_head_cin.mat
+            unk: 3
+        - 
+            model: 1 # Eltariel_Lashes
+            mesh: 1  # Eltariel_Lashes_LOD0
+            mat: 3   # player_eltariel_eyelashes.mat
+            unk: 1
+        - 
+            model: 1 # Eltariel_Lashes
+            mesh: -1
+            mat: 0   # player_eltariel_head_cin.mat
+            unk: 3
+        - 
+            model: 2 # Eltariel_Lacrimal
+            mesh: 2  # Eltariel_Lacrimal_LOD0
+            mat: 5   # player_eltariel_lacrimal.mat
+            unk: 1
+        - 
+            model: 2 # Eltariel_Lacrimal
+            mesh: -1
+            mat: 0   # player_eltariel_head_cin.mat
+            unk: 3
+        - 
+            model: 3 # Eltariel_Eyeshadow
+            mesh: 3  # Eltariel_Eyeshadow_LOD0
+            mat: 7   # player_eltariel_eyemultiply.mat
+            unk: 1
+        - 
+            model: 3 # Eltariel_Eyeshadow
+            mesh: -1
+            mat: 0   # player_eltariel_head_cin.mat
+            unk: 3
+        - 
+            model: 4 # Eltariel_Bangs
+            mesh: 4  # Eltariel_Bangs_LOD0
+            mat: 6   # player_eltariel_hair.mat
+            unk: 3
+        - 
+            model: 4 # Eltariel_Bangs
+            mesh: -1
+            mat: 0   # player_eltariel_head_cin.mat
+            unk: 1
+        - 
+            model: 5 # Eltariel_Head
+            mesh: 5  # Eltariel_Head_LOD0
+            mat: 0   # player_eltariel_head_cin.mat
+            unk: 3
+        - 
+            model: 5 # Eltariel_Head
+            mesh: 6  # Eltariel_Head_LOD1
+            mat: 1   # player_eltariel_headlods.mat
+            unk: 3
+        - 
+            model: 5 # Eltariel_Head
+            mesh: 7  # Eltariel_Head_LOD2
+            mat: 1   # player_eltariel_headlods.mat
+            unk: 3
+        - 
+            model: 5 # Eltariel_Head
+            mesh: 8  # Eltariel_Head_LOD3
+            mat: 1   # player_eltariel_headlods.mat
+            unk: 1
+        - 
+            model: 5 # Eltariel_Head
+            mesh: -1
+            mat: 0   # player_eltariel_head_cin.mat
+            unk: 3
+        - 
+            model: 6 # Eltariel_Mouth
+            mesh: 9  # Eltariel_Mouth_LOD0
+            mat: 4   # talion_mouth.mat
+            unk: 3
+        - 
+            model: 6 # Eltariel_Mouth
+            mesh: -1
+            mat: 0   # player_eltariel_head_cin.mat
+            unk: 3
+        - 
+            model: 7 # Eltariel_Hair
+            mesh: 10 # Eltariel_Hair_LOD0
+            mat: 6   # player_eltariel_hair.mat
+            unk: 3
+        - 
+            model: 7 # Eltariel_Hair
+            mesh: -1
+            mat: 0   # player_eltariel_head_cin.mat
+            unk: 3
+    meshInfo: 
+        - #0 Eltariel_Eyes_LOD0
+            vertSecSize: 42560
+            faceSecSize: 4896
+            skinSecSize: 2
+            subMeshCount: 1
+            faceCount: 
+                - 816
+                - 816
+                - 816
+                - 816
+                - 816
+                - 816
+                - 816
+                - 816
+                - 816
+                - 816
+                - 816
+                - 816
+                - 816
+                - 816
+                - 816
+                - 816
+        - #1 Eltariel_Lashes_LOD0
+            vertSecSize: 18560
+            faceSecSize: 1944
+            skinSecSize: 21
+            subMeshCount: 1
+            faceCount: 
+                - 324
+                - 324
+                - 324
+                - 324
+                - 324
+                - 324
+                - 324
+                - 324
+                - 324
+                - 324
+                - 324
+                - 324
+                - 324
+                - 324
+                - 324
+                - 324
+        - #2 Eltariel_Lacrimal_LOD0
+            vertSecSize: 20160
+            faceSecSize: 2448
+            skinSecSize: 21
+            subMeshCount: 1
+            faceCount: 
+                - 408
+                - 408
+                - 408
+                - 408
+                - 408
+                - 408
+                - 408
+                - 408
+                - 408
+                - 408
+                - 408
+                - 408
+                - 408
+                - 408
+                - 408
+                - 408
+        - #3 Eltariel_Eyeshadow_LOD0
+            vertSecSize: 11016
+            faceSecSize: 1308
+            skinSecSize: 21
+            subMeshCount: 1
+            faceCount: 
+                - 218
+                - 218
+                - 218
+                - 218
+                - 218
+                - 218
+                - 218
+                - 218
+                - 218
+                - 218
+                - 218
+                - 218
+                - 218
+                - 218
+                - 218
+                - 218
+        - #4 Eltariel_Bangs_LOD0
+            vertSecSize: 96824
+            faceSecSize: 11424
+            skinSecSize: 40
+            subMeshCount: 1
+            faceCount: 
+                - 1904
+                - 1904
+                - 1904
+                - 1904
+                - 1904
+                - 1904
+                - 1904
+                - 1904
+                - 1904
+                - 1904
+                - 1904
+                - 1904
+                - 1904
+                - 1904
+                - 1904
+                - 1904
+        - #5 Eltariel_Head_LOD0
+            vertSecSize: 587860
+            faceSecSize: 93588
+            skinSecSize: 244
+            subMeshCount: 4
+            faceCount: 
+                - 15598
+                - 15598
+                - 15598
+                - 15598
+                - 15598
+                - 15598
+                - 15598
+                - 15598
+                - 15598
+                - 15598
+                - 15598
+                - 15598
+                - 15598
+                - 15598
+                - 15598
+                - 15598
+        - #6 Eltariel_Head_LOD1
+            vertSecSize: 174284
+            faceSecSize: 29742
+            skinSecSize: 48
+            subMeshCount: 1
+            faceCount: 
+                - 4957
+                - 4957
+                - 4957
+                - 4957
+                - 4957
+                - 4957
+                - 4957
+                - 4957
+                - 4957
+                - 4957
+                - 4957
+                - 4957
+                - 4957
+                - 4957
+                - 4957
+                - 4957
+        - #7 Eltariel_Head_LOD2
+            vertSecSize: 111240
+            faceSecSize: 9138
+            skinSecSize: 48
+            subMeshCount: 1
+            faceCount: 
+                - 1523
+                - 1523
+                - 1523
+                - 1523
+                - 1523
+                - 1523
+                - 1523
+                - 1523
+                - 1523
+                - 1523
+                - 1523
+                - 1523
+                - 1523
+                - 1523
+                - 1523
+                - 1523
+        - #8 Eltariel_Head_LOD3
+            vertSecSize: 18432
+            faceSecSize: 942
+            skinSecSize: 140
+            subMeshCount: 3
+            faceCount: 
+                - 157
+                - 157
+                - 157
+                - 157
+                - 157
+                - 157
+                - 157
+                - 157
+                - 157
+                - 157
+                - 157
+                - 157
+                - 157
+                - 157
+                - 157
+                - 157
+        - #9 Eltariel_Mouth_LOD0
+            vertSecSize: 184348
+            faceSecSize: 26616
+            skinSecSize: 7
+            subMeshCount: 1
+            faceCount: 
+                - 4436
+                - 4436
+                - 4436
+                - 4436
+                - 4436
+                - 4436
+                - 4436
+                - 4436
+                - 4436
+                - 4436
+                - 4436
+                - 4436
+                - 4436
+                - 4436
+                - 4436
+                - 4436
+        - #10 Eltariel_Hair_LOD0
+            vertSecSize: 69624
+            faceSecSize: 7656
+            skinSecSize: 11
+            subMeshCount: 1
+            faceCount: 
+                - 1276
+                - 1276
+                - 1276
+                - 1276
+                - 1276
+                - 1276
+                - 1276
+                - 1276
+                - 1276
+                - 1276
+                - 1276
+                - 1276
+                - 1276
+                - 1276
+                - 1276
+                - 1276
+    subMeshInfo: 
+        - #0 Eltariel_Eyes_LOD0: 1
+            offset: 0
+            vertStart: 0
+            vertCount: 560
+            faceStart: 0
+            faceCount: 2448
+            skinStart: 0
+            skinCount: 2
+            unknown7: 1020163656
+            unknown8: 964662306
+            layer: 0
+        - #1 Eltariel_Lashes_LOD0: 1
+            offset: 0
+            vertStart: 0
+            vertCount: 232
+            faceStart: 0
+            faceCount: 972
+            skinStart: 0
+            skinCount: 21
+            unknown7: 1028074364
+            unknown8: 999721258
+            layer: 1
+        - #2 Eltariel_Lacrimal_LOD0: 1
+            offset: 0
+            vertStart: 0
+            vertCount: 280
+            faceStart: 0
+            faceCount: 1224
+            skinStart: 0
+            skinCount: 21
+            unknown7: 983203607
+            unknown8: 949844669
+            layer: 2
+        - #3 Eltariel_Eyeshadow_LOD0: 1
+            offset: 0
+            vertStart: 0
+            vertCount: 162
+            faceStart: 0
+            faceCount: 654
+            skinStart: 0
+            skinCount: 21
+            unknown7: 1022265090
+            unknown8: 997332314
+            layer: 3
+        - #4 Eltariel_Bangs_LOD0: 1
+            offset: 0
+            vertStart: 0
+            vertCount: 1274
+            faceStart: 0
+            faceCount: 5712
+            skinStart: 0
+            skinCount: 40
+            unknown7: 1048243030
+            unknown8: 973715616
+            layer: 4
+        - #5 Eltariel_Head_LOD0: 1
+            offset: 0
+            vertStart: 0
+            vertCount: 5002
+            faceStart: 0
+            faceCount: 28485
+            skinStart: 0
+            skinCount: 64
+            unknown7: 988770971
+            unknown8: 852677570
+            layer: 3
+        - #6 Eltariel_Head_LOD0: 2
+            offset: 340136
+            vertStart: 5002
+            vertCount: 1564
+            faceStart: 28485
+            faceCount: 7695
+            skinStart: 64
+            skinCount: 64
+            unknown7: 1077712877
+            unknown8: 938979774
+            layer: 3
+        - #7 Eltariel_Head_LOD0: 3
+            offset: 446488
+            vertStart: 6566
+            vertCount: 1886
+            faceStart: 36180
+            faceCount: 9963
+            skinStart: 128
+            skinCount: 64
+            unknown7: 1078046048
+            unknown8: 938212379
+            layer: 3
+        - #8 Eltariel_Head_LOD0: 4
+            offset: 574736
+            vertStart: 8452
+            vertCount: 193
+            faceStart: 46143
+            faceCount: 651
+            skinStart: 192
+            skinCount: 52
+            unknown7: 1075514191
+            unknown8: 935069150
+            layer: 3
+        - #9 Eltariel_Head_LOD1: 1
+            offset: 0
+            vertStart: 0
+            vertCount: 2563
+            faceStart: 0
+            faceCount: 14871
+            skinStart: 0
+            skinCount: 48
+            unknown7: 1015306108
+            unknown8: 867521494
+            layer: 3
+        - #10 Eltariel_Head_LOD2: 1
+            offset: 0
+            vertStart: 0
+            vertCount: 1545
+            faceStart: 0
+            faceCount: 4569
+            skinStart: 0
+            skinCount: 48
+            unknown7: 1076374641
+            unknown8: 935069045
+            layer: 5
+        - #11 Eltariel_Head_LOD3: 1
+            offset: 0
+            vertStart: 0
+            vertCount: 174
+            faceStart: 0
+            faceCount: 351
+            skinStart: 0
+            skinCount: 64
+            unknown7: 1086242679
+            unknown8: 972904021
+            layer: 5
+        - #12 Eltariel_Head_LOD3: 2
+            offset: 12528
+            vertStart: 174
+            vertCount: 75
+            faceStart: 351
+            faceCount: 111
+            skinStart: 64
+            skinCount: 64
+            unknown7: 1083912539
+            unknown8: 943745471
+            layer: 5
+        - #13 Eltariel_Head_LOD3: 3
+            offset: 17928
+            vertStart: 249
+            vertCount: 7
+            faceStart: 462
+            faceCount: 9
+            skinStart: 128
+            skinCount: 12
+            unknown7: 1090348174
+            unknown8: 972554773
+            layer: 5
+        - #14 Eltariel_Mouth_LOD0: 1
+            offset: 0
+            vertStart: 0
+            vertCount: 2711
+            faceStart: 0
+            faceCount: 13308
+            skinStart: 0
+            skinCount: 7
+            unknown7: 1019075865
+            unknown8: 878120143
+            layer: 3
+        - #15 Eltariel_Hair_LOD0: 1
+            offset: 0
+            vertStart: 0
+            vertCount: 967
+            faceStart: 0
+            faceCount: 3828
+            skinStart: 0
+            skinCount: 11
+            unknown7: 1033381542
+            unknown8: 937134849
+            layer: 5
+    lodSectionID: 2386429582
+    lodSettings: 
+        - 2
+        - 4
+        - 6
+        - 8
+        - 10
+        - 15
+        - 17
+        - 19
+        - 1
+        - 4
+        - 6
+        - 8
+        - 9
+        - 14
+        - 17
+        - 18
+        - 1
+        - 4
+        - 6
+        - 8
+        - 9
+        - 13
+        - 17
+        - 18
+        - 1
+        - 4
+        - 6
+        - 8
+        - 9
+        - 12
+        - 17
+        - 18
+        - 1
+        - 3
+        - 5
+        - 7
+        - 9
+        - 11
+        - 16
+        - 18
+        - 0
+        - 3
+        - 5
+        - 7
+        - 9
+        - 11
+        - 16
+        - 18
+        - 2
+        - 4
+        - 6
+        - 8
+        - 15
+        - 17
+        - 19
+        - 1
+        - 4
+        - 6
+        - 8
+        - 9
+        - 17
+        - 18
+        - 1
+        - 4
+        - 6
+        - 8
+        - 9
+        - 13
+        - 17
+        - 18
+        - 1
+        - 4
+        - 6
+        - 8
+        - 9
+        - 12
+        - 17
+        - 18
+        - 1
+        - 9
+        - 11
+        - 16
+        - 18
+        - 0
+        - 9
+        - 11
+        - 16
+        - 18
+    lodThresholds: 
+        - 4500
+        - 2500
+        - 1500
+        - 500
+        - 1
+        - 0
+        - 4500
+        - 2500
+        - 1500
+        - 500
+        - 1
+        - 0
+    lodConnections: 
+        - 8
+        - 8
+        - 8
+        - 8
+        - 8
+        - 8
+        - 7
+        - 7
+        - 8
+        - 8
+        - 5
+        - 5
+    layerFormatSectionID: 936855974
+    layerFormat: 
+        - 
+            elementCount: 9
+            elementFormat1: 
+                - 0  # Affects Vertex Positions of Eltariel_Eyes
+                - 3  # Affects Vertex Positions of Eltariel_Eyes
+                - 0  # Affects Visibility of Eltariel_Eyes
+                - 0  # Affects Visibility of Eltariel_Eyes
+                - 1  # Affects UVs of Eltariel_Eyes
+                - 1  # Affects UVs of Eltariel_Eyes
+                - 4  # Affects Visibility of Eltariel_Eyes
+                - 0  # Affects Visibility of Eltariel_Eyes
+                - 1  # Affects Vertex Positions and UVs of Eltariel_Eyes
+            elementFormat2: 
+                - 9  # Affects Nothing
+                - 4
+                - 1
+                - 1
+                - 2
+                - 1
+                - 0
+                - 1
+                - 2
+            elementFormat3: 
+                - 2
+                - 0
+                - 1
+                - 2
+                - 3
+                - 0
+                - 1
+                - 4
+                - 5
+            elementFormat4: 
+                - 0
+                - 0
+                - 4
+                - 6
+                - 0
+                - 0
+                - 4
+                - 7
+                - 0
+        - 
+            elementCount: 9
+            elementFormat1: 
+                - 0
+                - 3
+                - 0
+                - 0
+                - 1
+                - 1
+                - 4
+                - 0
+                - 1
+            elementFormat2: 
+                - 1
+                - 4
+                - 1
+                - 1
+                - 2
+                - 1
+                - 0
+                - 1
+                - 2
+            elementFormat3: 
+                - 2
+                - 0
+                - 1
+                - 2
+                - 3
+                - 0
+                - 1
+                - 4
+                - 5
+            elementFormat4: 
+                - 0
+                - 0
+                - 4
+                - 6
+                - 0
+                - 0
+                - 4
+                - 7
+                - 0
+        - 
+            elementCount: 8
+            elementFormat1: 
+                - 0
+                - 3
+                - 0
+                - 0
+                - 1
+                - 1
+                - 4
+                - 0
+            elementFormat2: 
+                - 1
+                - 2
+                - 1
+                - 0
+                - 1
+                - 2
+                - 2
+                - 0
+            elementFormat3: 
+                - 1
+                - 2
+                - 3
+                - 0
+                - 1
+                - 4
+                - 5
+                - 0
+            elementFormat4: 
+                - 0
+                - 4
+                - 6
+                - 0
+                - 0
+                - 4
+                - 7
+                - 0
+        - 
+            elementCount: 8
+            elementFormat1: 
+                - 0
+                - 3
+                - 0
+                - 0
+                - 1
+                - 9
+                - 4
+                - 0
+            elementFormat2: 
+                - 1
+                - 2
+                - 1
+                - 0
+                - 1
+                - 2
+                - 2
+                - 0
+            elementFormat3: 
+                - 1
+                - 2
+                - 3
+                - 0
+                - 1
+                - 4
+                - 5
+                - 0
+            elementFormat4: 
+                - 0
+                - 4
+                - 6
+                - 0
+                - 0
+                - 4
+                - 7
+                - 0
+        - 
+            elementCount: 9
+            elementFormat1: 
+                - 0
+                - 3
+                - 0
+                - 0
+                - 1
+                - 9
+                - 4
+                - 0
+                - 1
+            elementFormat2: 
+                - 1
+                - 4
+                - 1
+                - 1
+                - 2
+                - 1
+                - 0
+                - 1
+                - 2
+            elementFormat3: 
+                - 2
+                - 0
+                - 1
+                - 2
+                - 3
+                - 0
+                - 1
+                - 4
+                - 5
+            elementFormat4: 
+                - 0
+                - 0
+                - 4
+                - 6
+                - 0
+                - 0
+                - 4
+                - 7
+                - 0
+        - 
+            elementCount: 9
+            elementFormat1: 
+                - 0
+                - 3
+                - 0
+                - 0
+                - 1
+                - 9
+                - 4
+                - 0
+                - 1
+            elementFormat2: 
+                - 9
+                - 4
+                - 1
+                - 1
+                - 2
+                - 1
+                - 0
+                - 1
+                - 2
+            elementFormat3: 
+                - 2
+                - 0
+                - 1
+                - 2
+                - 3
+                - 0
+                - 1
+                - 4
+                - 5
+            elementFormat4: 
+                - 0
+                - 0
+                - 4
+                - 6
+                - 0
+                - 0
+                - 4
+                - 7
+                - 0
+    boneSectionID: 2480514084
+    bones: 
+        - 
+            boneID: 2293934055
+            boneIndex: -1
+            boneChild: 1
+            a11: 0
+            a12: 0
+            a13: 0
+            a14: 0
+            a21: 0
+            a22: 0
+            a23: 1
+            a24: 1
+        - 
+            boneID: 3098352119
+            boneIndex: 0
+            boneChild: 1
+            a11: 0
+            a12: 0
+            a13: 0
+            a14: 0
+            a21: 0
+            a22: 0
+            a23: 1
+            a24: 1
+        - 
+            boneID: 2861856577
+            boneIndex: 1
+            boneChild: 1
+            a11: 0
+            a12: 0
+            a13: 0
+            a14: 0.4993838369846344
+            a21: -0.5006160140037537
+            a22: -0.5006160140037537
+            a23: 0.4993826150894165
+            a24: 1
+        - 
+            boneID: 1297833140
+            boneIndex: 2
+            boneChild: 1
+            a11: 0.00010763481259346008
+            a12: 12.640180587768555
+            a13: 0.00013920661876909435
+            a14: 0.46809881925582886
+            a21: -0.530016303062439
+            a22: -0.4680672585964203
+            a23: 0.529980480670929
+            a24: 0.9999999403953552
+        - 
+            boneID: 851855475
+            boneIndex: 3
+            boneChild: 1
+            a11: 0.00023685675114393234
+            a12: 25.280258178710938
+            a13: -1.574126958847046
+            a14: 0.48682156205177307
+            a21: -0.5127781629562378
+            a22: -0.4868878722190857
+            a23: 0.5128386616706848
+            a24: 0.9999999403953552
+        - 
+            boneID: 3946131511
+            boneIndex: 4
+            boneChild: 1
+            a11: 0.00035334500716999173
+            a12: 37.91986083984375
+            a13: -2.2307517528533936
+            a14: 0.5000002980232239
+            a21: -0.5000002980232239
+            a22: -0.5000008344650269
+            a23: 0.4999985098838806
+            a24: 0.9999999403953552
+        - 
+            boneID: 2062824752
+            boneIndex: 5
+            boneChild: 1
+            a11: 0.00046002300223335624
+            a12: 50.55966567993164
+            a13: -2.2305636405944824
+            a14: 0.5000002980232239
+            a21: -0.5000002980232239
+            a22: -0.5000008344650269
+            a23: 0.4999985098838806
+            a24: 0.9999999403953552
+        - 
+            boneID: 2280412807
+            boneIndex: 6
+            boneChild: 1
+            a11: 0.0005667601944878697
+            a12: 63.19941329956055
+            a13: -2.230375289916992
+            a14: 0.5680971145629883
+            a21: -0.421575665473938
+            a22: -0.567692220211029
+            a23: 0.4210287928581238
+            a24: 1
+        - 
+            boneID: 1918468904
+            boneIndex: 7
+            boneChild: 128
+            a11: 0.0005436624051071703
+            a12: 72.75476837158203
+            a13: 0.6652481555938721
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 1894981385
+            boneIndex: 8
+            boneChild: 0
+            a11: 0.00024409970501437783
+            a12: 78.34037780761719
+            a13: 13.285243034362793
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 1201411262
+            boneIndex: 8
+            boneChild: 0
+            a11: -0.003365962766110897
+            a12: 76.20428466796875
+            a13: 13.084452629089355
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 2288873115
+            boneIndex: 8
+            boneChild: 0
+            a11: -0.0008531298371963203
+            a12: 72.726318359375
+            a13: 15.144073486328125
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 2677892711
+            boneIndex: 8
+            boneChild: 0
+            a11: 0.0006608097464777529
+            a12: 69.45980072021484
+            a13: 13.627389907836914
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 2677884439
+            boneIndex: 8
+            boneChild: 0
+            a11: "5.877675721421838e-05"
+            a12: 68.08872985839844
+            a13: 13.299538612365723
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 1470906996
+            boneIndex: 8
+            boneChild: 0
+            a11: -0.00013015040894970298
+            a12: 67.73633575439453
+            a13: 12.87556266784668
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 2877993874
+            boneIndex: 8
+            boneChild: 0
+            a11: 0.00020671362290158868
+            a12: 65.739013671875
+            a13: 12.913302421569824
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 1975997095
+            boneIndex: 8
+            boneChild: 0
+            a11: -1.5766398906707764
+            a12: 78.31874084472656
+            a13: 13.169299125671387
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3970173457
+            boneIndex: 8
+            boneChild: 0
+            a11: 1.2636700868606567
+            a12: 78.31169891357422
+            a13: 13.186759948730469
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 1976000761
+            boneIndex: 8
+            boneChild: 0
+            a11: -4.108413219451904
+            a12: 78.6812515258789
+            a13: 12.479926109313965
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3970177123
+            boneIndex: 8
+            boneChild: 0
+            a11: 3.7287302017211914
+            a12: 78.64176177978516
+            a13: 12.6528959274292
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 1976002615
+            boneIndex: 8
+            boneChild: 0
+            a11: -5.931769847869873
+            a12: 78.19113159179688
+            a13: 10.208501815795898
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3970178977
+            boneIndex: 8
+            boneChild: 0
+            a11: 5.79997444152832
+            a12: 78.39659881591797
+            a13: 10.548521995544434
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3490312533
+            boneIndex: 8
+            boneChild: 0
+            a11: -6.610550403594971
+            a12: 76.86237335205078
+            a13: 8.582287788391113
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 72162655
+            boneIndex: 8
+            boneChild: 0
+            a11: 6.453894138336182
+            a12: 76.80598449707031
+            a13: 8.895774841308594
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 1699526349
+            boneIndex: 8
+            boneChild: 0
+            a11: -4.914499759674072
+            a12: 75.71324157714844
+            a13: 10.850676536560059
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 2118615415
+            boneIndex: 8
+            boneChild: 0
+            a11: 4.843123912811279
+            a12: 75.91307830810547
+            a13: 10.970805168151855
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 2983122709
+            boneIndex: 8
+            boneChild: 0
+            a11: -1.652748942375183
+            a12: 72.21349334716797
+            a13: 13.654953956604004
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3717178335
+            boneIndex: 8
+            boneChild: 0
+            a11: 1.714396595954895
+            a12: 72.2855224609375
+            a13: 13.689165115356445
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3933447143
+            boneIndex: 8
+            boneChild: 0
+            a11: -2.246915102005005
+            a12: 75.51726531982422
+            a13: 11.698617935180664
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 4220701965
+            boneIndex: 8
+            boneChild: 0
+            a11: 2.055274486541748
+            a12: 75.53036499023438
+            a13: 11.685897827148438
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 2581902048
+            boneIndex: 8
+            boneChild: 0
+            a11: -3.5999958515167236
+            a12: 75.28727722167969
+            a13: 11.72952938079834
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3458719466
+            boneIndex: 8
+            boneChild: 0
+            a11: 3.4406063556671143
+            a12: 75.4229507446289
+            a13: 11.768689155578613
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 881638867
+            boneIndex: 8
+            boneChild: 0
+            a11: -5.753521919250488
+            a12: 74.52090454101562
+            a13: 10.346271514892578
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3873647449
+            boneIndex: 8
+            boneChild: 0
+            a11: 5.721950054168701
+            a12: 74.72395324707031
+            a13: 10.31999397277832
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 881635201
+            boneIndex: 8
+            boneChild: 0
+            a11: -2.3653042316436768
+            a12: 73.98249053955078
+            a13: 12.11256217956543
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3873643783
+            boneIndex: 8
+            boneChild: 0
+            a11: 2.311431884765625
+            a12: 74.0772476196289
+            a13: 12.099247932434082
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 2373499987
+            boneIndex: 8
+            boneChild: 0
+            a11: -2.489380121231079
+            a12: 72.19963073730469
+            a13: 12.170567512512207
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 566024953
+            boneIndex: 8
+            boneChild: 0
+            a11: 2.5605568885803223
+            a12: 72.27194213867188
+            a13: 12.199234008789062
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3968799261
+            boneIndex: 8
+            boneChild: 0
+            a11: -1.5395749807357788
+            a12: 69.38542938232422
+            a13: 13.027138710021973
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 1668008327
+            boneIndex: 8
+            boneChild: 0
+            a11: 1.5424416065216064
+            a12: 69.3380126953125
+            a13: 13.124422073364258
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3968799262
+            boneIndex: 8
+            boneChild: 0
+            a11: -2.5913734436035156
+            a12: 69.21920013427734
+            a13: 11.916557312011719
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 1668008328
+            boneIndex: 8
+            boneChild: 0
+            a11: 2.647806406021118
+            a12: 69.14120483398438
+            a13: 12.036332130432129
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3953599014
+            boneIndex: 8
+            boneChild: 0
+            a11: -2.833414316177368
+            a12: 69.02904510498047
+            a13: 11.21804428100586
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 1652808080
+            boneIndex: 8
+            boneChild: 0
+            a11: 2.8884689807891846
+            a12: 69.03173828125
+            a13: 11.26752758026123
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3961197294
+            boneIndex: 8
+            boneChild: 0
+            a11: -2.3265562057495117
+            a12: 68.4917221069336
+            a13: 11.826639175415039
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 1660406360
+            boneIndex: 8
+            boneChild: 0
+            a11: 2.4434456825256348
+            a12: 68.53634643554688
+            a13: 11.912738800048828
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3961197293
+            boneIndex: 8
+            boneChild: 0
+            a11: -1.516334891319275
+            a12: 68.21025848388672
+            a13: 12.751635551452637
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 1660406359
+            boneIndex: 8
+            boneChild: 0
+            a11: 1.5146331787109375
+            a12: 68.202880859375
+            a13: 12.902575492858887
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 2503015326
+            boneIndex: 8
+            boneChild: 0
+            a11: -1.8861010074615479
+            a12: 67.9781494140625
+            a13: 12.068387031555176
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 1200056612
+            boneIndex: 8
+            boneChild: 0
+            a11: 2.079179048538208
+            a12: 67.95813751220703
+            a13: 11.948811531066895
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 1932075433
+            boneIndex: 8
+            boneChild: 0
+            a11: -3.384092330932617
+            a12: 68.49151611328125
+            a13: 10.940391540527344
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 2808892851
+            boneIndex: 8
+            boneChild: 0
+            a11: 3.615997791290283
+            a12: 68.56012725830078
+            a13: 10.928861618041992
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3029469044
+            boneIndex: 8
+            boneChild: 0
+            a11: -2.0959091186523438
+            a12: 65.83606719970703
+            a13: 11.874560356140137
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3763524670
+            boneIndex: 8
+            boneChild: 0
+            a11: 2.209765911102295
+            a12: 65.78026580810547
+            a13: 11.96045970916748
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 1932083705
+            boneIndex: 8
+            boneChild: 0
+            a11: -3.5374772548675537
+            a12: 69.92996978759766
+            a13: 11.327730178833008
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 2808901123
+            boneIndex: 8
+            boneChild: 0
+            a11: 3.7292654514312744
+            a12: 69.97148895263672
+            a13: 11.34320068359375
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 2373491715
+            boneIndex: 8
+            boneChild: 0
+            a11: -3.9336211681365967
+            a12: 71.20291900634766
+            a13: 11.350859642028809
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 566016681
+            boneIndex: 8
+            boneChild: 0
+            a11: 4.082703113555908
+            a12: 71.28836059570312
+            a13: 11.3217191696167
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 1932078195
+            boneIndex: 8
+            boneChild: 0
+            a11: -3.9911491870880127
+            a12: 69.50138854980469
+            a13: 10.844430923461914
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 2808895613
+            boneIndex: 8
+            boneChild: 0
+            a11: 4.246165752410889
+            a12: 69.56771850585938
+            a13: 10.881768226623535
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 881640721
+            boneIndex: 8
+            boneChild: 0
+            a11: -7.402461051940918
+            a12: 75.50679016113281
+            a13: 6.596611022949219
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3873649303
+            boneIndex: 8
+            boneChild: 0
+            a11: 7.365562915802002
+            a12: 75.57315826416016
+            a13: 6.624597549438477
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 544318176
+            boneIndex: 8
+            boneChild: 0
+            a11: -2.662877321243286
+            a12: 70.13786315917969
+            a13: 12.06351375579834
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3435080486
+            boneIndex: 8
+            boneChild: 0
+            a11: 2.772209882736206
+            a12: 70.1168212890625
+            a13: 12.098130226135254
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 806346272
+            boneIndex: 8
+            boneChild: 0
+            a11: -6.2607927322387695
+            a12: 72.9074935913086
+            a13: 9.57943344116211
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3442669062
+            boneIndex: 8
+            boneChild: 0
+            a11: 6.296647548675537
+            a12: 73.01143646240234
+            a13: 9.489664077758789
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 881638877
+            boneIndex: 8
+            boneChild: 0
+            a11: -5.748838901519775
+            a12: 70.5599365234375
+            a13: 8.462071418762207
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3873647459
+            boneIndex: 8
+            boneChild: 0
+            a11: 6.049448013305664
+            a12: 70.57742309570312
+            a13: 8.421494483947754
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 4161663587
+            boneIndex: 8
+            boneChild: 0
+            a11: -6.112768173217773
+            a12: 68.90878295898438
+            a13: 4.691080093383789
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 600751917
+            boneIndex: 8
+            boneChild: 0
+            a11: 6.287230014801025
+            a12: 68.8080825805664
+            a13: 4.785426139831543
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 1885003146
+            boneIndex: 8
+            boneChild: 0
+            a11: -1.4620457887649536
+            a12: 81.48235321044922
+            a13: 12.739072799682617
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 2252012570
+            boneIndex: 8
+            boneChild: 0
+            a11: -4.873036861419678
+            a12: 80.97686004638672
+            a13: 10.936800956726074
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3128829988
+            boneIndex: 8
+            boneChild: 0
+            a11: 4.57697057723999
+            a12: 81.06661224365234
+            a13: 10.998178482055664
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 2761820564
+            boneIndex: 8
+            boneChild: 0
+            a11: 1.0223885774612427
+            a12: 81.50630950927734
+            a13: 12.788640022277832
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3442660790
+            boneIndex: 8
+            boneChild: 0
+            a11: 5.503299236297607
+            a12: 68.19847106933594
+            a13: 7.944980621337891
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 4161663588
+            boneIndex: 8
+            boneChild: 0
+            a11: -4.9623870849609375
+            a12: 67.05310821533203
+            a13: 6.348586082458496
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 600751918
+            boneIndex: 8
+            boneChild: 0
+            a11: 4.9641852378845215
+            a12: 66.93376922607422
+            a13: 6.3842010498046875
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 806338000
+            boneIndex: 8
+            boneChild: 0
+            a11: -5.205451011657715
+            a12: 68.26744842529297
+            a13: 7.865412712097168
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 725736394
+            boneIndex: 8
+            boneChild: 0
+            a11: -4.388031959533691
+            a12: 77.68909454345703
+            a13: 12.123698234558105
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3616498704
+            boneIndex: 8
+            boneChild: 0
+            a11: 4.184799671173096
+            a12: 77.86329650878906
+            a13: 12.283686637878418
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3257750932
+            boneIndex: 8
+            boneChild: 0
+            a11: -9.355380058288574
+            a12: 76.85663604736328
+            a13: -1.0643106698989868
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 875053146
+            boneIndex: 8
+            boneChild: 0
+            a11: 9.226040840148926
+            a12: 76.80743408203125
+            a13: -0.9890472888946533
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 1229791819
+            boneIndex: 8
+            boneChild: 0
+            a11: "-2.9181072022765875e-05"
+            a12: 64.59854888916016
+            a13: 7.832431793212891
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 8446552
+            boneIndex: 8
+            boneChild: 1
+            a11: -0.008507716469466686
+            a12: 73.80313110351562
+            a13: 4.607052803039551
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 536344640
+            boneIndex: 83
+            boneChild: 1
+            a11: 0.02316054329276085
+            a12: 68.7732925415039
+            a13: 6.827188491821289
+            a14: 0.4988187253475189
+            a21: -0.501301646232605
+            a22: -0.49994784593582153
+            a23: 0.499928742647171
+            a24: 1
+        - 
+            boneID: 536344641
+            boneIndex: 84
+            boneChild: 3
+            a11: 0.023216839879751205
+            a12: 68.94558715820312
+            a13: 8.468944549560547
+            a14: 0.49882009625434875
+            a21: -0.5013002157211304
+            a22: -0.499949187040329
+            a23: 0.4999273419380188
+            a24: 1
+        - 
+            boneID: 536344642
+            boneIndex: 85
+            boneChild: 0
+            a11: 0.023290354758501053
+            a12: 68.87226867675781
+            a13: 10.239450454711914
+            a14: 0.49881836771965027
+            a21: -0.5013019442558289
+            a22: -0.4999474883079529
+            a23: 0.4999290704727173
+            a24: 1
+        - 
+            boneID: 2432375702
+            boneIndex: 85
+            boneChild: 0
+            a11: -1.3151243925094604
+            a12: 69.06739044189453
+            a13: 8.994269371032715
+            a14: 0.49882009625434875
+            a21: -0.5013002157211304
+            a22: -0.499949187040329
+            a23: 0.4999273419380188
+            a24: 1
+        - 
+            boneID: 131584768
+            boneIndex: 85
+            boneChild: 0
+            a11: 1.2876763343811035
+            a12: 69.0686264038086
+            a13: 8.994147300720215
+            a14: 0.49882009625434875
+            a21: -0.5013002157211304
+            a22: -0.499949187040329
+            a23: 0.4999273419380188
+            a24: 1
+        - 
+            boneID: 875075189
+            boneIndex: 8
+            boneChild: 0
+            a11: 3.4236903190612793
+            a12: 76.47037506103516
+            a13: 10.304206848144531
+            a14: "8.902971160296147e-08"
+            a21: "-2.4585460778325796e-08"
+            a22: "6.228221494097852e-09"
+            a23: 1
+            a24: 0.9999999403953552
+        - 
+            boneID: 3257772975
+            boneIndex: 8
+            boneChild: 0
+            a11: -3.409489154815674
+            a12: 76.4552001953125
+            a13: 10.352595329284668
+            a14: "8.902971160296147e-08"
+            a21: "-2.4585460778325796e-08"
+            a22: "6.228221494097852e-09"
+            a23: 1
+            a24: 0.9999999403953552
+        - 
+            boneID: 745151200
+            boneIndex: 8
+            boneChild: 0
+            a11: -2.5688109397888184
+            a12: 76.64656829833984
+            a13: 11.500690460205078
+            a14: "8.902971160296147e-08"
+            a21: "-2.4585460778325796e-08"
+            a22: "6.228221494097852e-09"
+            a23: 1
+            a24: 0.9999999403953552
+        - 
+            boneID: 745154866
+            boneIndex: 8
+            boneChild: 0
+            a11: -3.759917736053467
+            a12: 76.87093353271484
+            a13: 12.03419303894043
+            a14: "8.902971160296147e-08"
+            a21: "-2.4585460778325796e-08"
+            a22: "6.228221494097852e-09"
+            a23: 1
+            a24: 0.9999999403953552
+        - 
+            boneID: 745156720
+            boneIndex: 8
+            boneChild: 0
+            a11: -4.582526206970215
+            a12: 76.6469497680664
+            a13: 11.451935768127441
+            a14: "8.902971160296147e-08"
+            a21: "-2.4585460778325796e-08"
+            a22: "6.228221494097852e-09"
+            a23: 1
+            a24: 0.9999999403953552
+        - 
+            boneID: 1395562672
+            boneIndex: 8
+            boneChild: 0
+            a11: -2.7841010093688965
+            a12: 76.02799224853516
+            a13: 11.665541648864746
+            a14: "8.902971160296147e-08"
+            a21: "-2.4585460778325796e-08"
+            a22: "6.228221494097852e-09"
+            a23: 1
+            a24: 0.9999999403953552
+        - 
+            boneID: 1395566338
+            boneIndex: 8
+            boneChild: 0
+            a11: -3.567531108856201
+            a12: 76.00145721435547
+            a13: 11.817873001098633
+            a14: "8.902971160296147e-08"
+            a21: "-2.4585460778325796e-08"
+            a22: "6.228221494097852e-09"
+            a23: 1
+            a24: 0.9999999403953552
+        - 
+            boneID: 1395568192
+            boneIndex: 8
+            boneChild: 0
+            a11: -4.491950988769531
+            a12: 76.25775146484375
+            a13: 11.328041076660156
+            a14: "8.902971160296147e-08"
+            a21: "-2.4585460778325796e-08"
+            a22: "6.228221494097852e-09"
+            a23: 1
+            a24: 0.9999999403953552
+        - 
+            boneID: 3635913510
+            boneIndex: 8
+            boneChild: 0
+            a11: 2.734295129776001
+            a12: 76.65299224853516
+            a13: 11.827702522277832
+            a14: 1
+            a21: "6.228221494097852e-09"
+            a22: "9.68429958447814e-09"
+            a23: "-8.906698667487944e-08"
+            a24: 0.9999999403953552
+        - 
+            boneID: 3635917176
+            boneIndex: 8
+            boneChild: 0
+            a11: 3.7619659900665283
+            a12: 76.88245391845703
+            a13: 12.017699241638184
+            a14: 1
+            a21: "6.228221494097852e-09"
+            a22: "9.68429958447814e-09"
+            a23: "-8.906698667487944e-08"
+            a24: 0.9999999403953552
+        - 
+            boneID: 3635919030
+            boneIndex: 8
+            boneChild: 0
+            a11: 4.4874091148376465
+            a12: 76.75208282470703
+            a13: 11.658956527709961
+            a14: 1
+            a21: "6.228221494097852e-09"
+            a22: "9.68429958447814e-09"
+            a23: "-8.906698667487944e-08"
+            a24: 0.9999999403953552
+        - 
+            boneID: 4286324982
+            boneIndex: 8
+            boneChild: 0
+            a11: 2.7819859981536865
+            a12: 76.02696228027344
+            a13: 11.665434837341309
+            a14: 1
+            a21: "6.228221494097852e-09"
+            a22: "9.68429958447814e-09"
+            a23: "-8.906698667487944e-08"
+            a24: 0.9999999403953552
+        - 
+            boneID: 4286328648
+            boneIndex: 8
+            boneChild: 0
+            a11: 3.355905055999756
+            a12: 75.98394775390625
+            a13: 11.817062377929688
+            a14: 1
+            a21: "6.228221494097852e-09"
+            a22: "9.68429958447814e-09"
+            a23: "-8.906698667487944e-08"
+            a24: 0.9999999403953552
+        - 
+            boneID: 4286330502
+            boneIndex: 8
+            boneChild: 0
+            a11: 4.35762882232666
+            a12: 76.17625427246094
+            a13: 11.454249382019043
+            a14: 1
+            a21: "6.228221494097852e-09"
+            a22: "9.68429958447814e-09"
+            a23: "-8.906698667487944e-08"
+            a24: 0.9999999403953552
+        - 
+            boneID: 4162148292
+            boneIndex: 8
+            boneChild: 0
+            a11: 0.0006958488957025111
+            a12: 70.47689819335938
+            a13: 13.4022798538208
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 4162142772
+            boneIndex: 8
+            boneChild: 0
+            a11: "6.984831998124719e-05"
+            a12: 69.77753448486328
+            a13: 12.617321014404297
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 1817392568
+            boneIndex: 8
+            boneChild: 0
+            a11: -1.611219048500061
+            a12: 69.73680877685547
+            a13: 11.99384880065918
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 1817392569
+            boneIndex: 8
+            boneChild: 0
+            a11: -2.474569082260132
+            a12: 69.19281768798828
+            a13: 11.109585762023926
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 2471182285
+            boneIndex: 8
+            boneChild: 0
+            a11: -2.2784934043884277
+            a12: 69.12049865722656
+            a13: 11.771283149719238
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 2471182284
+            boneIndex: 8
+            boneChild: 0
+            a11: -1.3163291215896606
+            a12: 69.10432434082031
+            a13: 12.338875770568848
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3901212128
+            boneIndex: 8
+            boneChild: 0
+            a11: "-2.7176865842193365e-05"
+            a12: 69.05445861816406
+            a13: 12.694878578186035
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3347999702
+            boneIndex: 8
+            boneChild: 0
+            a11: 1.123000979423523
+            a12: 69.07439422607422
+            a13: 12.563589096069336
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 2694209986
+            boneIndex: 8
+            boneChild: 0
+            a11: 1.2390427589416504
+            a12: 69.7244873046875
+            a13: 12.307859420776367
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3347999703
+            boneIndex: 8
+            boneChild: 0
+            a11: 2.2331933975219727
+            a12: 69.10152435302734
+            a13: 11.771283149719238
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 2694209987
+            boneIndex: 8
+            boneChild: 0
+            a11: 2.234945774078369
+            a12: 69.36581420898438
+            a13: 11.573738098144531
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 1823296241
+            boneIndex: 8
+            boneChild: 0
+            a11: -1.3033961057662964
+            a12: 70.48250579833984
+            a13: 13.098185539245605
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 2700113659
+            boneIndex: 8
+            boneChild: 0
+            a11: 1.3211694955825806
+            a12: 70.47672271728516
+            a13: 13.194296836853027
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 2489610418
+            boneIndex: 8
+            boneChild: 0
+            a11: -0.010391086339950562
+            a12: 71.0071792602539
+            a13: 11.656705856323242
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 2489602146
+            boneIndex: 8
+            boneChild: 0
+            a11: 0.014953828416764736
+            a12: 66.82048797607422
+            a13: 10.106115341186523
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3968799263
+            boneIndex: 8
+            boneChild: 0
+            a11: -2.9082462787628174
+            a12: 69.13375854492188
+            a13: 11.374846458435059
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 1817392570
+            boneIndex: 8
+            boneChild: 0
+            a11: -2.7832040786743164
+            a12: 69.05535888671875
+            a13: 10.696038246154785
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 1932072675
+            boneIndex: 8
+            boneChild: 0
+            a11: -2.80733323097229
+            a12: 68.82695770263672
+            a13: 10.402755737304688
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 1668008329
+            boneIndex: 8
+            boneChild: 0
+            a11: 2.9714481830596924
+            a12: 69.10868072509766
+            a13: 11.4308443069458
+            a14: -0.4999280571937561
+            a21: -0.49994853138923645
+            a22: 0.5013009309768677
+            a23: 0.49881938099861145
+            a24: 1
+        - 
+            boneID: 2694209988
+            boneIndex: 8
+            boneChild: 0
+            a11: 2.579439163208008
+            a12: 68.94892120361328
+            a13: 10.861406326293945
+            a14: -0.4999280571937561
+            a21: -0.49994853138923645
+            a22: 0.5013009309768677
+            a23: 0.49881938099861145
+            a24: 1
+        - 
+            boneID: 2808890093
+            boneIndex: 8
+            boneChild: 0
+            a11: 2.8070366382598877
+            a12: 68.86729431152344
+            a13: 10.578776359558105
+            a14: -0.4999280571937561
+            a21: -0.49994853138923645
+            a22: 0.5013009309768677
+            a23: 0.49881938099861145
+            a24: 1
+        - 
+            boneID: 1660406361
+            boneIndex: 8
+            boneChild: 0
+            a11: 2.8830764293670654
+            a12: 68.74523162841797
+            a13: 11.37053394317627
+            a14: -0.4999280571937561
+            a21: -0.49994853138923645
+            a22: 0.5013009309768677
+            a23: 0.49881938099861145
+            a24: 1
+        - 
+            boneID: 3344621459
+            boneIndex: 8
+            boneChild: 0
+            a11: 2.0868980884552
+            a12: 68.3544921875
+            a13: 11.320387840270996
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3344621458
+            boneIndex: 8
+            boneChild: 0
+            a11: 0.9856022000312805
+            a12: 68.20587158203125
+            a13: 12.007756233215332
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 796605892
+            boneIndex: 8
+            boneChild: 0
+            a11: -0.0006151878624223173
+            a12: 68.21121978759766
+            a13: 12.212180137634277
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 2467804040
+            boneIndex: 8
+            boneChild: 0
+            a11: -1.112119197845459
+            a12: 68.23348236083984
+            a13: 11.944601058959961
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 2467804041
+            boneIndex: 8
+            boneChild: 0
+            a11: -2.1713011264801025
+            a12: 68.4483871459961
+            a13: 11.173840522766113
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 2467804042
+            boneIndex: 8
+            boneChild: 0
+            a11: -2.625256061553955
+            a12: 68.70801544189453
+            a13: 10.629225730895996
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 2471182286
+            boneIndex: 8
+            boneChild: 0
+            a11: -2.6100990772247314
+            a12: 69.03306579589844
+            a13: 10.996379852294922
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3961197295
+            boneIndex: 8
+            boneChild: 0
+            a11: -2.7836530208587646
+            a12: 68.73690795898438
+            a13: 11.303705215454102
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3347999704
+            boneIndex: 8
+            boneChild: 0
+            a11: 2.575927257537842
+            a12: 69.05059051513672
+            a13: 11.068085670471191
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3344621460
+            boneIndex: 8
+            boneChild: 0
+            a11: 2.5934996604919434
+            a12: 68.53858947753906
+            a13: 10.767659187316895
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3552478679
+            boneIndex: 8
+            boneChild: 0
+            a11: -2.3245182037353516
+            a12: 64.98961639404297
+            a13: 8.981527328491211
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 1953072486
+            boneIndex: 8
+            boneChild: 0
+            a11: -0.00027727981796488166
+            a12: 64.36988830566406
+            a13: 11.153158187866211
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 1251687745
+            boneIndex: 8
+            boneChild: 0
+            a11: 2.3439102172851562
+            a12: 64.9332046508789
+            a13: 9.05655574798584
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3616498703
+            boneIndex: 8
+            boneChild: 0
+            a11: 1.5695284605026245
+            a12: 76.98650360107422
+            a13: 12.21314525604248
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 3616498705
+            boneIndex: 8
+            boneChild: 0
+            a11: 5.603450298309326
+            a12: 77.5604248046875
+            a13: 10.468194961547852
+            a14: 0.4988194406032562
+            a21: -0.5013009309768677
+            a22: -0.49994856119155884
+            a23: 0.4999280273914337
+            a24: 1
+        - 
+            boneID: 725736393
+            boneIndex: 8
+            boneChild: 0
+            a11: -1.8532568216323853
+            a12: 76.92777252197266
+            a13: 12.209465026855469
+            a14: -0.4999280571937561
+            a21: -0.49994853138923645
+            a22: 0.5013009309768677
+            a23: 0.49881938099861145
+            a24: 1
+        - 
+            boneID: 725736395
+            boneIndex: 8
+            boneChild: 0
+            a11: -5.721888065338135
+            a12: 77.19789123535156
+            a13: 10.484881401062012
+            a14: -0.4999280571937561
+            a21: -0.49994853138923645
+            a22: 0.5013009309768677
+            a23: 0.49881938099861145
+            a24: 1
+meshDataSection: 
+    meshDataSectionID: "SectionID::MESH_DATA_SECTION"
+    vertDataSection: 
+        - 
+            vertData: 
+                ...
+    faceDataSection: 
+        - 
+            faceData: 
+                ...
+    skinDataSection: 
+        - 
+            skinData: 
+                ...
