@@ -3,6 +3,10 @@
 
 import sow.types;
 
+fn relative_to_string_section(u128 offset) {
+    return addressof(header) + sizeof(header) + 4;
+};
+
 enum SectionID : u32 {
     BONE_SECTION    = 0xDCDCFF00,
     MODEL_SECTION   = 0xDCDCFF01,
@@ -32,21 +36,34 @@ struct LODGroup {
 };
 
 struct Bone {
-    u32         boneNameOffset [[comment("Offset of the Bone Name")]];
-    bool        boneActive;
-    Vector3f    translation    [[comment("Position of the Bone in 3D Space")]];
-    Quaternion  rotation       [[comment("Rotation of the Bone in 3D Space")]];
-    u32         childCount     [[comment("Number of Child Bones")]];
-    
-    char boneName[] @ sizeof(header) + boneNameOffset + 4 [[comment("Name of the Bone")]];
-} [[name(boneName)]];
+    char       *stringPtr[] : u32 [[pointer_base("relative_to_string_section"), inline, sealed]];
+    bool        active;
+    Vector3f    translation       [[comment("Position of the Bone in 3D Space")]];
+    Quaternion  rotation          [[comment("Rotation of the Bone in 3D Space")]];
+    u32         childCount        [[comment("Number of Child Bones")]];
+} [[name(stringPtr)]];
+
+struct Animation {
+    char *stringPtr[] : u32 [[pointer_base("relative_to_string_section"), inline, sealed]];
+    u32   boneCount;
+    u32   padding1;
+    u8    data[boneCount];
+} [[name(stringPtr)]];
+
+struct Model {
+    char *stringPtr[] : u32 [[pointer_base("relative_to_string_section"), inline, sealed]];
+} [[name(stringPtr)]];
+
+struct Cloth {
+    char *stringPtr[] : u32 [[pointer_base("relative_to_string_section"), inline, sealed]];
+} [[name(stringPtr)]];
 
 struct Header {
     char     magic[4]                  [[comment("File Signature")]]; // SKEL
     u32      version                   [[comment("File Version")]];
     u32      headerSize                [[comment("Size of the Header")]];
     u32      stringSectionSize         [[comment("Size of the String Section")]];
-    u32      unk2;
+    u32      modelCount;
     u32      boneNameCount             [[comment("Number of Bone Names")]];
     u32      boneSectionSize           [[comment("Size of the Bone Section")]];
     s32      unk4; // Animation Count?
@@ -64,10 +81,47 @@ struct Header {
     LODGroup lodGroups[lodGroupCount]  [[comment("LOD Groups")]];
 };
 
-struct BoneSection {
-    SectionID sectionID;    
-    Bone bones[header.boneCount] @ addressof(this) + 4 + header.stringSectionSize [[comment("Collection of Bones in the Skeleton")]];
+struct AnimationSection {
+    u32 animationCount;
+    Animation animations[animationCount];
 };
 
-Header header @ 0x00                     [[comment("Header containing File Information")]];
-BoneSection boneSection @ sizeof(header) [[comment("Section containing Data for the Bones")]];
+struct BoneSection {
+    SectionID sectionID;    
+    u8 stringSection[header.stringSectionSize] [[comment("Section containing Strings"), highlight_hidden, sealed]];
+    Bone bones[header.boneCount]               [[comment("Collection of Bones in the Skeleton")]];
+    AnimationSection animationSection;
+    u32 padding1;
+};
+
+struct ModelSection {
+    SectionID sectionID;
+    Model models[header.modelCount];
+};
+
+struct Unk2Section {
+    SectionID sectionID;
+    u32 unk2Count;
+};
+
+struct IndicesSection {
+    SectionID sectionID;
+    u8 boneIndices[header.boneCount];
+};
+
+struct ClothSection {
+    SectionID sectionID;
+    u32   clothCount;
+    Cloth cloth[clothCount];
+};
+
+struct Sections {
+    BoneSection    boneSection;
+    ModelSection   modelSection;
+    Unk2Section    unk2Section;
+    IndicesSection indicesSection;
+    ClothSection   clothSection;
+};
+
+Header   header   @ 0x00 [[comment("Header containing File Information")]];
+Sections sections @ $;
