@@ -1,0 +1,2165 @@
+---
+header: 
+    magic: "SKEL"
+    version: 17
+    unk1: "@\x00\x00\x00"
+    boneNameSectionSize: 1669
+    unk2: 9
+    boneCount1: 142
+    boneDataSectionSize: 5254
+    unk4: 1
+    lodGroupCount: 8
+    unk6: 0
+    boneCount2: 142
+    unk7: 0
+    unk8: 0
+    unk9: 0
+    unk10: 0
+    unk11: -1
+    unk12: 0
+    unk13: 400
+    boundingBox: 
+        min: 
+            x: -40
+            y: -104
+            z: -40
+        max: 
+            x: 40
+            y: 104
+            z: 40
+    unknownMeshData: 
+        - 
+            materialAssignmentCount: 3
+            unknownMeshDataBlock: 
+                - 
+                    unknownBool1: true
+                    unknownBool2: true
+                    lodThreshold: 0
+                    mat: 2
+                    unknownInt: -1
+                - 
+                    unknownBool1: true
+                    unknownBool2: true
+                    lodThreshold: 1
+                    mat: 2
+                    unknownInt: -1
+                - 
+                    unknownBool1: true
+                    unknownBool2: true
+                    lodThreshold: 4500
+                    mat: 0
+                    unknownInt: -1
+        - 
+            materialAssignmentCount: 2
+            unknownMeshDataBlock: 
+                - 
+                    unknownBool1: false
+                    unknownBool2: true
+                    lodThreshold: 0
+                    mat: 3
+                    unknownInt: -1
+                - 
+                    unknownBool1: true
+                    unknownBool2: true
+                    lodThreshold: 500
+                    mat: 0
+                    unknownInt: -1
+        - 
+            materialAssignmentCount: 2
+            unknownMeshDataBlock: 
+                - 
+                    unknownBool1: false
+                    unknownBool2: true
+                    lodThreshold: 0
+                    mat: 5
+                    unknownInt: -1
+                - 
+                    unknownBool1: true
+                    unknownBool2: true
+                    lodThreshold: 500
+                    mat: 0
+                    unknownInt: -1
+        - 
+            materialAssignmentCount: 2
+            unknownMeshDataBlock: 
+                - 
+                    unknownBool1: false
+                    unknownBool2: true
+                    lodThreshold: 0
+                    mat: 7
+                    unknownInt: -1
+                - 
+                    unknownBool1: true
+                    unknownBool2: true
+                    lodThreshold: 500
+                    mat: 0
+                    unknownInt: -1
+        - 
+            materialAssignmentCount: 2
+            unknownMeshDataBlock: 
+                - 
+                    unknownBool1: true
+                    unknownBool2: true
+                    lodThreshold: 0
+                    mat: 6
+                    unknownInt: -1
+                - 
+                    unknownBool1: false
+                    unknownBool2: true
+                    lodThreshold: 4500
+                    mat: 0
+                    unknownInt: -1
+        - 
+            materialAssignmentCount: 5
+            unknownMeshDataBlock: 
+                - 
+                    unknownBool1: true
+                    unknownBool2: true
+                    lodThreshold: 0
+                    mat: 0
+                    unknownInt: -1
+                - 
+                    unknownBool1: true
+                    unknownBool2: true
+                    lodThreshold: 500
+                    mat: 1
+                    unknownInt: -1
+                - 
+                    unknownBool1: true
+                    unknownBool2: true
+                    lodThreshold: 1500
+                    mat: 1
+                    unknownInt: -1
+                - 
+                    unknownBool1: false
+                    unknownBool2: true
+                    lodThreshold: 2500
+                    mat: 1
+                    unknownInt: -1
+                - 
+                    unknownBool1: true
+                    unknownBool2: true
+                    lodThreshold: 4500
+                    mat: 0
+                    unknownInt: -1
+        - 
+            materialAssignmentCount: 2
+            unknownMeshDataBlock: 
+                - 
+                    unknownBool1: true
+                    unknownBool2: true
+                    lodThreshold: 0
+                    mat: 4
+                    unknownInt: -1
+                - 
+                    unknownBool1: true
+                    unknownBool2: true
+                    lodThreshold: 500
+                    mat: 0
+                    unknownInt: -1
+        - 
+            materialAssignmentCount: 2
+            unknownMeshDataBlock: 
+                - 
+                    unknownBool1: true
+                    unknownBool2: true
+                    lodThreshold: 0
+                    mat: 6
+                    unknownInt: -1
+                - 
+                    unknownBool1: true
+                    unknownBool2: true
+                    lodThreshold: 4500
+                    mat: 0
+                    unknownInt: -1
+boneSection: 
+    sectionID: "SectionID::BONE_SECTION"
+    bones: 
+        - 
+            boneNameOffset: 1
+            boneActive: false
+            translation: 
+                x: 0
+                y: 0
+                z: 0
+            rotation: 
+                x: 0
+                y: 0
+                z: 0
+                w: 1
+            childCount: 1
+            boneName: "Null\x00"
+        - 
+            boneNameOffset: 6
+            boneActive: false
+            translation: 
+                x: 0
+                y: 0
+                z: 0
+            rotation: 
+                x: 0
+                y: 0
+                z: 0
+                w: 1
+            childCount: 1
+            boneName: "pNull\x00"
+        - 
+            boneNameOffset: 12
+            boneActive: false
+            translation: 
+                x: 0
+                y: 0
+                z: 0
+            rotation: 
+                x: 0.4993838369846344
+                y: -0.5006160140037537
+                z: -0.5006160140037537
+                w: 0.4993826150894165
+            childCount: 1
+            boneName: "Pelvis\x00"
+        - 
+            boneNameOffset: 19
+            boneActive: true
+            translation: 
+                x: 0.00010763481259346008
+                y: 12.640180587768555
+                z: 0.00013920661876909435
+            rotation: 
+                x: 0.46809878945350647
+                y: -0.530016303062439
+                z: -0.4680672287940979
+                w: 0.529980480670929
+            childCount: 1
+            boneName: "Torso_Base\x00"
+        - 
+            boneNameOffset: 30
+            boneActive: true
+            translation: 
+                x: 0.00023685675114393234
+                y: 25.280258178710938
+                z: -1.574126958847046
+            rotation: 
+                x: 0.48682159185409546
+                y: -0.5127782225608826
+                z: -0.4868879020214081
+                w: 0.51283860206604
+            childCount: 1
+            boneName: "Torso\x00"
+        - 
+            boneNameOffset: 36
+            boneActive: true
+            translation: 
+                x: 0.00035334500716999173
+                y: 37.91986083984375
+                z: -2.2307517528533936
+            rotation: 
+                x: 0.5000003576278687
+                y: -0.5000003576278687
+                z: -0.5000008940696716
+                w: 0.4999984800815582
+            childCount: 1
+            boneName: "Upper_Torso\x00"
+        - 
+            boneNameOffset: 48
+            boneActive: true
+            translation: 
+                x: 0.00046002300223335624
+                y: 50.55966567993164
+                z: -2.2305636405944824
+            rotation: 
+                x: 0.5000003576278687
+                y: -0.5000003576278687
+                z: -0.5000008940696716
+                w: 0.4999984800815582
+            childCount: 1
+            boneName: "Spine4_joint\x00"
+        - 
+            boneNameOffset: 61
+            boneActive: true
+            translation: 
+                x: 0.0005667601944878697
+                y: 63.19941329956055
+                z: -2.230375289916992
+            rotation: 
+                x: 0.5680970549583435
+                y: -0.4215756356716156
+                z: -0.567692220211029
+                w: 0.4210287928581238
+            childCount: 1
+            boneName: "Neck\x00"
+        - 
+            boneNameOffset: 66
+            boneActive: true
+            translation: 
+                x: 0.0005436624051071703
+                y: 72.75476837158203
+                z: 0.6652481555938721
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 128
+            boneName: "Head\x00"
+        - 
+            boneNameOffset: 71
+            boneActive: false
+            translation: 
+                x: 0.00024409970501437783
+                y: 78.34037780761719
+                z: 13.285243034362793
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "BrowCt\x00"
+        - 
+            boneNameOffset: 78
+            boneActive: false
+            translation: 
+                x: -0.003365962766110897
+                y: 76.20428466796875
+                z: 13.084452629089355
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "NoseUp\x00"
+        - 
+            boneNameOffset: 85
+            boneActive: false
+            translation: 
+                x: -0.0008531298371963203
+                y: 72.726318359375
+                z: 15.144073486328125
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "Nose\x00"
+        - 
+            boneNameOffset: 90
+            boneActive: false
+            translation: 
+                x: 0.0006608097464777529
+                y: 69.45980072021484
+                z: 13.627389907836914
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "LipCtUp\x00"
+        - 
+            boneNameOffset: 98
+            boneActive: false
+            translation: 
+                x: "5.877675721421838e-05"
+                y: 68.08872985839844
+                z: 13.299538612365723
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "LipCtLo\x00"
+        - 
+            boneNameOffset: 106
+            boneActive: false
+            translation: 
+                x: -0.00013015040894970298
+                y: 67.73633575439453
+                z: 12.87556266784668
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "LipCtLoOt\x00"
+        - 
+            boneNameOffset: 116
+            boneActive: false
+            translation: 
+                x: 0.00020671362290158868
+                y: 65.739013671875
+                z: 12.913302421569824
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "Chin1\x00"
+        - 
+            boneNameOffset: 122
+            boneActive: false
+            translation: 
+                x: -1.5766398906707764
+                y: 78.31874084472656
+                z: 13.169299125671387
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_BrowIn\x00"
+        - 
+            boneNameOffset: 131
+            boneActive: false
+            translation: 
+                x: 1.2636700868606567
+                y: 78.31169891357422
+                z: 13.186759948730469
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_BrowIn\x00"
+        - 
+            boneNameOffset: 140
+            boneActive: false
+            translation: 
+                x: -4.108413219451904
+                y: 78.6812515258789
+                z: 12.479926109313965
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_BrowMd\x00"
+        - 
+            boneNameOffset: 149
+            boneActive: false
+            translation: 
+                x: 3.7287302017211914
+                y: 78.64176177978516
+                z: 12.6528959274292
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_BrowMd\x00"
+        - 
+            boneNameOffset: 158
+            boneActive: false
+            translation: 
+                x: -5.931769847869873
+                y: 78.19113159179688
+                z: 10.208501815795898
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_BrowOt\x00"
+        - 
+            boneNameOffset: 167
+            boneActive: false
+            translation: 
+                x: 5.79997444152832
+                y: 78.39659881591797
+                z: 10.548521995544434
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_BrowOt\x00"
+        - 
+            boneNameOffset: 176
+            boneActive: false
+            translation: 
+                x: -6.610550403594971
+                y: 76.86237335205078
+                z: 8.582287788391113
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_EyelidOt\x00"
+        - 
+            boneNameOffset: 187
+            boneActive: false
+            translation: 
+                x: 6.453894138336182
+                y: 76.80598449707031
+                z: 8.895774841308594
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_EyelidOt\x00"
+        - 
+            boneNameOffset: 198
+            boneActive: false
+            translation: 
+                x: -4.914499759674072
+                y: 75.71324157714844
+                z: 10.850676536560059
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_PreorbisOt\x00"
+        - 
+            boneNameOffset: 211
+            boneActive: false
+            translation: 
+                x: 4.843123912811279
+                y: 75.91307830810547
+                z: 10.970805168151855
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_PreorbisOt\x00"
+        - 
+            boneNameOffset: 224
+            boneActive: false
+            translation: 
+                x: -1.652748942375183
+                y: 72.21349334716797
+                z: 13.654953956604004
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_Nose\x00"
+        - 
+            boneNameOffset: 231
+            boneActive: false
+            translation: 
+                x: 1.714396595954895
+                y: 72.2855224609375
+                z: 13.689165115356445
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_Nose\x00"
+        - 
+            boneNameOffset: 238
+            boneActive: false
+            translation: 
+                x: -2.246915102005005
+                y: 75.51726531982422
+                z: 11.698617935180664
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_Orbis\x00"
+        - 
+            boneNameOffset: 246
+            boneActive: false
+            translation: 
+                x: 2.055274486541748
+                y: 75.53036499023438
+                z: 11.685897827148438
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_Orbis\x00"
+        - 
+            boneNameOffset: 254
+            boneActive: false
+            translation: 
+                x: -3.5999958515167236
+                y: 75.28727722167969
+                z: 11.72952938079834
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_Preorbis\x00"
+        - 
+            boneNameOffset: 265
+            boneActive: false
+            translation: 
+                x: 3.4406063556671143
+                y: 75.4229507446289
+                z: 11.768689155578613
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_Preorbis\x00"
+        - 
+            boneNameOffset: 276
+            boneActive: false
+            translation: 
+                x: -5.753521919250488
+                y: 74.52090454101562
+                z: 10.346271514892578
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_CheekMd\x00"
+        - 
+            boneNameOffset: 286
+            boneActive: false
+            translation: 
+                x: 5.721950054168701
+                y: 74.72395324707031
+                z: 10.31999397277832
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_CheekMd\x00"
+        - 
+            boneNameOffset: 296
+            boneActive: false
+            translation: 
+                x: -2.3653042316436768
+                y: 73.98249053955078
+                z: 12.11256217956543
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_CheekIn\x00"
+        - 
+            boneNameOffset: 306
+            boneActive: false
+            translation: 
+                x: 2.311431884765625
+                y: 74.0772476196289
+                z: 12.099247932434082
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_CheekIn\x00"
+        - 
+            boneNameOffset: 316
+            boneActive: false
+            translation: 
+                x: -2.489380121231079
+                y: 72.19963073730469
+                z: 12.170567512512207
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_NasalLabialUp\x00"
+        - 
+            boneNameOffset: 332
+            boneActive: false
+            translation: 
+                x: 2.5605568885803223
+                y: 72.27194213867188
+                z: 12.199234008789062
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_NasalLabialUp\x00"
+        - 
+            boneNameOffset: 348
+            boneActive: false
+            translation: 
+                x: -1.5395749807357788
+                y: 69.38542938232422
+                z: 13.027138710021973
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_LipUpA\x00"
+        - 
+            boneNameOffset: 357
+            boneActive: false
+            translation: 
+                x: 1.5424416065216064
+                y: 69.3380126953125
+                z: 13.124422073364258
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_LipUpA\x00"
+        - 
+            boneNameOffset: 366
+            boneActive: false
+            translation: 
+                x: -2.5913734436035156
+                y: 69.21920013427734
+                z: 11.916557312011719
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_LipUpB\x00"
+        - 
+            boneNameOffset: 375
+            boneActive: false
+            translation: 
+                x: 2.647806406021118
+                y: 69.14120483398438
+                z: 12.036332130432129
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_LipUpB\x00"
+        - 
+            boneNameOffset: 384
+            boneActive: false
+            translation: 
+                x: -2.833414316177368
+                y: 69.02904510498047
+                z: 11.21804428100586
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_LipCrn\x00"
+        - 
+            boneNameOffset: 393
+            boneActive: false
+            translation: 
+                x: 2.8884689807891846
+                y: 69.03173828125
+                z: 11.26752758026123
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_LipCrn\x00"
+        - 
+            boneNameOffset: 402
+            boneActive: false
+            translation: 
+                x: -2.3265562057495117
+                y: 68.4917221069336
+                z: 11.826639175415039
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_LipLoB\x00"
+        - 
+            boneNameOffset: 411
+            boneActive: false
+            translation: 
+                x: 2.4434456825256348
+                y: 68.53634643554688
+                z: 11.912738800048828
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_LipLoB\x00"
+        - 
+            boneNameOffset: 420
+            boneActive: false
+            translation: 
+                x: -1.516334891319275
+                y: 68.21025848388672
+                z: 12.751635551452637
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_LipLoA\x00"
+        - 
+            boneNameOffset: 429
+            boneActive: false
+            translation: 
+                x: 1.5146331787109375
+                y: 68.202880859375
+                z: 12.902575492858887
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_LipLoA\x00"
+        - 
+            boneNameOffset: 438
+            boneActive: false
+            translation: 
+                x: -1.8861010074615479
+                y: 67.9781494140625
+                z: 12.068387031555176
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_LipLoDn\x00"
+        - 
+            boneNameOffset: 448
+            boneActive: false
+            translation: 
+                x: 2.079179048538208
+                y: 67.95813751220703
+                z: 11.948811531066895
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_LipLoDn\x00"
+        - 
+            boneNameOffset: 458
+            boneActive: false
+            translation: 
+                x: -3.384092330932617
+                y: 68.49151611328125
+                z: 10.940391540527344
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_LipCrnLo\x00"
+        - 
+            boneNameOffset: 469
+            boneActive: false
+            translation: 
+                x: 3.615997791290283
+                y: 68.56012725830078
+                z: 10.928861618041992
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_LipCrnLo\x00"
+        - 
+            boneNameOffset: 480
+            boneActive: false
+            translation: 
+                x: -2.0959091186523438
+                y: 65.83606719970703
+                z: 11.874560356140137
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_Chin\x00"
+        - 
+            boneNameOffset: 487
+            boneActive: false
+            translation: 
+                x: 2.209765911102295
+                y: 65.78026580810547
+                z: 11.96045970916748
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_Chin\x00"
+        - 
+            boneNameOffset: 494
+            boneActive: false
+            translation: 
+                x: -3.5374772548675537
+                y: 69.92996978759766
+                z: 11.327730178833008
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_LipCrnUp\x00"
+        - 
+            boneNameOffset: 505
+            boneActive: false
+            translation: 
+                x: 3.7292654514312744
+                y: 69.97148895263672
+                z: 11.34320068359375
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_LipCrnUp\x00"
+        - 
+            boneNameOffset: 516
+            boneActive: false
+            translation: 
+                x: -3.9336211681365967
+                y: 71.20291900634766
+                z: 11.350859642028809
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_NasalLabialLo\x00"
+        - 
+            boneNameOffset: 532
+            boneActive: false
+            translation: 
+                x: 4.082703113555908
+                y: 71.28836059570312
+                z: 11.3217191696167
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_NasalLabialLo\x00"
+        - 
+            boneNameOffset: 548
+            boneActive: false
+            translation: 
+                x: -3.9911491870880127
+                y: 69.50138854980469
+                z: 10.844430923461914
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_LipCrnOt\x00"
+        - 
+            boneNameOffset: 559
+            boneActive: false
+            translation: 
+                x: 4.246165752410889
+                y: 69.56771850585938
+                z: 10.881768226623535
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_LipCrnOt\x00"
+        - 
+            boneNameOffset: 570
+            boneActive: false
+            translation: 
+                x: -7.402461051940918
+                y: 75.50679016113281
+                z: 6.596611022949219
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_CheekOt\x00"
+        - 
+            boneNameOffset: 580
+            boneActive: false
+            translation: 
+                x: 7.365562915802002
+                y: 75.57315826416016
+                z: 6.624597549438477
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_CheekOt\x00"
+        - 
+            boneNameOffset: 590
+            boneActive: false
+            translation: 
+                x: -2.662877321243286
+                y: 70.13786315917969
+                z: 12.06351375579834
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_NasalLabial\x00"
+        - 
+            boneNameOffset: 604
+            boneActive: false
+            translation: 
+                x: 2.772209882736206
+                y: 70.1168212890625
+                z: 12.098130226135254
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_NasalLabial\x00"
+        - 
+            boneNameOffset: 618
+            boneActive: false
+            translation: 
+                x: -6.2607927322387695
+                y: 72.9074935913086
+                z: 9.57943344116211
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_CheekMnUp\x00"
+        - 
+            boneNameOffset: 630
+            boneActive: false
+            translation: 
+                x: 6.296647548675537
+                y: 73.01143646240234
+                z: 9.489664077758789
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_CheekMnUp\x00"
+        - 
+            boneNameOffset: 642
+            boneActive: false
+            translation: 
+                x: -5.748838901519775
+                y: 70.5599365234375
+                z: 8.462071418762207
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_CheekMn\x00"
+        - 
+            boneNameOffset: 652
+            boneActive: false
+            translation: 
+                x: 6.049448013305664
+                y: 70.57742309570312
+                z: 8.421494483947754
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_CheekMn\x00"
+        - 
+            boneNameOffset: 662
+            boneActive: false
+            translation: 
+                x: -6.112768173217773
+                y: 68.90878295898438
+                z: 4.691080093383789
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_JawA\x00"
+        - 
+            boneNameOffset: 669
+            boneActive: false
+            translation: 
+                x: 6.287230014801025
+                y: 68.8080825805664
+                z: 4.785426139831543
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_JawA\x00"
+        - 
+            boneNameOffset: 676
+            boneActive: false
+            translation: 
+                x: -1.4620457887649536
+                y: 81.48235321044922
+                z: 12.739072799682617
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_BrowInUp\x00"
+        - 
+            boneNameOffset: 687
+            boneActive: false
+            translation: 
+                x: -4.873036861419678
+                y: 80.97686004638672
+                z: 10.936800956726074
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_BrowOtUp\x00"
+        - 
+            boneNameOffset: 698
+            boneActive: false
+            translation: 
+                x: 4.57697057723999
+                y: 81.06661224365234
+                z: 10.998178482055664
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_BrowOtUp\x00"
+        - 
+            boneNameOffset: 709
+            boneActive: false
+            translation: 
+                x: 1.0223885774612427
+                y: 81.50630950927734
+                z: 12.788640022277832
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_BrowInUp\x00"
+        - 
+            boneNameOffset: 720
+            boneActive: false
+            translation: 
+                x: 5.503299236297607
+                y: 68.19847106933594
+                z: 7.944980621337891
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_CheekMnLo\x00"
+        - 
+            boneNameOffset: 732
+            boneActive: false
+            translation: 
+                x: -4.9623870849609375
+                y: 67.05310821533203
+                z: 6.348586082458496
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_JawB\x00"
+        - 
+            boneNameOffset: 739
+            boneActive: false
+            translation: 
+                x: 4.9641852378845215
+                y: 66.93376922607422
+                z: 6.3842010498046875
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_JawB\x00"
+        - 
+            boneNameOffset: 746
+            boneActive: false
+            translation: 
+                x: -5.205451011657715
+                y: 68.26744842529297
+                z: 7.865412712097168
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_CheekMnLo\x00"
+        - 
+            boneNameOffset: 758
+            boneActive: false
+            translation: 
+                x: -4.388031959533691
+                y: 77.68909454345703
+                z: 12.123698234558105
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_EyelidUpOtB\x00"
+        - 
+            boneNameOffset: 772
+            boneActive: false
+            translation: 
+                x: 4.184799671173096
+                y: 77.86329650878906
+                z: 12.283686637878418
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_EyelidUpOtB\x00"
+        - 
+            boneNameOffset: 786
+            boneActive: false
+            translation: 
+                x: -9.355380058288574
+                y: 76.85663604736328
+                z: -1.0643106698989868
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_Ear\x00"
+        - 
+            boneNameOffset: 792
+            boneActive: false
+            translation: 
+                x: 9.226040840148926
+                y: 76.80743408203125
+                z: -0.9890472888946533
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_Ear\x00"
+        - 
+            boneNameOffset: 798
+            boneActive: false
+            translation: 
+                x: "-2.9181072022765875e-05"
+                y: 64.59854888916016
+                z: 7.832431793212891
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "Waddle\x00"
+        - 
+            boneNameOffset: 805
+            boneActive: false
+            translation: 
+                x: -0.008507716469466686
+                y: 73.80313110351562
+                z: 4.607052803039551
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 1
+            boneName: "Jaw\x00"
+        - 
+            boneNameOffset: 1406
+            boneActive: false
+            translation: 
+                x: 0.02316054329276085
+                y: 68.7732925415039
+                z: 6.827188491821289
+            rotation: 
+                x: 0.49881866574287415
+                y: -0.5013017058372498
+                z: -0.49994784593582153
+                w: 0.499928742647171
+            childCount: 1
+            boneName: "Tongue1\x00"
+        - 
+            boneNameOffset: 1414
+            boneActive: false
+            translation: 
+                x: 0.023216839879751205
+                y: 68.94558715820312
+                z: 8.468944549560547
+            rotation: 
+                x: 0.498820036649704
+                y: -0.5013002157211304
+                z: -0.499949187040329
+                w: 0.4999273419380188
+            childCount: 3
+            boneName: "Tongue2\x00"
+        - 
+            boneNameOffset: 1422
+            boneActive: false
+            translation: 
+                x: 0.023290354758501053
+                y: 68.87226867675781
+                z: 10.239450454711914
+            rotation: 
+                x: 0.4988183081150055
+                y: -0.5013020038604736
+                z: -0.4999474883079529
+                w: 0.4999290704727173
+            childCount: 0
+            boneName: "Tongue3\x00"
+        - 
+            boneNameOffset: 1430
+            boneActive: false
+            translation: 
+                x: -1.3151243925094604
+                y: 69.06739044189453
+                z: 8.994269371032715
+            rotation: 
+                x: 0.498820036649704
+                y: -0.5013002157211304
+                z: -0.499949187040329
+                w: 0.4999273419380188
+            childCount: 0
+            boneName: "L_Tongue\x00"
+        - 
+            boneNameOffset: 1439
+            boneActive: false
+            translation: 
+                x: 1.2876763343811035
+                y: 69.0686264038086
+                z: 8.994147300720215
+            rotation: 
+                x: 0.498820036649704
+                y: -0.5013002157211304
+                z: -0.499949187040329
+                w: 0.4999273419380188
+            childCount: 0
+            boneName: "R_Tongue\x00"
+        - 
+            boneNameOffset: 809
+            boneActive: false
+            translation: 
+                x: 3.4236903190612793
+                y: 76.47037506103516
+                z: 10.304206848144531
+            rotation: 
+                x: "1.2084203149242967e-07"
+                y: "1.7316813538670317e-09"
+                z: "6.228220605919432e-09"
+                w: 1
+            childCount: 0
+            boneName: "R_Eye\x00"
+        - 
+            boneNameOffset: 815
+            boneActive: false
+            translation: 
+                x: -3.409489154815674
+                y: 76.4552001953125
+                z: 10.352595329284668
+            rotation: 
+                x: "1.2084203149242967e-07"
+                y: "1.7316813538670317e-09"
+                z: "6.228220605919432e-09"
+                w: 1
+            childCount: 0
+            boneName: "L_Eye\x00"
+        - 
+            boneNameOffset: 821
+            boneActive: false
+            translation: 
+                x: -2.5688109397888184
+                y: 76.64656829833984
+                z: 11.500690460205078
+            rotation: 
+                x: "1.2084203149242967e-07"
+                y: "1.7316813538670317e-09"
+                z: "6.228220605919432e-09"
+                w: 1
+            childCount: 0
+            boneName: "L_EyelidUp_In\x00"
+        - 
+            boneNameOffset: 835
+            boneActive: false
+            translation: 
+                x: -3.759917736053467
+                y: 76.87093353271484
+                z: 12.03419303894043
+            rotation: 
+                x: "1.2084203149242967e-07"
+                y: "1.7316813538670317e-09"
+                z: "6.228220605919432e-09"
+                w: 1
+            childCount: 0
+            boneName: "L_EyelidUp_Md\x00"
+        - 
+            boneNameOffset: 849
+            boneActive: false
+            translation: 
+                x: -4.582526206970215
+                y: 76.6469497680664
+                z: 11.451935768127441
+            rotation: 
+                x: "1.2084203149242967e-07"
+                y: "1.7316813538670317e-09"
+                z: "6.228220605919432e-09"
+                w: 1
+            childCount: 0
+            boneName: "L_EyelidUp_Ot\x00"
+        - 
+            boneNameOffset: 863
+            boneActive: false
+            translation: 
+                x: -2.7841010093688965
+                y: 76.02799224853516
+                z: 11.665541648864746
+            rotation: 
+                x: "1.2084203149242967e-07"
+                y: "1.7316813538670317e-09"
+                z: "6.228220605919432e-09"
+                w: 1
+            childCount: 0
+            boneName: "L_EyelidLo_In\x00"
+        - 
+            boneNameOffset: 877
+            boneActive: false
+            translation: 
+                x: -3.567531108856201
+                y: 76.00145721435547
+                z: 11.817873001098633
+            rotation: 
+                x: "1.2084203149242967e-07"
+                y: "1.7316813538670317e-09"
+                z: "6.228220605919432e-09"
+                w: 1
+            childCount: 0
+            boneName: "L_EyelidLo_Md\x00"
+        - 
+            boneNameOffset: 891
+            boneActive: false
+            translation: 
+                x: -4.491950988769531
+                y: 76.25775146484375
+                z: 11.328041076660156
+            rotation: 
+                x: "1.2084203149242967e-07"
+                y: "1.7316813538670317e-09"
+                z: "6.228220605919432e-09"
+                w: 1
+            childCount: 0
+            boneName: "L_EyelidLo_Ot\x00"
+        - 
+            boneNameOffset: 905
+            boneActive: false
+            translation: 
+                x: 2.734295129776001
+                y: 76.65299224853516
+                z: 11.827702522277832
+            rotation: 
+                x: 1
+                y: "6.228220605919432e-09"
+                z: "-1.7316813538670317e-09"
+                w: "-1.2084203149242967e-07"
+            childCount: 0
+            boneName: "R_EyelidUp_In\x00"
+        - 
+            boneNameOffset: 919
+            boneActive: false
+            translation: 
+                x: 3.7619659900665283
+                y: 76.88245391845703
+                z: 12.017699241638184
+            rotation: 
+                x: 1
+                y: "6.228220605919432e-09"
+                z: "-1.7316813538670317e-09"
+                w: "-1.2084203149242967e-07"
+            childCount: 0
+            boneName: "R_EyelidUp_Md\x00"
+        - 
+            boneNameOffset: 933
+            boneActive: false
+            translation: 
+                x: 4.4874091148376465
+                y: 76.75208282470703
+                z: 11.658956527709961
+            rotation: 
+                x: 1
+                y: "6.228220605919432e-09"
+                z: "-1.7316813538670317e-09"
+                w: "-1.2084203149242967e-07"
+            childCount: 0
+            boneName: "R_EyelidUp_Ot\x00"
+        - 
+            boneNameOffset: 947
+            boneActive: false
+            translation: 
+                x: 2.7819859981536865
+                y: 76.02696228027344
+                z: 11.665434837341309
+            rotation: 
+                x: 1
+                y: "6.228220605919432e-09"
+                z: "-1.7316813538670317e-09"
+                w: "-1.2084203149242967e-07"
+            childCount: 0
+            boneName: "R_EyelidLo_In\x00"
+        - 
+            boneNameOffset: 961
+            boneActive: false
+            translation: 
+                x: 3.355905055999756
+                y: 75.98394775390625
+                z: 11.817062377929688
+            rotation: 
+                x: 1
+                y: "6.228220605919432e-09"
+                z: "-1.7316813538670317e-09"
+                w: "-1.2084203149242967e-07"
+            childCount: 0
+            boneName: "R_EyelidLo_Md\x00"
+        - 
+            boneNameOffset: 975
+            boneActive: false
+            translation: 
+                x: 4.35762882232666
+                y: 76.17625427246094
+                z: 11.454249382019043
+            rotation: 
+                x: 1
+                y: "6.228220605919432e-09"
+                z: "-1.7316813538670317e-09"
+                w: "-1.2084203149242967e-07"
+            childCount: 0
+            boneName: "R_EyelidLo_Ot\x00"
+        - 
+            boneNameOffset: 989
+            boneActive: false
+            translation: 
+                x: 0.0006958488957025111
+                y: 70.47689819335938
+                z: 13.4022798538208
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "LipCtUpOt\x00"
+        - 
+            boneNameOffset: 999
+            boneActive: false
+            translation: 
+                x: "6.984831998124719e-05"
+                y: 69.77753448486328
+                z: 12.617321014404297
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "LipCtUpIn\x00"
+        - 
+            boneNameOffset: 1009
+            boneActive: false
+            translation: 
+                x: -1.611219048500061
+                y: 69.73680877685547
+                z: 11.99384880065918
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_LipUpInA\x00"
+        - 
+            boneNameOffset: 1020
+            boneActive: false
+            translation: 
+                x: -2.474569082260132
+                y: 69.19281768798828
+                z: 11.109585762023926
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_LipUpInB\x00"
+        - 
+            boneNameOffset: 1031
+            boneActive: false
+            translation: 
+                x: -2.2784934043884277
+                y: 69.12049865722656
+                z: 11.771283149719238
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_LipLoMnB\x00"
+        - 
+            boneNameOffset: 1042
+            boneActive: false
+            translation: 
+                x: -1.3163291215896606
+                y: 69.10432434082031
+                z: 12.338875770568848
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_LipLoMnA\x00"
+        - 
+            boneNameOffset: 1053
+            boneActive: false
+            translation: 
+                x: "-2.7176865842193365e-05"
+                y: 69.05445861816406
+                z: 12.694878578186035
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "LipLoMnCt\x00"
+        - 
+            boneNameOffset: 1063
+            boneActive: false
+            translation: 
+                x: 1.123000979423523
+                y: 69.07439422607422
+                z: 12.563589096069336
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_LipLoMnA\x00"
+        - 
+            boneNameOffset: 1074
+            boneActive: false
+            translation: 
+                x: 1.2390427589416504
+                y: 69.7244873046875
+                z: 12.307859420776367
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_LipUpInA\x00"
+        - 
+            boneNameOffset: 1085
+            boneActive: false
+            translation: 
+                x: 2.2331933975219727
+                y: 69.10152435302734
+                z: 11.771283149719238
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_LipLoMnB\x00"
+        - 
+            boneNameOffset: 1096
+            boneActive: false
+            translation: 
+                x: 2.234945774078369
+                y: 69.36581420898438
+                z: 11.573738098144531
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_LipUpInB\x00"
+        - 
+            boneNameOffset: 1107
+            boneActive: false
+            translation: 
+                x: -1.3033961057662964
+                y: 70.48250579833984
+                z: 13.098185539245605
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_LipUpper\x00"
+        - 
+            boneNameOffset: 1118
+            boneActive: false
+            translation: 
+                x: 1.3211694955825806
+                y: 70.47672271728516
+                z: 13.194296836853027
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_LipUpper\x00"
+        - 
+            boneNameOffset: 1129
+            boneActive: false
+            translation: 
+                x: -0.010391086339950562
+                y: 71.0071792602539
+                z: 11.656705856323242
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "MouthUp\x00"
+        - 
+            boneNameOffset: 1137
+            boneActive: false
+            translation: 
+                x: 0.014953828416764736
+                y: 66.82048797607422
+                z: 10.106115341186523
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "MouthLo\x00"
+        - 
+            boneNameOffset: 1145
+            boneActive: false
+            translation: 
+                x: -2.9082462787628174
+                y: 69.13375854492188
+                z: 11.374846458435059
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_LipUpC\x00"
+        - 
+            boneNameOffset: 1154
+            boneActive: false
+            translation: 
+                x: -2.7832040786743164
+                y: 69.05535888671875
+                z: 10.696038246154785
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_LipUpInC\x00"
+        - 
+            boneNameOffset: 1165
+            boneActive: false
+            translation: 
+                x: -2.80733323097229
+                y: 68.82695770263672
+                z: 10.402755737304688
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_LipCrnIn\x00"
+        - 
+            boneNameOffset: 1176
+            boneActive: false
+            translation: 
+                x: 2.9714481830596924
+                y: 69.10868072509766
+                z: 11.4308443069458
+            rotation: 
+                x: -0.4999281167984009
+                y: -0.4999486207962036
+                z: 0.5013009905815125
+                w: 0.49881935119628906
+            childCount: 0
+            boneName: "R_LipUpC\x00"
+        - 
+            boneNameOffset: 1185
+            boneActive: false
+            translation: 
+                x: 2.579439163208008
+                y: 68.94892120361328
+                z: 10.861406326293945
+            rotation: 
+                x: -0.4999281167984009
+                y: -0.4999486207962036
+                z: 0.5013009905815125
+                w: 0.49881935119628906
+            childCount: 0
+            boneName: "R_LipUpInC\x00"
+        - 
+            boneNameOffset: 1196
+            boneActive: false
+            translation: 
+                x: 2.8070366382598877
+                y: 68.86729431152344
+                z: 10.578776359558105
+            rotation: 
+                x: -0.4999281167984009
+                y: -0.4999486207962036
+                z: 0.5013009905815125
+                w: 0.49881935119628906
+            childCount: 0
+            boneName: "R_LipCrnIn\x00"
+        - 
+            boneNameOffset: 1207
+            boneActive: false
+            translation: 
+                x: 2.8830764293670654
+                y: 68.74523162841797
+                z: 11.37053394317627
+            rotation: 
+                x: -0.4999281167984009
+                y: -0.4999486207962036
+                z: 0.5013009905815125
+                w: 0.49881935119628906
+            childCount: 0
+            boneName: "R_LipLoC\x00"
+        - 
+            boneNameOffset: 1216
+            boneActive: false
+            translation: 
+                x: 2.0868980884552
+                y: 68.3544921875
+                z: 11.320387840270996
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_LipLoInB\x00"
+        - 
+            boneNameOffset: 1227
+            boneActive: false
+            translation: 
+                x: 0.9856022000312805
+                y: 68.20587158203125
+                z: 12.007756233215332
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_LipLoInA\x00"
+        - 
+            boneNameOffset: 1238
+            boneActive: false
+            translation: 
+                x: -0.0006151878624223173
+                y: 68.21121978759766
+                z: 12.212180137634277
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "LipLoInCt\x00"
+        - 
+            boneNameOffset: 1248
+            boneActive: false
+            translation: 
+                x: -1.112119197845459
+                y: 68.23348236083984
+                z: 11.944601058959961
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_LipLoInA\x00"
+        - 
+            boneNameOffset: 1259
+            boneActive: false
+            translation: 
+                x: -2.1713011264801025
+                y: 68.4483871459961
+                z: 11.173840522766113
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_LipLoInB\x00"
+        - 
+            boneNameOffset: 1270
+            boneActive: false
+            translation: 
+                x: -2.625256061553955
+                y: 68.70801544189453
+                z: 10.629225730895996
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_LipLoInC\x00"
+        - 
+            boneNameOffset: 1281
+            boneActive: false
+            translation: 
+                x: -2.6100990772247314
+                y: 69.03306579589844
+                z: 10.996379852294922
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_LipLoMnC\x00"
+        - 
+            boneNameOffset: 1292
+            boneActive: false
+            translation: 
+                x: -2.7836530208587646
+                y: 68.73690795898438
+                z: 11.303705215454102
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_LipLoC\x00"
+        - 
+            boneNameOffset: 1301
+            boneActive: false
+            translation: 
+                x: 2.575927257537842
+                y: 69.05059051513672
+                z: 11.068085670471191
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_LipLoMnC\x00"
+        - 
+            boneNameOffset: 1312
+            boneActive: false
+            translation: 
+                x: 2.5934996604919434
+                y: 68.53858947753906
+                z: 10.767659187316895
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_LipLoInC\x00"
+        - 
+            boneNameOffset: 1323
+            boneActive: false
+            translation: 
+                x: -2.3245182037353516
+                y: 64.98961639404297
+                z: 8.981527328491211
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "L_ChinLo\x00"
+        - 
+            boneNameOffset: 1332
+            boneActive: false
+            translation: 
+                x: -0.00027727981796488166
+                y: 64.36988830566406
+                z: 11.153158187866211
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "ChinLoCt\x00"
+        - 
+            boneNameOffset: 1341
+            boneActive: false
+            translation: 
+                x: 2.3439102172851562
+                y: 64.9332046508789
+                z: 9.05655574798584
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_ChinLo\x00"
+        - 
+            boneNameOffset: 1350
+            boneActive: false
+            translation: 
+                x: 1.5695284605026245
+                y: 76.98650360107422
+                z: 12.21314525604248
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_EyelidUpOtA\x00"
+        - 
+            boneNameOffset: 1364
+            boneActive: false
+            translation: 
+                x: 5.603450298309326
+                y: 77.5604248046875
+                z: 10.468194961547852
+            rotation: 
+                x: 0.49881938099861145
+                y: -0.5013009905815125
+                z: -0.49994856119155884
+                w: 0.4999280273914337
+            childCount: 0
+            boneName: "R_EyelidUpOtC\x00"
+        - 
+            boneNameOffset: 1378
+            boneActive: false
+            translation: 
+                x: -1.8532568216323853
+                y: 76.92777252197266
+                z: 12.209465026855469
+            rotation: 
+                x: -0.4999281167984009
+                y: -0.4999486207962036
+                z: 0.5013009905815125
+                w: 0.49881935119628906
+            childCount: 0
+            boneName: "L_EyelidUpOtA\x00"
+        - 
+            boneNameOffset: 1392
+            boneActive: false
+            translation: 
+                x: -5.721888065338135
+                y: 77.19789123535156
+                z: 10.484881401062012
+            rotation: 
+                x: -0.4999281167984009
+                y: -0.4999486207962036
+                z: 0.5013009905815125
+                w: 0.49881935119628906
+            childCount: 0
+            boneName: "L_EyelidUpOtC\x00"

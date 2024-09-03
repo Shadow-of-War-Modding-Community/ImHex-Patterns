@@ -13,62 +13,61 @@ enum SectionID : u32 {
     UNK9_SECTION    = 0xDCDCFF99,
 };
 
-struct BoundingBox {
-    Vector3f min;
-    Vector3f max;
+struct AABB {
+    Vector3f min [[comment("Minimum Alignment")]];
+    Vector3f max [[comment("Maximum Alignment")]];
 };
 
-struct UnknownMeshDataBlock {
-    bool    unknownBool1;
+struct LOD {
+    bool    unknownBool1; // Related to `Connection::unk` in "mesh.hexpat", true = 3 and false = 1
     bool    unknownBool2;
-    float   lodThreshold;
-    u32     mat;
+    float   lodThreshold  [[comment("Distance Threshold")]];
+    u32     material      [[comment("Index of the Material")]];
     s32     unknownInt;
 };
 
-struct UnknownMeshData {
-    u32 materialAssignmentCount;
-    UnknownMeshDataBlock unknownMeshDataBlock[materialAssignmentCount] [[inline]];
+struct LODGroup {
+    u32 lodCount                  [[comment("Number of LODs")]];
+    LOD lods[lodCount]            [[comment("LODs")]];
 };
 
 struct Bone {
-    u32         boneNameOffset;
+    u32         boneNameOffset [[comment("Offset of the Bone Name")]];
     bool        boneActive;
-    Vector3f    translation;
-    Quaternion  rotation;
-    u32         childCount;
+    Vector3f    translation    [[comment("Position of the Bone in 3D Space")]];
+    Quaternion  rotation       [[comment("Rotation of the Bone in 3D Space")]];
+    u32         childCount     [[comment("Number of Child Bones")]];
     
-    char boneName[] @ sizeof(header) + boneNameOffset + 4;
+    char boneName[] @ sizeof(header) + boneNameOffset + 4 [[comment("Name of the Bone")]];
 } [[name(boneName)]];
 
 struct Header {
-    char    magic[4]; // SKEL
-    u32     version;
-    char    unk1[4]; // ID?
-    u32     boneNameSecSize;
-    u32     unk2;
-    u32     boneCount1;
-    char    unk3[4]; // ID?
-    s32     unk4; // Animation count?
-    u32     modelCount;
-    u32     unk6; // FX count?
-    u32     boneCount2;
-    s32     unk7;
-    s32     unk8;
-    s32     unk9;
-    s32     unk10;
-    s32     unk11; // ID?
-    u32     unk12;
-    float   unk13; // SectionID?
-    BoundingBox boundingBox;
-    
-    UnknownMeshData unknownMeshData[modelCount];
+    char     magic[4]                  [[comment("File Signature")]]; // SKEL
+    u32      version                   [[comment("File Version")]];
+    u32      headerSize                [[comment("Size of the Header")]];
+    u32      stringSectionSize         [[comment("Size of the String Section")]];
+    u32      unk2;
+    u32      boneNameCount             [[comment("Number of Bone Names")]];
+    u32      boneSectionSize           [[comment("Size of the Bone Section")]];
+    s32      unk4; // Animation Count?
+    u32      lodGroupCount             [[comment("Number of LOD Groups")]];
+    u32      unk6; // FX Count?
+    u32      boneCount                 [[comment("Number of Bones")]];
+    s32      unk7;
+    s32      unk8;
+    s32      unk9;
+    s32      unk10;
+    s32      unk11; // ID?
+    u32      unk12;
+    float    unk13; // 400 or 1200, ID?
+    AABB     boundingBox               [[comment("Axis-Aligned Bounding Box")]];
+    LODGroup lodGroups[lodGroupCount]  [[comment("LOD Groups")]];
 };
 
 struct BoneSection {
     SectionID sectionID;    
-    Bone bones[header.boneCount1] @ addressof(this) + 4 + header.boneNameSecSize;
+    Bone bones[header.boneCount] @ addressof(this) + 4 + header.stringSectionSize [[comment("Collection of Bones in the Skeleton")]];
 };
 
-Header header @ 0x00;
-BoneSection boneSection @ sizeof(header);
+Header header @ 0x00                     [[comment("Header containing File Information")]];
+BoneSection boneSection @ sizeof(header) [[comment("Section containing Data for the Bones")]];
