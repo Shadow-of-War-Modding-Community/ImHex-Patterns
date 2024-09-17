@@ -68,18 +68,23 @@ struct Bone {
 
 struct Controller {
     StringPtr controllerNamePtr;
-    u32     boneCount;
-    u32     controlCount;
-    u8      controls[boneCount];
+    u32       boneCount;
+    u32       controlCount;
+    u8        controls[boneCount];
 } [[name(controllerNamePtr)]];
 
-struct ControllerRig {
-    u32 controllerCount;
+struct Socket {
+    u32       boneIndex;
+    StringPtr socketNamePtr;
+    padding[32];
+} [[name(socketNamePtr)]];
+
+struct Rig {
+    u32        controllerCount;
     Controller controllers[controllerCount];
-    u32 socketCount;
+    u32        socketCount;
     if (socketCount > 0) {
-        u32 unkCount;
-        String *socketNamesPtr[socketCount] : u32 [[pointer_base("relative_to_string_table"), inline, sealed]];
+        Socket sockets[socketCount];
     }
 };
 
@@ -110,7 +115,7 @@ struct BoneSection {
     SectionID sectionID;
     char stringTable[header.stringTableSize] [[comment("Table of Strings"), highlight_hidden]];
     Bone bones[header.boneCount]             [[comment("Collection of Bones in the Skeleton")]];
-    ControllerRig controllerRig;
+    Rig  rig;
     std::print("{}", sectionID);
 } [[inline]];
 
