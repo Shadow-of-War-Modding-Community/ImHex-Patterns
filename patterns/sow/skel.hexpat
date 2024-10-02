@@ -140,9 +140,12 @@ struct IndicesSection {
 
 struct ClothSection {
     SectionID sectionID;
-    u32 clothCount;
+    u32  clothCount;
     StringPtr clothPtrs[clothCount];
-    u32 checksum [[format("format_hex")]];
+    u32  checksum1 [[format("format_hex")]];
+    u32  dataSize;
+    char data[dataSize];
+    u32  checksum2 [[format("format_hex")]];
     std::print("{}", sectionID);
 } [[inline]];
 
