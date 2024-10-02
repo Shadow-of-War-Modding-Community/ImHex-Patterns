@@ -88,6 +88,12 @@ struct Rig {
     }
 };
 
+struct ClothData {
+    u32  signature [[format("format_hex")]];
+    u32  dataSize;
+    char data[dataSize];
+};
+
 struct Header {
     char     magic[4]                  [[comment("File Signature")]]; // SKEL
     u32      version                   [[comment("File Version")]];
@@ -140,12 +146,10 @@ struct IndicesSection {
 
 struct ClothSection {
     SectionID sectionID;
-    u32  clothCount;
+    u32       clothCount;
     StringPtr clothPtrs[clothCount];
-    u32  checksum1 [[format("format_hex")]];
-    u32  dataSize;
-    char data[dataSize];
-    u32  checksum2 [[format("format_hex")]];
+    ClothData clothData[clothCount];
+    u32       checksum [[format("format_hex")]];
     std::print("{}", sectionID);
 } [[inline]];
 
