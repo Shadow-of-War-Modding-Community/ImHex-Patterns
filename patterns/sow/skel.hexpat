@@ -10,7 +10,7 @@ enum SectionID : u32 {
     INDICES_SECTION   = 0xDCDCFF03,
     CLOTH_SECTION     = 0xDCDCFF04,
     UNK5_SECTION      = 0xDCDCFF05,
-    UNK9_SECTION      = 0xDCDCFF99,
+    FOOTER_SECTION    = 0xDCDCFF99,
 };
 
 enum Magic : str {
@@ -20,7 +20,7 @@ enum Magic : str {
     INDICES_SECTION   = "\x03\xFF\xDC\xDC",
     CLOTH_SECTION     = "\x04\xFF\xDC\xDC",
     UNK5_SECTION      = "\x05\xFF\xDC\xDC",
-    UNK9_SECTION      = "\x99\xFF\xDC\xDC",
+    FOOTER_SECTION    = "\x99\xFF\xDC\xDC",
 };
 
 enum AnimationType : u32 {
@@ -160,9 +160,9 @@ struct Unk5Section {
     std::print("{}", sectionID);
 } [[inline]];
 
-struct Unk9Section {
+struct FooterSection {
     SectionID sectionID;
-    char checksum[4];
+    char signature[4];
     u32  unk1;
     std::print("{}", sectionID);
 } [[inline]];
@@ -174,7 +174,7 @@ struct Sections {
     std::mem::MagicSearch<Magic::INDICES_SECTION,   IndicesSection>   indicesSection;
     std::mem::MagicSearch<Magic::CLOTH_SECTION,     ClothSection>     clothSection;
     std::mem::MagicSearch<Magic::UNK5_SECTION,      Unk5Section>      unk5Section;
-    std::mem::MagicSearch<Magic::UNK9_SECTION,      Unk9Section>      unk9Section;
+    std::mem::MagicSearch<Magic::FOOTER_SECTION,    FooterSection>    footerSection;
 };
 
 Header   header   @ 0x00 [[comment("Header containing File Information")]];
