@@ -110,7 +110,7 @@ struct Header {
     s32      unk8;
     s32      unk9;
     s32      unk10;
-    u32      checksum                  [[format("format_hex")]];
+    s32      unk11;
     u32      unk12;
     float    unk13; // 400 or 1200, ID?
     AABB     boundingBox               [[comment("Axis-Aligned Bounding Box")]];
