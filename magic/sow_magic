@@ -20,6 +20,11 @@
 >0x04   long        x                   Version %d
 !:mime sow/fxp
 
+# Shadow of War GAMEDB File
+0x00    string      GADB                Shadow of War GAMEDB File
+>0x04   long        x                   Version %d
+!:mime sow/gamedb
+
 # Shadow of War MAT File
 0x00    string      LTMI                Shadow of War MAT File
 >0x04   long        x                   Version %d
