@@ -176,13 +176,32 @@ struct Color<T> {
     T a [[comment("Alpha-Channel of the Color")]];
 };
 
-struct Vertex {
-    match (meshInfoSection.bufferLayoutSection.vertexBufferLayout[0].elementsLayout[0].type, meshInfoSection.bufferLayoutSection.vertexBufferLayout[0].elementsLayout[0].element) {
+struct VertexBuffer0 {
+    match (meshInfoSection.bufferLayoutSection.vertexBufferLayout[0].attributesLayout[0].type, meshInfoSection.bufferLayoutSection.vertexBufferLayout[0].attributesLayout[0].attribute) {
         (Type::VECTOR4F16, Attribute::POSITION):    Position<float16> position     [[comment("Position of the Vertex in 3D space")]];
         (Type::VECTOR4F32, Attribute::POSITION):    Position<float>   position     [[comment("Position of the Vertex in 3D space")]];
         (Type::VECTOR4U8,  Attribute::WEIGHT):      Weights<u8>       weights      [[comment("Weights associated with Vertex Groups")]];
         (Type::VECTOR4U8,  Attribute::VERTEXGROUP): VertexGroups<u8>  vertexGroups [[comment("Indices of Vertex Groups")]];
+    }
+};
+
+struct VertexBuffer1 {
+    match (meshInfoSection.bufferLayoutSection.vertexBufferLayout[0].attributesLayout[0].type, meshInfoSection.bufferLayoutSection.vertexBufferLayout[0].attributesLayout[0].attribute) {
+        (Type::VECTOR2I16, Attribute::TEXCOORD):    TextureCoordinate<u16>         textureCoordinate        [[comment("Texture Coordinates")]];
+        (Type::VECTOR2F32, Attribute::TEXCOORD):    TextureCoordinate<float>       textureCoordinate        [[comment("Texture Coordinates")]];
+        (Type::VECTOR4F32, Attribute::NORMAL):      Normal<float>     normal       [[comment("Normal of the Vertex")]];
+        (Type::VECTOR4F32, Attribute::TANGENT):     Tangent<float>    tangent      [[comment("Tangent of the Vertex")]];
+        (Type::VECTOR4F32, Attribute::BITANGENT):   Bitangent<float>  bitangent    [[comment("Normal of the Vertex")]];
+        (Type::VECTOR4F32, Attribute::NORMAL):      Normal<float>     normal       [[comment("Normal of the Vertex")]];
         (Type::VECTOR4U8,  Attribute::COLOR):       Color<u8>         color        [[comment("Color of the Vertex")]];
+    }
+};
+
+struct Vertex {
+    
+    match (meshInfoSection.bufferLayoutSection.vertexBufferLayout[0].attributesLayout[0].buffer) {
+        (Buffer::BUFFER_0): VertexBuffer0 vertexBuffer0[0];
+        (Buffer::BUFFER_1): VertexBuffer1 vertexBuffer1[0];
     }
 };
 
@@ -194,6 +213,20 @@ struct Face {
     u16 index1 [[comment("Index of the first Vertex in this Face")]];
     u16 index2 [[comment("Index of the second Vertex in this Face")]];
     u16 index3 [[comment("Index of the third Vertex in this Face")]];
+};
+
+struct VertexGroup {
+    u8 boneIndex;
+};
+
+struct Mesh {
+    Vertex      vertices;
+    Face        faces;
+    VertexGroup vertexGroups;
+};
+
+struct LOD {
+    Mesh meshes;
 };
 
 struct Header {
@@ -212,7 +245,7 @@ struct MeshDescSection {
     s32 materialIndices[materialIndicesCount]        [[comment("Material Indices")]];
     u32 vertexDataSectionSize[dataSectionCount]      [[comment("Size of the Vertex Data Section")]];
     u32 faceDataSectionSize[dataSectionCount]        [[comment("Size of the Face Data Section")]];
-    u32 VertexGroupDataSectionSize[dataSectionCount] [[comment("Size of the Vertex Group Data Section")]];
+    u32 vertexGroupDataSectionSize[dataSectionCount] [[comment("Size of the Vertex Group Data Section")]];
 };
 
 struct MeshInfoSection {
@@ -240,8 +273,23 @@ struct MeshInfoSection {
     BoneSection  boneSection                            [[comment("Section containing Data for the Bones")]];
 };
 
-struct MeshDataSection {
+struct VertexData {
+    char vertexData[meshDescSection.vertexDataSectionSize[std::core::array_index()]];
+};
+
+struct FaceData {
+    char faceData[meshDescSection.faceDataSectionSize[std::core::array_index()]];
+};
+
+struct VertexGroupData {
+    char vertexGroupData[meshDescSection.vertexGroupDataSectionSize[std::core::array_index()]];
+};
+
+struct MeshDataSection {    
     SectionID meshDataSectionID; // 0x95DBDB69
+    VertexData vertexData[meshDescSection.dataSectionCount];
+    FaceData faceData[meshDescSection.dataSectionCount];
+    VertexGroupData vertexGroupData[meshDescSection.dataSectionCount];
     //Mesh meshes[meshInfoSection.subMeshCount];
     //VertexArray vertexArray;
 };
