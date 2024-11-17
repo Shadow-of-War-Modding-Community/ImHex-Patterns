@@ -44,3 +44,8 @@
 0x00    string      SKEL                Shadow of War SKEL File
 >0x04   long        x                   Version %d
 !:mime sow/skel
+
+# Shadow of War STRDB File
+0x00    string      SKDB                Shadow of War STRDB File
+>0x04   long        x                   Version %d
+!:mime sow/strdb
