@@ -29,7 +29,7 @@ enum AnimationType : u32 {
 };
 
 fn relative_to_string_table(u128 offset) {
-    return addressof(header) + sizeof(header) + 4;
+    return addressof(header) + sizeof(header) + sizeof(SectionID);
 };
 
 fn format_string_ptr(ref auto stringPtr) {
@@ -92,6 +92,29 @@ struct ClothData {
     u32  signature [[format("format_hex")]];
     u32  dataSize;
     char data[dataSize];
+};
+
+struct ClothContainer {
+    u32    unk1;
+    u32    unk2;
+    String name;
+    char   data[168 - sizeof(name)];
+};
+
+struct Cloth {
+    u32    unk1;
+    String tag;
+    padding[2];
+    String sdkVersion;
+    u16    unk2;
+    char   dataString[4];
+    u32    unk3[22];
+    String strings[7];
+    padding[27];
+    u32    unk4[51];
+    padding[156];
+    char unk5[200];
+    ClothContainer clothContainer[4];
 };
 
 struct Header {
@@ -179,3 +202,5 @@ struct Sections {
 
 Header   header   @ 0x00 [[comment("Header containing File Information")]];
 Sections sections @ $;
+
+Cloth cloth @ addressof(sections.clothSection) + 24;
