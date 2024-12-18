@@ -9,7 +9,7 @@ enum SectionID : u32 {
     ANIMATION_SECTION = 0xDCDCFF02,
     INDICES_SECTION   = 0xDCDCFF03,
     CLOTH_SECTION     = 0xDCDCFF04,
-    UNK5_SECTION      = 0xDCDCFF05,
+    UNKNOWN_SECTION   = 0xDCDCFF05,
     FOOTER_SECTION    = 0xDCDCFF99,
 };
 
@@ -19,7 +19,7 @@ enum Magic : str {
     ANIMATION_SECTION = "\x02\xFF\xDC\xDC",
     INDICES_SECTION   = "\x03\xFF\xDC\xDC",
     CLOTH_SECTION     = "\x04\xFF\xDC\xDC",
-    UNK5_SECTION      = "\x05\xFF\xDC\xDC",
+    UNKNOWN_SECTION   = "\x05\xFF\xDC\xDC",
     FOOTER_SECTION    = "\x99\xFF\xDC\xDC",
 };
 
@@ -146,26 +146,26 @@ struct BoneSection {
     Bone bones[header.boneCount]             [[comment("Collection of Bones in the Skeleton")]];
     Rig  rig;
     std::print("{}", sectionID);
-} [[inline]];
+};
 
 struct ModelSection {
     SectionID sectionID;
     StringPtr AnimationPathPtrs[header.animationCount];
     StringPtr LODGroupNamePtrs[header.lodGroupCount];
     std::print("{}", sectionID);
-} [[inline]];
+};
 
 struct AnimationSection {
     SectionID sectionID;
     AnimationType animationTypes[header.animationCount];
     std::print("{}", sectionID);
-} [[inline]];
+};
 
 struct IndicesSection {
     SectionID sectionID;
     u8 boneIndices[header.boneCount];
     std::print("{}", sectionID);
-} [[inline]];
+};
 
 struct ClothSection {
     SectionID sectionID;
@@ -174,30 +174,31 @@ struct ClothSection {
     ClothData clothData[clothCount];
     u32       checksum [[format("format_hex")]];
     std::print("{}", sectionID);
-} [[inline]];
+};
 
-struct Unk5Section {
+// Haven't seen a single skel file containing data for this section
+struct UnknownSection {
     SectionID sectionID;
-    u32 unk5Count;
+    u32 unknownCount;
     u32 checksum [[format("format_hex")]];
     std::print("{}", sectionID);
-} [[inline]];
+};
 
 struct FooterSection {
     SectionID sectionID;
     char signature[4];
     u32  unk1;
     std::print("{}", sectionID);
-} [[inline]];
+};
 
 struct Sections {
-    std::mem::MagicSearch<Magic::BONE_SECTION,      BoneSection>      boneSection;
-    std::mem::MagicSearch<Magic::MODEL_SECTION,     ModelSection>     modelSection;
-    std::mem::MagicSearch<Magic::ANIMATION_SECTION, AnimationSection> animationSection;
-    std::mem::MagicSearch<Magic::INDICES_SECTION,   IndicesSection>   indicesSection;
-    std::mem::MagicSearch<Magic::CLOTH_SECTION,     ClothSection>     clothSection;
-    std::mem::MagicSearch<Magic::UNK5_SECTION,      Unk5Section>      unk5Section;
-    std::mem::MagicSearch<Magic::FOOTER_SECTION,    FooterSection>    footerSection;
+    BoneSection      boneSection;
+    ModelSection     modelSection;
+    AnimationSection animationSection;
+    IndicesSection   indicesSection;
+    ClothSection     clothSection;
+    UnknownSection   unknownSection;
+    FooterSection    footerSection;
 };
 
 Header   header   @ 0x00 [[comment("Header containing File Information")]];
