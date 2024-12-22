@@ -49,3 +49,8 @@
 0x00    string      SKDB                Shadow of War STRDB File
 >0x04   long        x                   Version %d
 !:mime sow/strdb
+
+# Shadow of War TEX File
+0x00    string      TEXR                Shadow of War TEX File
+>0x04   long        x                   Version %d
+!:mime sow/tex

@@ -1,22 +1,29 @@
 #pragma description Shadow of War TEX File
 #pragma MIME sow/tex
 
-struct Header {
-    char magic[4];
-    u32 version;
-    u32 unk1;
-    u32 unk2;
+fn format_string(ref auto string) {
+    return string.data;
 };
 
-struct FileName {
-    u16 length;
-    char name[length];
-};
+struct SizedString {
+    u16  size;
+    char data[size];
+} [[format("format_string")]];
 
-struct Size {
-    u8 unk1;
+struct Resolution {
     u16 width;
     u16 height;
+};
+
+struct Header {
+    char        magic[4];
+    u32         version;
+    u32         unk1;
+    u32         unk2;
+    SizedString filepath;
+    u8          unk3;
+    Resolution  higherResolution;
+    char        unk4[18];
 };
 
 enum DXGI_FORMAT : u32 {
@@ -240,6 +247,7 @@ struct DDS_PIXELFORMAT {
 } [[static]];
 
 struct DDS_HEADER {
+  char            magic[4];
   u32             size;
   HeaderFlags     flags;
   u32             height;
@@ -260,10 +268,5 @@ struct DDS_HEADER {
   }
 } [[static]];
 
-
 Header header @ 0x0;
-FileName fileName @ $;
-Size size @ $;
-
-char id[4] @ $ + 18;
 DDS_HEADER dds_header @ $;
