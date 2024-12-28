@@ -28,7 +28,7 @@ enum AnimationType : u32 {
     CINEMATIC_ANIMATION = 1,
 };
 
-fn relative_to_string_table(u128 offset) {
+fn relative_to_stringtable(u128 offset) {
     return addressof(header) + sizeof(header) + sizeof(SectionID);
 };
 
@@ -37,7 +37,7 @@ fn format_string_ptr(ref auto stringPtr) {
 };
 
 struct StringPtr {
-    String *stringPtr : u32 [[pointer_base("relative_to_string_table"), inline, sealed]];
+    String *stringPtr : u32 [[pointer_base("relative_to_stringtable"), inline, sealed]];
 } [[format("format_string_ptr")]];
 
 struct AABB {
@@ -59,19 +59,19 @@ struct LODGroup {
 };
 
 struct Bone {
-    StringPtr  boneNamePtr;
+    StringPtr  namePtr        [[comment("Pointer to the Name of the Bone")]];
     bool       active;
     Vector3f   translation    [[comment("Position of the Bone in 3D Space")]];
     Quaternion rotation       [[comment("Rotation of the Bone in 3D Space")]];
     u32        childCount     [[comment("Number of Child Bones")]];
-} [[name(boneNamePtr)]];
+} [[name(namePtr)]];
 
-struct Controller {
-    StringPtr controllerNamePtr;
-    u32       boneCount;
-    u32       controlCount;
-    u8        controls[boneCount];
-} [[name(controllerNamePtr)]];
+struct WeightSet {
+    StringPtr namePtr                [[comment("Pointer to the Name of the Weight Set")]];
+    u32       nodeCount              [[comment("Number of Nodes")]];
+    u32       nodeWeightCount        [[comment("Number of Node Weights")]];
+    u8        nodeWeights[nodeCount] [[comment("Node Weights in the Weight Set")]];
+} [[name(namePtr)]];
 
 struct Socket {
     u32       boneIndex;
@@ -79,21 +79,13 @@ struct Socket {
     padding[32];
 } [[name(socketNamePtr)]];
 
-struct Rig {
-    u32        controllerCount;
-    Controller controllers[controllerCount];
-    u32        socketCount;
-    if (socketCount > 0) {
-        Socket sockets[socketCount];
-    }
-};
-
 struct ClothData {
     u32  signature [[format("format_hex")]];
     u32  dataSize;
     char data[dataSize];
 };
 
+/*
 struct ClothContainer {
     u32    unk1;
     u32    unk2;
@@ -116,19 +108,20 @@ struct Cloth {
     char unk5[200];
     ClothContainer clothContainer[4];
 };
+*/
 
 struct Header {
     char     magic[4]                  [[comment("File Signature")]]; // SKEL
     u32      version                   [[comment("File Version")]];
     u32      headerSize                [[comment("Size of the Header")]];
     u32      stringTableSize           [[comment("Size of the String Table")]];
-    u32      modelStringsCount;
-    u32      boneNameCount             [[comment("Number of Bone Names")]];
-    u32      boneSectionSize           [[comment("Size of the Bone Section")]];
-    s32      animationCount;
-    u32      lodGroupCount             [[comment("Number of LOD Groups")]];
-    u32      socketCount;
+    u32      modelStringsCount; // Number of Material Indices starting from -1?
     u32      boneCount                 [[comment("Number of Bones")]];
+    u32      boneSectionSize           [[comment("Size of the Bone Section")]];
+    s32      animationCount            [[comment("Number of Animations")]];
+    u32      lodGroupCount             [[comment("Number of LOD Groups")]];
+    u32      socketCount               [[comment("Number of Sockets")]];
+    u32      nodeCount                 [[comment("Number of Nodes")]];
     s32      unk7;
     s32      unk8;
     s32      unk9;
@@ -142,16 +135,21 @@ struct Header {
 
 struct BoneSection {
     SectionID sectionID;
-    char stringTable[header.stringTableSize] [[comment("Table of Strings"), highlight_hidden]];
-    Bone bones[header.boneCount]             [[comment("Collection of Bones in the Skeleton")]];
-    Rig  rig;
+    char       stringTable[header.stringTableSize] [[comment("Table of Strings"), highlight_hidden]];
+    Bone       bones[header.boneCount]             [[comment("Collection of Bones in the Skeleton")]];
+    u32        weightSetCount                      [[comment("Number of Weight Sets")]];
+    WeightSet  weightSets[weightSetCount]          [[comment("Weight Sets used for blending different animations together")]];
+    u32        socketCount                         [[comment("Number of Sockets")]];
+    if (socketCount > 0) {
+        Socket sockets[socketCount]                [[comment("Sockets used to attatch Attatchments")]];
+    }
     std::print("{}", sectionID);
 };
 
 struct ModelSection {
     SectionID sectionID;
-    StringPtr AnimationPathPtrs[header.animationCount];
-    StringPtr LODGroupNamePtrs[header.lodGroupCount];
+    StringPtr animationPathPtrs[header.animationCount];
+    StringPtr lodGroupNamePtrs[header.lodGroupCount];
     std::print("{}", sectionID);
 };
 
@@ -172,7 +170,7 @@ struct ClothSection {
     u32       clothCount;
     StringPtr clothPtrs[clothCount];
     ClothData clothData[clothCount];
-    u32       checksum [[format("format_hex")]];
+    u32       endOfSection [[format("format_hex")]];
     std::print("{}", sectionID);
 };
 
@@ -180,10 +178,12 @@ struct ClothSection {
 struct UnknownSection {
     SectionID sectionID;
     u32 unknownCount;
-    u32 checksum [[format("format_hex")]];
+    u32 endOfSection [[format("format_hex")]];
     std::print("{}", sectionID);
 };
 
+// I have seen one skel file that contains more data
+// in this section but I haven't looked into it yet
 struct FooterSection {
     SectionID sectionID;
     char signature[4];
@@ -202,6 +202,6 @@ struct Sections {
 };
 
 Header   header   @ 0x00 [[comment("Header containing File Information")]];
-Sections sections @ $;
+Sections sections @ $    [[comment("Sections containing File Data")]];
 
-Cloth cloth @ addressof(sections.clothSection) + 24;
+//Cloth cloth @ addressof(sections.clothSection) + 24;
