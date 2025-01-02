@@ -85,7 +85,6 @@ struct ClothData {
     char data[dataSize];
 };
 
-/*
 struct ClothContainer {
     u32    unk1;
     u32    unk2;
@@ -94,28 +93,29 @@ struct ClothContainer {
 };
 
 struct Cloth {
+    u32    signature [[format("format_hex")]];
+    u32    dataSize;
     u32    unk1;
-    String tag;
-    padding[2];
-    String sdkVersion;
-    u16    unk2;
+    char   tag[4];
+    u32    unk2;
+    char   sdkVersion[12];
+    u32    unk3;
     char   dataString[4];
-    u32    unk3[22];
+    u32    unk4[22];
     String strings[7];
     padding[27];
-    u32    unk4[51];
+    u32    unk5[51];
     padding[156];
-    char unk5[200];
-    ClothContainer clothContainer[4];
+    char unk6[200];
+    //ClothContainer clothContainer[4];
 };
-*/
 
 struct Header {
     char     magic[4]                  [[comment("File Signature")]]; // SKEL
     u32      version                   [[comment("File Version")]];
     u32      headerSize                [[comment("Size of the Header")]];
     u32      stringTableSize           [[comment("Size of the String Table")]];
-    u32      modelStringsCount; // Number of Material Indices starting from -1?
+    u32      modelStringsCount;
     u32      boneCount                 [[comment("Number of Bones")]];
     u32      boneSectionSize           [[comment("Size of the Bone Section")]];
     s32      animationCount            [[comment("Number of Animations")]];
@@ -204,4 +204,5 @@ struct Sections {
 Header   header   @ 0x00 [[comment("Header containing File Information")]];
 Sections sections @ $    [[comment("Sections containing File Data")]];
 
-//Cloth cloth @ addressof(sections.clothSection) + 24;
+//Cloth cloth1 @ addressof(sections.clothSection.clothData[0]);
+//Cloth cloth2 @ addressof(sections.clothSection.clothData[1]);
