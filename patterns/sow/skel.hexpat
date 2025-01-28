@@ -9,7 +9,7 @@ enum SectionID : u32 {
     ANIMATION_SECTION = 0xDCDCFF02,
     INDICES_SECTION   = 0xDCDCFF03,
     CLOTH_SECTION     = 0xDCDCFF04,
-    UNKNOWN_SECTION   = 0xDCDCFF05,
+    GPUCLOTH_SECTION  = 0xDCDCFF05,
     FOOTER_SECTION    = 0xDCDCFF99,
 };
 
@@ -19,7 +19,7 @@ enum Magic : str {
     ANIMATION_SECTION = "\x02\xFF\xDC\xDC",
     INDICES_SECTION   = "\x03\xFF\xDC\xDC",
     CLOTH_SECTION     = "\x04\xFF\xDC\xDC",
-    UNKNOWN_SECTION   = "\x05\xFF\xDC\xDC",
+    GPUCLOTH_SECTION  = "\x05\xFF\xDC\xDC",
     FOOTER_SECTION    = "\x99\xFF\xDC\xDC",
 };
 
@@ -110,6 +110,13 @@ struct Cloth {
 };
 */
 
+struct GPUCloth {
+    u32   signature [[format("format_hex")]];
+    u16   pathSize;
+    char  path[pathSize];
+    float data[10];
+};
+
 struct Header {
     char     magic[4]                  [[comment("File Signature")]]; // SKEL
     u32      version                   [[comment("File Version")]];
@@ -174,11 +181,11 @@ struct ClothSection {
     std::print("{}", sectionID);
 };
 
-// Haven't seen a single skel file containing data for this section
-struct UnknownSection {
+struct GPUClothSection {
     SectionID sectionID;
-    u32 unknownCount;
-    u32 endOfSection [[format("format_hex")]];
+    u32       gpuClothCount;
+    GPUCloth  gpuCloth[gpuClothCount];
+    u32       endOfSection [[format("format_hex")]];
     std::print("{}", sectionID);
 };
 
@@ -197,7 +204,7 @@ struct Sections {
     AnimationSection animationSection;
     IndicesSection   indicesSection;
     ClothSection     clothSection;
-    UnknownSection   unknownSection;
+    GPUClothSection  gpuClothSection;
     FooterSection    footerSection;
 };
 
