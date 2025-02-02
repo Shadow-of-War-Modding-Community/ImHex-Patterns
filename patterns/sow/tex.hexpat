@@ -1,5 +1,4 @@
 #pragma description Shadow of War TEX File
-#pragma MIME sow/tex
 
 fn format_string(ref auto string) {
     return string.data;
