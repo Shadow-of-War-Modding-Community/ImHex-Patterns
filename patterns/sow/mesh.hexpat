@@ -19,19 +19,19 @@ enum Buffer : u8 {
 };
 
 enum Type : u8 {
-    TYPE0      =  0,
-    VECTOR2F32 =  1,
-    VECTOR3F32 =  2,
-    VECTOR4F32 =  3,
-    VECTOR4U8  =  4,
-    TYPE5      =  5,
-    TYPE6      =  6,
-    TYPE7      =  7,
-    TYPE8      =  8,
-    VECTOR2I16 =  9,
-    TYPE10     = 10,
-    TYPE11     = 11,
-    VECTOR4F16 = 12,
+    TYPE0  =  0,
+    FLOAT2 =  1,
+    FLOAT3 =  2,
+    FLOAT4 =  3,
+    UBYTE4 =  4,
+    TYPE5  =  5,
+    TYPE6  =  6,
+    TYPE7  =  7,
+    TYPE8  =  8,
+    SHORT2 =  9,
+    TYPE10 = 10,
+    TYPE11 = 11,
+    HALF4  = 12,
 };
 
 enum Attribute : u8 {
@@ -131,69 +131,56 @@ struct BoneSection {
     Bone bones[parent.boneCount] [[comment("Collection of Bones in the Skeleton")]];
 };
 
-struct Position<T> {
-    T x [[comment("X-Coordinate of the Position")]];
-    T y [[comment("Y-Coordinate of the Position")]];
-    T z [[comment("Z-Coordinate of the Position")]];
-    T w [[comment("W-Component, often used in Homogeneous Coordinates")]]; // Always 1.0
-};
+struct Vector2<T> {
+    T x [[comment("X-Component of the Vector")]];
+    T y [[comment("Y-Component of the Vector")]];
+} [[static]];
 
-struct Weights<T> {
-    T weight[4] [[comment("Weight associated with a Vertex Group")]];
-};
+struct Vector3<T> {
+    T x [[comment("X-Component of the Vector")]];
+    T y [[comment("Y-Component of the Vector")]];
+    T z [[comment("Z-Component of the Vector")]];
+} [[static]];
 
-struct VertexGroups<T> {
-    T vertexGroup[4] [[comment("Vertex Group associated with a Weight")]];
-};
+struct Vector4<T> {
+    T x [[comment("X-Component of the Vector")]];
+    T y [[comment("Y-Component of the Vector")]];
+    T z [[comment("Z-Component of the Vector")]];
+    T w [[comment("W-Component of the Vector")]];
+} [[static]];
 
-struct TextureCoordinate<T> {
-    T u [[comment("U-Coordinate (Horizontal Texture Coordinate)")]];
-    T v [[comment("V-Coordinate (Vertical Texture Coordinate)")]];
-};
-
-struct Normal<T> {
-    T x [[comment("X-Component of the Normal")]];
-    T y [[comment("Y-Component of the Normal")]];
-    T z [[comment("Z-Component of the Normal")]];
-};
-
-struct Tangent<T> {
-    T x [[comment("X-Component of the Tangent")]];
-    T y [[comment("Y-Component of the Tangent")]];
-    T z [[comment("Z-Component of the Tangent")]];
-};
-
-struct Bitangent<T> {
-    T x [[comment("X-Component of the Bitangent")]];
-    T y [[comment("Y-Component of the Bitangent")]];
-    T z [[comment("Z-Component of the Bitangent")]];
-};
-
-struct Color<T> {
-    T r [[comment("Red-Channel of the Color")]];
-    T g [[comment("Blue-Channel of the Color")]];
-    T b [[comment("Green-Channel of the Color")]];
-    T a [[comment("Alpha-Channel of the Color")]];
-};
+struct RGBA<T> {
+  T red   [[color("FF0000"), comment("Red-Channel of the Color")]];
+  T green [[color("00FF00"), comment("Green-Channel of the Color")]];
+  T blue  [[color("0000FF"), comment("Blue-Channel of the Color")]];
+  T alpha [[color("FFFFFF"), comment("Alpha-Channel of the Color")]];
+} [[static, hex::inline_visualize("color", std::fxpt::to_fixed(red, 8), std::fxpt::to_fixed(green, 8), std::fxpt::to_fixed(blue, 8), std::fxpt::to_fixed(alpha, 8))]];
 
 struct VertexBuffer0 {
-    match (meshInfoSection.bufferLayoutSection.vertexBufferLayout[0].attributesLayout[0].type, meshInfoSection.bufferLayoutSection.vertexBufferLayout[0].attributesLayout[0].attribute) {
-        (Type::VECTOR4F16, Attribute::POSITION):    Position<float16> position     [[comment("Position of the Vertex in 3D space")]];
-        (Type::VECTOR4F32, Attribute::POSITION):    Position<float>   position     [[comment("Position of the Vertex in 3D space")]];
-        (Type::VECTOR4U8,  Attribute::WEIGHT):      Weights<u8>       weights      [[comment("Weights associated with Vertex Groups")]];
-        (Type::VECTOR4U8,  Attribute::VERTEXGROUP): VertexGroups<u8>  vertexGroups [[comment("Indices of Vertex Groups")]];
+    match (meshInfoSection.bufferLayoutSection.vertexBufferLayout[0].attributesLayout[0].buffer,
+           meshInfoSection.bufferLayoutSection.vertexBufferLayout[0].attributesLayout[0].type,
+           meshInfoSection.bufferLayoutSection.vertexBufferLayout[0].attributesLayout[0].attribute,
+           meshInfoSection.bufferLayoutSection.vertexBufferLayout[0].attributesLayout[0].channel) {
+        (Buffer::BUFFER_0, Type::HALF4,  Attribute::POSITION,    Channel::CHANNEL_0): Vector4<float16> position        [[comment("Position of the Vertex in 3D space")]];
+        (Buffer::BUFFER_0, Type::FLOAT4, Attribute::POSITION,    Channel::CHANNEL_0): Vector4<float>   position        [[comment("Position of the Vertex in 3D space")]];
+        (Buffer::BUFFER_0, Type::UBYTE4, Attribute::WEIGHT,      Channel::CHANNEL_0): u8               weights[4]      [[comment("Weights associated with Vertex Groups")]];
+        (Buffer::BUFFER_0, Type::UBYTE4, Attribute::VERTEXGROUP, Channel::CHANNEL_0): u8               vertexGroups[4] [[comment("Indices of Vertex Groups")]];
     }
 };
 
 struct VertexBuffer1 {
-    match (meshInfoSection.bufferLayoutSection.vertexBufferLayout[0].attributesLayout[0].type, meshInfoSection.bufferLayoutSection.vertexBufferLayout[0].attributesLayout[0].attribute) {
-        (Type::VECTOR2I16, Attribute::TEXCOORD):    TextureCoordinate<u16>         textureCoordinate        [[comment("Texture Coordinates")]];
-        (Type::VECTOR2F32, Attribute::TEXCOORD):    TextureCoordinate<float>       textureCoordinate        [[comment("Texture Coordinates")]];
-        (Type::VECTOR4F32, Attribute::NORMAL):      Normal<float>     normal       [[comment("Normal of the Vertex")]];
-        (Type::VECTOR4F32, Attribute::TANGENT):     Tangent<float>    tangent      [[comment("Tangent of the Vertex")]];
-        (Type::VECTOR4F32, Attribute::BITANGENT):   Bitangent<float>  bitangent    [[comment("Normal of the Vertex")]];
-        (Type::VECTOR4F32, Attribute::NORMAL):      Normal<float>     normal       [[comment("Normal of the Vertex")]];
-        (Type::VECTOR4U8,  Attribute::COLOR):       Color<u8>         color        [[comment("Color of the Vertex")]];
+    match (meshInfoSection.bufferLayoutSection.vertexBufferLayout[0].attributesLayout[0].buffer,
+           meshInfoSection.bufferLayoutSection.vertexBufferLayout[0].attributesLayout[0].type,
+           meshInfoSection.bufferLayoutSection.vertexBufferLayout[0].attributesLayout[0].attribute,
+           meshInfoSection.bufferLayoutSection.vertexBufferLayout[0].attributesLayout[0].channel) {
+        (Buffer::BUFFER_1, Type::SHORT2, Attribute::TEXCOORD,  Channel::CHANNEL_0): Vector2<s16>   texCoord_0 [[comment("Texture Coordinates")]];
+        (Buffer::BUFFER_1, Type::FLOAT2, Attribute::TEXCOORD,  Channel::CHANNEL_0): Vector2<float> texCoord_0 [[comment("Texture Coordinates")]];
+        (Buffer::BUFFER_1, Type::SHORT2, Attribute::TEXCOORD,  Channel::CHANNEL_1): Vector2<s16>   texCoord_1 [[comment("Texture Coordinates")]];
+        (Buffer::BUFFER_1, Type::FLOAT2, Attribute::TEXCOORD,  Channel::CHANNEL_1): Vector2<float> texCoord_1 [[comment("Texture Coordinates")]];
+        (Buffer::BUFFER_1, Type::FLOAT3, Attribute::NORMAL,    Channel::CHANNEL_0): Vector3<float> normal     [[comment("Normal of the Vertex")]];
+        (Buffer::BUFFER_1, Type::FLOAT3, Attribute::TANGENT,   Channel::CHANNEL_0): Vector3<float> tangent    [[comment("Tangent of the Vertex")]];
+        (Buffer::BUFFER_1, Type::FLOAT3, Attribute::BITANGENT, Channel::CHANNEL_0): Vector3<float> bitangent  [[comment("Normal of the Vertex")]];
+        (Buffer::BUFFER_1, Type::UBYTE4, Attribute::COLOR,     Channel::CHANNEL_0): RGBA<u8>       color      [[comment("Color of the Vertex")]];
     }
 };
 
