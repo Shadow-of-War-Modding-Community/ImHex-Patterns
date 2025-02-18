@@ -6,45 +6,39 @@ import hex.core;
 import std.fxpt;
 
 enum Type : u32 {
-    VECTOR3F32 =     2,
-    VECTOR4F32 =     3,
-    NUMBER     =     4,
-    FLOAT      =     5,
-    BOOLEAN    =     6,
-    SURFACE    =     8,
-    VECTOR2F32 =    11,
-    TEXTURE    = 65537,
+    FLOAT3 =     2,
+    FLOAT4 =     3,
+    INT32  =     4,
+    FLOAT  =     5,
+    UINT32 =     6,
+    STRING =     8,
+    FLOAT2 =    11,
+    PATH   = 65537,
 };
 
-struct Vector2f {
-    float X;
-    float Y;
-} [[inline]];
+struct Vector2<T> {
+    T x;
+    T y;
+};
 
-struct Vector3f {
-    float X;
-    float Y;
-    float Z;
-} [[inline]];
+struct Vector3<T> {
+    T x;
+    T y;
+    T z;
+};
 
-struct Vector4f {
-    float X;
-    float Y;
-    float Z;
-    float W;
-} [[inline]];
+struct Vector4<T> {
+    T x;
+    T y;
+    T z;
+    T w;
+};
 
-struct Number {
-    u32 Number;
-} [[inline]];
-
-struct Float {
-    float Float;
-} [[inline]];
-
-struct Boolean {
-    bool Bool;
-} [[inline]];
+struct SpecularTint {
+    float metalness;
+    float specularScale;
+    float roughness;
+};
 
 struct String {
     char data[while(std::mem::read_unsigned($, sizeof(char)) != 0x00)];
@@ -66,29 +60,47 @@ struct Header {
     u16  propertyCount2;
     u32  shaderDataSize;
     u32  unknownSize;
-    u16  strlen;
-    char shader[strlen];
+    u16  shaderLength;
+    char shader[shaderLength];
 };
 
 struct Property {
     Type type;
-    u16  strlen;
-    char name[strlen];
+    u16  nameLength;
+    char name[nameLength];
     u32  offset;
 
     match (type) {
-        (Type::VECTOR2F32): Vector2f @ sizeof(header) + offset;
-        (Type::VECTOR3F32):
-            if (!std::string::starts_with(name, "k_c")) Vector3f @ sizeof(header) + offset;
-            else if (std::string::starts_with(name, "k_c")) RGB<float> Color @ sizeof(header) + offset;
-        (Type::VECTOR4F32): Vector4f @ sizeof(header) + offset;
-        (Type::NUMBER):     Number @ sizeof(header) + offset;
-        (Type::FLOAT):      Float @ sizeof(header) + offset;
-        (Type::BOOLEAN):    Boolean @ sizeof(header) + offset;
-        (Type::SURFACE):    String Surface @ sizeof(header) + offset;
-        (Type::TEXTURE): {
-            String Texture @ sizeof(header) + offset;
-            hex::core::add_virtual_file(Texture.data, this); // Check the "Virtual Filesystem" tab at the Console
+        (Type::FLOAT2):
+            if (std::string::starts_with(name, "k_v")) Vector2<float> vector @ sizeof(header) + offset;
+            else Vector2<float> vector @ sizeof(header) + offset;
+        (Type::FLOAT3): {
+            if (std::string::starts_with(name, "k_v")) {
+                if (std::string::ends_with(name, "SpecularTint")) SpecularTint specular @ sizeof(header) + offset;
+                else Vector3<float> vector @ sizeof(header) + offset;
+            }
+            else if (std::string::starts_with(name, "k_c")) RGB<float> color @ sizeof(header) + offset [[name("color##xx")]];
+            else Vector3<float> vector @ sizeof(header) + offset;
+        }
+        (Type::FLOAT4):
+            if (std::string::starts_with(name, "k_v")) Vector4<float> vector @ sizeof(header) + offset;
+            else Vector4<float> vector @ sizeof(header) + offset;
+        (Type::INT32):
+            if (std::string::starts_with(name, "k_n")) s32 number @ sizeof(header) + offset;
+            else s32 int32 @ sizeof(header) + offset;
+        (Type::FLOAT):
+            if (std::string::starts_with(name, "k_f")) float floatingPoint @ sizeof(header) + offset [[name("float")]];
+            else float floatingPoint @ sizeof(header) + offset [[name("float")]];
+        (Type::UINT32):
+            if (std::string::starts_with(name, "k_b")) bool boolean @ sizeof(header) + offset;
+            else u32 uint32 @ sizeof(header) + offset;
+        (Type::STRING):
+            if (std::string::starts_with(name, "Surface")) String surface @ sizeof(header) + offset;
+            else String string @ sizeof(header) + offset;
+        (Type::PATH): {
+            if (std::string::starts_with(name, "t")) String texture @ sizeof(header) + offset;
+            else String path @ sizeof(header) + offset;
+            hex::core::add_virtual_file(texture.data, this); // Check the "Virtual Filesystem" tab at the Console
         }
     }
 
