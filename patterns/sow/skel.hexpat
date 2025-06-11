@@ -74,9 +74,11 @@ struct WeightSet {
 } [[name(namePtr)]];
 
 struct Socket {
-    u32       boneIndex;
-    StringPtr socketNamePtr;
-    padding[32];
+    u32        boneIndex;
+    StringPtr  socketNamePtr;
+    Quaternion rotation;
+    Vector3f   translation;
+    float      scale;
 } [[name(socketNamePtr)]];
 
 struct ClothData {
