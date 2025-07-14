@@ -1,6 +1,25 @@
 #pragma description Shadow of War ARCH06 File
 #pragma MIME sow/arch06
 
+fn align_chunk_size(u64 chunkSize) {
+    return (chunkSize + 3) & ~3; // Align to 4-byte boundary
+};
+
+fn get_padding_size(u64 chunkSize) {
+    return align_chunk_size(chunkSize) - chunkSize;
+};
+
+struct ChunkHeader {
+    u32 chunkSize;
+    u32 uncompressedSize;
+};
+
+struct Chunk {
+    ChunkHeader header;
+    u8 data[header.chunkSize];
+    u8 padding1[get_padding_size(header.chunkSize)];
+};
+
 struct File {
     u32 nameOffset;
     u64 dataOffset;
@@ -9,8 +28,8 @@ struct File {
     u8  flag1; // Is compressed?
     u8  flag2; // Compression level?
     
-    char name[] @ addressof(parent.stringTable[nameOffset]);
-    char data[dataSize] @ dataOffset;
+    char  name[] @ addressof(parent.stringTable[nameOffset]);
+    Chunk chunks[while($ - dataOffset < dataSize)] @ dataOffset;
 } [[name(name)]];
 
 struct Folder {
@@ -28,9 +47,9 @@ struct Header {
     u32  stringTableSize;
     u32  folderCount;
     u32  fileCount;
-    u32  unk4;
-    u32  unk5;
-    u32  unk6;
+    u32  unk4; // Always 1?
+    u32  unk5; // Reserved?
+    u32  unk6; // Reserved?
     char padding1[16];
 };
 
