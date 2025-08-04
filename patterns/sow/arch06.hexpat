@@ -4,6 +4,13 @@
 #pragma pattern_limit 999999
 
 import type.guid;
+import std.string;
+
+using String = std::string::NullString;
+
+fn relative_to_stringtable(u128 offset) {
+    return addressof(header) + sizeof(header);
+};
 
 fn align_chunk_size(u64 chunkSize) {
     return (chunkSize + 3) & ~3; // Align to 4-byte boundary
@@ -14,59 +21,55 @@ fn get_padding_size(u64 chunkSize) {
 };
 
 struct CompressedChunkHeader {
-    u32 chunkSize;
-    u32 uncompressedSize;
+    u32 chunkSize        [[comment("Size of the data in this chunk.")]];
+    u32 uncompressedSize [[comment("Size of the data when uncompressed.")]];
 };
 
 struct CompressedChunk {
-    CompressedChunkHeader header;
-    u8 data[header.chunkSize];
-    u8 padding1[get_padding_size(header.chunkSize)];
+    CompressedChunkHeader header                      [[comment("Header containing information about this chunk.")]];
+    char data[header.chunkSize]                       [[comment("Data contained in this chunk.")]];
+    char padding1[get_padding_size(header.chunkSize)] [[comment("Padding to align the chunk to a 4-byte boundary.")]];
 };
 
 struct File {
-    u32  nameOffset;
-    u64  dataOffset;
-    u64  dataSize;
-    u64  uncompressedSize;
-    bool compression      [[comment("Determines if the archive is compressed or not.")]];
-    u8   compressionLevel [[comment("Determines the compression level if compression is used. There are 9 levels of compression.")]];
+    String* name : u32       [[comment("Pointer to the name of this file relative to the string table."), pointer_base("relative_to_stringtable")]];
+    u64     dataOffset       [[comment("Offset to the data stored for this file.")]];
+    u64     dataSize         [[comment("Size of the data stored for this file.")]];
+    u64     uncompressedSize [[comment("Size of the file when uncompressed.")]];
+    bool    isCompressed     [[comment("Determines if the archive is compressed or not.")]];
+    u8      compressionLevel [[comment("Determines the compression level if compression is used. There are 9 levels of compression.")]];
     
-    char  name[] @ addressof(parent.stringTable[nameOffset]);
-    
-    if (compression)
-        CompressedChunk chunks[while($ - dataOffset < dataSize)] @ dataOffset;
+    if (isCompressed)
+        CompressedChunk chunks[while($ - dataOffset < dataSize)] @ dataOffset [[comment("Compressed chunks of this file.")]];
     else
-        u8 data[dataSize] @ dataOffset;
+        char data[dataSize] @ dataOffset [[comment("Uncompressed data for this file.")]];
         
 } [[name(name)]];
 
 struct Folder {
-    u32 nameOffset;
-    s32 nextSubFolderIndex;
-    s32 nextFolderIndex;
-    u32 subFileCount;
-    
-    char name[] @ addressof(parent.stringTable[nameOffset]);
+    String* name : u32         [[comment("Pointer to the name of this folder relative to the string table."), pointer_base("relative_to_stringtable")]];
+    s32     nextSubFolderIndex [[comment("Index of the next subfolder contained in this folder.")]];
+    s32     nextFolderIndex    [[comment("Index of the next folder contained in the parent folder.")]];
+    u32     fileCount          [[comment("Number of files contained in this folder.")]];
 } [[name(name)]];
 
 struct Header {
-    char magic[4]; // LTAR
-    u32  version;
-    u32  stringTableSize;
-    u32  folderCount;
-    u32  fileCount;
-    u32  retail   [[comment("Determines if the archive is shipped with the game.")]];
-    u32  download [[comment("Determines if the archive should be considered for automatic content download with some games.")]];
-    u32  crc      [[comment("Determines if the archive contains a CRC value for the entire archive.")]];
-    type::GUID guid;
+    char magic[4]        [[comment("File signature.")]]; // LTAR
+    u32  version         [[comment("File version.")]];
+    u32  stringTableSize [[comment("Size of the string table.")]];
+    u32  folderCount     [[comment("Number of folders in the archive.")]];
+    u32  fileCount       [[comment("Number of files in the archive.")]];
+    u32  isRetail        [[comment("Determines if the archive is shipped with the game.")]];
+    u32  isDownloadable  [[comment("Determines if the archive should be considered for automatic content download for certain games.")]];
+    u32  hasCRC          [[comment("Determines if the archive contains a CRC value for the entire archive.")]];
+    type::GUID guid      [[comment("Globally Unique ID that identifies the archive. Can be empty.")]];
 };
 
 struct Section {
-    char   stringTable[header.stringTableSize];
-    File   files[header.fileCount];
-    Folder folders[header.folderCount];
+    char   stringTable[header.stringTableSize] [[comment("String table that contains the names of the files and folders in the archive.")]];
+    File   files[header.fileCount]             [[comment("Files contained in the archive.")]];
+    Folder folders[header.folderCount]         [[comment("Folders contained in the archive.")]];
 };
 
-Header  header  @ 0x0;
-Section section @ $;
+Header  header  @ 0x0 [[comment("Header containing file information.")]];
+Section section @ $   [[comment("Section containing file data.")]];
