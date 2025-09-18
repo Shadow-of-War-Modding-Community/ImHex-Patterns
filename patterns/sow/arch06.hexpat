@@ -21,36 +21,45 @@ fn get_padding_size(u64 chunkSize) {
 };
 
 struct CompressedChunkHeader {
-    u32 chunkSize        [[comment("Size of the data in this chunk.")]];
+    u32 compressedSize   [[comment("Size of the data when compressed.")]];
     u32 uncompressedSize [[comment("Size of the data when uncompressed.")]];
 };
 
 struct CompressedChunk {
-    CompressedChunkHeader header                      [[comment("Header containing information about this chunk.")]];
-    char data[header.chunkSize]                       [[comment("Data contained in this chunk.")]];
-    char padding1[get_padding_size(header.chunkSize)] [[comment("Padding to align the chunk to a 4-byte boundary.")]];
+    CompressedChunkHeader header                           [[comment("Header containing information about this chunk.")]];
+    char data[header.compressedSize]                       [[comment("Data contained in this chunk.")]];
+    char padding1[get_padding_size(header.compressedSize)] [[comment("Padding to align the chunk to a 4-byte boundary.")]];
 };
 
 struct File {
     String* name : u32       [[comment("Pointer to the name of this file relative to the string table."), pointer_base("relative_to_stringtable")]];
     u64     dataOffset       [[comment("Offset to the data stored for this file.")]];
-    u64     dataSize         [[comment("Size of the data stored for this file.")]];
+    u64     compressedSize   [[comment("Size of the file when compressed.")]];
     u64     uncompressedSize [[comment("Size of the file when uncompressed.")]];
-    bool    isCompressed     [[comment("Determines if the archive is compressed or not.")]];
-    u8      compressionLevel [[comment("Determines the compression level if compression is used. There are 9 levels of compression.")]];
     
-    if (isCompressed)
-        CompressedChunk chunks[while($ - dataOffset < dataSize)] @ dataOffset [[comment("Compressed chunks of this file.")]];
+    if (header.version <= 3) // Version 3 used in Shadow of Mordor and FEAR
+    {
+        u32 compressionLevel [[comment("Determines the compression level if compression is used. There are 9 levels of compression.")]];
+    }
+    else if (header.version >= 4) // Version 4 used in Shadow of War
+    {
+        bool isCompressed     [[comment("Determines if the archive is compressed or not.")]];
+        u8   compressionLevel [[comment("Determines the compression level if compression is used. There are 9 levels of compression.")]];
+    }
+    
+    if (compressedSize == uncompressedSize)
+        char data[uncompressedSize] @ dataOffset [[comment("Uncompressed data for this file.")]];
     else
-        char data[dataSize] @ dataOffset [[comment("Uncompressed data for this file.")]];
+        CompressedChunk chunks[while($ - dataOffset < compressedSize)] @ dataOffset [[comment("Compressed chunks of this file.")]];
         
 } [[name(name)]];
 
+// Uses a Left-Child Right-Sibling binary tree structure
 struct Folder {
-    String* name : u32         [[comment("Pointer to the name of this folder relative to the string table."), pointer_base("relative_to_stringtable")]];
-    s32     nextSubFolderIndex [[comment("Index of the next subfolder contained in this folder.")]];
-    s32     nextFolderIndex    [[comment("Index of the next folder contained in the parent folder.")]];
-    u32     fileCount          [[comment("Number of files contained in this folder.")]];
+    String* name : u32              [[comment("Pointer to the name of this folder relative to the string table."), pointer_base("relative_to_stringtable")]];
+    s32     leftChildFolderIndex    [[comment("Index of the left child folder used to access the first child folder.")]];
+    s32     rightSiblingFolderIndex [[comment("Index of the right sibling folder used to access the next sibling folder.")]];
+    u32     fileCount               [[comment("Number of files contained in this folder.")]];
 } [[name(name)]];
 
 struct Header {
