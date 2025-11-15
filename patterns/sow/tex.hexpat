@@ -1,4 +1,5 @@
 #pragma description Shadow of War TEX File
+#pragma MIME sow/tex
 
 fn format_string(ref auto string) {
     return string.data;
@@ -9,20 +10,86 @@ struct SizedString {
     char data[size];
 } [[format("format_string")]];
 
-struct Resolution {
+enum TextureType : u8 {
+    UNKNOWN          = 0,
+    TEXTURE1D        = 1,
+    TEXTURE1DARRAY   = 2,
+    TEXTURE2D        = 3,
+    TEXTURE2DARRAY   = 4,
+    TEXTURE3D        = 5,
+    TEXTURE2DMS      = 6,
+    TEXTURE2DMSARRAY = 7,
+    COUNT            = 8,
+};
+
+using DXGI_FORMAT;
+
+struct Texture1D_Desc {
+    u16 width;
+    u16 arraySize;
+    u8  mipLevels;
+    DXGI_FORMAT format;
+    u32 miscFlags;
+};
+
+struct Texture2D_Desc {
     u16 width;
     u16 height;
+    u16 arraySize;
+    u8  mipLevels;
+    u8  sampleCount;
+    DXGI_FORMAT format;
+    u32 miscFlags;
+};
+
+struct Texture3D_Desc {
+    u16 width;
+    u16 height;
+    u16 depth;
+    u8  mipLevels;
+    DXGI_FORMAT format;
+    u32 miscFlags;
 };
 
 struct Header {
     char        magic[4];
     u32         version;
-    u32         unk1;
-    u32         unk2;
-    SizedString filepath;
-    u8          unk3;
-    Resolution  higherResolution;
-    char        unk4[18];
+    
+    // Version 3 (SOM)
+    if (magic == "TEXR" && version == 3) {
+        s64         unk1;
+        SizedString filepath;
+        TextureType type;
+        u16         unk4;
+    }
+    
+    // Version 8 (SOW)
+    else if ((magic == "TEXR" && version == 8) || (magic == "TEXA" && version == 1)) {
+        s64         unk1;
+        SizedString filepath;
+        TextureType type;
+        
+        match (type) {
+            (TextureType::TEXTURE1D | TextureType::TEXTURE1DARRAY):
+                Texture1D_Desc desc;
+            (TextureType::TEXTURE3D):
+                Texture3D_Desc desc;
+            (_):
+                Texture2D_Desc desc;
+        }
+        
+        u8          unk12;
+        s8          unk13;
+        s8          unk14;
+        u8          unk15;
+        u8          unk16;
+        u8          unk17;
+        
+        if (type == TextureType::TEXTURE1DARRAY || 
+            type == TextureType::TEXTURE2DARRAY || 
+            type == TextureType::TEXTURE2DMSARRAY)
+            SizedString textures[desc.arraySize];
+    }
 };
 
 enum DXGI_FORMAT : u32 {
@@ -214,7 +281,7 @@ enum DX10AlphaMode : u32 {
   Straight,
   PreMultiplied,
   Opaque,
-  Custom,	
+  Custom,   
 };
 
 bitfield DX10MiscFlags {
