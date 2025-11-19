@@ -1,0 +1,315 @@
+---
+header: 
+    magic: "LTAR"
+    version: 4
+    stringTableSize: 680
+    folderCount: 18
+    fileCount: 12
+    unk4: 1
+    unk5: 0
+    unk6: 0
+    padding1: "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
+section: 
+    stringTable: "\x00archivepatchloosefiles.txt\x00credits_1.cred\x00interface\x00interface\bundles\x00interface\bundles\credits\x00credits_2.cred\x00ingame_tex.bndl\x00fagameplay.bndl\x00worlds\x00worlds\retail\x00worlds\retail\island\x00worlds\retail\island\sectionsandlayers\x00worlds\retail\island\sectionsandlayers\fortassault\x00fagameplay.scripts\x00worlds\retail\mtnpass\x00worlds\retail\mtnpass\sectionsandlayers\x00worlds\retail\mtnpass\sectionsandlayers\fortassault\x00fortassault_00.bndl\x00worlds\retail\snowmtn\x00worlds\retail\snowmtn\sectionsandlayers\x00worlds\retail\snowmtn\sectionsandlayers\fortassault\x00fortassault_00.scripts\x00worlds\retail\volcano\x00worlds\retail\volcano\sectionsandlayers\x00worlds\retail\volcano\sectionsandlayers\fortassault\x00"
+    files: 
+        - 
+            nameOffset: 1
+            dataOffset: 1448
+            dataSize: 1252
+            uncompressedSize: 3749
+            flag1: 1
+            flag2: 9
+            name: "archivepatchloosefiles.txt\x00"
+            data: 
+                compressedSize: 1243
+                uncompressedSize: 3749
+                unk3: 140
+                unk4: 6
+                unk5: 1024
+                unk6: 3540289749
+                magic: "\x01\x00\x00\x00"
+        - 
+            nameOffset: 112
+            dataOffset: 2700
+            dataSize: 4680
+            uncompressedSize: 25032
+            flag1: 1
+            flag2: 9
+            name: "ingame_tex.bndl\x00"
+            data: 
+                compressedSize: 4670
+                uncompressedSize: 25032
+                unk3: 140
+                unk4: 6
+                unk5: 4608
+                unk6: 907182136
+                magic: "BNDL"
+        - 
+            nameOffset: 28
+            dataOffset: 7380
+            dataSize: 5304
+            uncompressedSize: 28404
+            flag1: 1
+            flag2: 9
+            name: "credits_1.cred\x00"
+            data: 
+                compressedSize: 5295
+                uncompressedSize: 28404
+                unk3: 140
+                unk4: 6
+                unk5: 5120
+                unk6: 2803140777
+                magic: "\xFF\xFE2\x00"
+        - 
+            nameOffset: 97
+            dataOffset: 12684
+            dataSize: 38876
+            uncompressedSize: 246538
+            flag1: 1
+            flag2: 9
+            name: "credits_2.cred\x00"
+            data: 
+                compressedSize: 12705
+                uncompressedSize: 65536
+                unk3: 140
+                unk4: 6
+                unk5: 12544
+                unk6: 2570160283
+                magic: "\xFF\xFE1\x00"
+        - 
+            nameOffset: 128
+            dataOffset: 51560
+            dataSize: 3880
+            uncompressedSize: 15412
+            flag1: 1
+            flag2: 9
+            name: "fagameplay.bndl\x00"
+            data: 
+                compressedSize: 3872
+                uncompressedSize: 15412
+                unk3: 140
+                unk4: 6
+                unk5: 3840
+                unk6: 403671066
+                magic: "BNDL"
+        - 
+            nameOffset: 276
+            dataOffset: 55440
+            dataSize: 140260
+            uncompressedSize: 819379
+            flag1: 1
+            flag2: 9
+            name: "fagameplay.scripts\x00"
+            data: 
+                compressedSize: 10982
+                uncompressedSize: 65536
+                unk3: 140
+                unk4: 6
+                unk5: 10752
+                unk6: 3727329504
+                magic: "SCRI"
+        - 
+            nameOffset: 128
+            dataOffset: 195700
+            dataSize: 3860
+            uncompressedSize: 15168
+            flag1: 1
+            flag2: 9
+            name: "fagameplay.bndl\x00"
+            data: 
+                compressedSize: 3852
+                uncompressedSize: 15168
+                unk3: 140
+                unk4: 6
+                unk5: 3840
+                unk6: 68126726
+                magic: "BNDL"
+        - 
+            nameOffset: 276
+            dataOffset: 199560
+            dataSize: 128056
+            uncompressedSize: 759671
+            flag1: 1
+            flag2: 9
+            name: "fagameplay.scripts\x00"
+            data: 
+                compressedSize: 10839
+                uncompressedSize: 65536
+                unk3: 140
+                unk4: 6
+                unk5: 10752
+                unk6: 1328187473
+                magic: "SCRI"
+        - 
+            nameOffset: 409
+            dataOffset: 327616
+            dataSize: 3896
+            uncompressedSize: 15412
+            flag1: 1
+            flag2: 9
+            name: "fortassault_00.bndl\x00"
+            data: 
+                compressedSize: 3885
+                uncompressedSize: 15412
+                unk3: 140
+                unk4: 6
+                unk5: 3840
+                unk6: 621774887
+                magic: "BNDL"
+        - 
+            nameOffset: 543
+            dataOffset: 331512
+            dataSize: 128268
+            uncompressedSize: 761498
+            flag1: 1
+            flag2: 9
+            name: "fortassault_00.scripts\x00"
+            data: 
+                compressedSize: 10843
+                uncompressedSize: 65536
+                unk3: 140
+                unk4: 6
+                unk5: 10752
+                unk6: 1395296341
+                magic: "SCRI"
+        - 
+            nameOffset: 128
+            dataOffset: 459780
+            dataSize: 4188
+            uncompressedSize: 16784
+            flag1: 1
+            flag2: 9
+            name: "fagameplay.bndl\x00"
+            data: 
+                compressedSize: 4178
+                uncompressedSize: 16784
+                unk3: 140
+                unk4: 6
+                unk5: 4096
+                unk6: 1242597452
+                magic: "BNDL"
+        - 
+            nameOffset: 276
+            dataOffset: 463968
+            dataSize: 128188
+            uncompressedSize: 760979
+            flag1: 1
+            flag2: 9
+            name: "fagameplay.scripts\x00"
+            data: 
+                compressedSize: 10842
+                uncompressedSize: 65536
+                unk3: 140
+                unk4: 6
+                unk5: 10752
+                unk6: 1378519124
+                magic: "SCRI"
+    folders: 
+        - 
+            nameOffset: 0
+            nextSubFolderIndex: 1
+            nextFolderIndex: -1
+            subFileCount: 1
+            name: "\x00"
+        - 
+            nameOffset: 43
+            nextSubFolderIndex: 2
+            nextFolderIndex: 4
+            subFileCount: 0
+            name: "interface\x00"
+        - 
+            nameOffset: 53
+            nextSubFolderIndex: 3
+            nextFolderIndex: -1
+            subFileCount: 1
+            name: "interface\bundles\x00"
+        - 
+            nameOffset: 71
+            nextSubFolderIndex: -1
+            nextFolderIndex: -1
+            subFileCount: 2
+            name: "interface\bundles\credits\x00"
+        - 
+            nameOffset: 144
+            nextSubFolderIndex: 5
+            nextFolderIndex: -1
+            subFileCount: 0
+            name: "worlds\x00"
+        - 
+            nameOffset: 151
+            nextSubFolderIndex: 6
+            nextFolderIndex: -1
+            subFileCount: 0
+            name: "worlds\retail\x00"
+        - 
+            nameOffset: 165
+            nextSubFolderIndex: 7
+            nextFolderIndex: 9
+            subFileCount: 0
+            name: "worlds\retail\island\x00"
+        - 
+            nameOffset: 186
+            nextSubFolderIndex: 8
+            nextFolderIndex: -1
+            subFileCount: 0
+            name: "worlds\retail\island\sectionsandlayers\x00"
+        - 
+            nameOffset: 225
+            nextSubFolderIndex: -1
+            nextFolderIndex: -1
+            subFileCount: 2
+            name: "worlds\retail\island\sectionsandlayers\fortassault\x00"
+        - 
+            nameOffset: 295
+            nextSubFolderIndex: 10
+            nextFolderIndex: 12
+            subFileCount: 0
+            name: "worlds\retail\mtnpass\x00"
+        - 
+            nameOffset: 317
+            nextSubFolderIndex: 11
+            nextFolderIndex: -1
+            subFileCount: 0
+            name: "worlds\retail\mtnpass\sectionsandlayers\x00"
+        - 
+            nameOffset: 357
+            nextSubFolderIndex: -1
+            nextFolderIndex: -1
+            subFileCount: 2
+            name: "worlds\retail\mtnpass\sectionsandlayers\fortassault\x00"
+        - 
+            nameOffset: 429
+            nextSubFolderIndex: 13
+            nextFolderIndex: 15
+            subFileCount: 0
+            name: "worlds\retail\snowmtn\x00"
+        - 
+            nameOffset: 451
+            nextSubFolderIndex: 14
+            nextFolderIndex: -1
+            subFileCount: 0
+            name: "worlds\retail\snowmtn\sectionsandlayers\x00"
+        - 
+            nameOffset: 491
+            nextSubFolderIndex: -1
+            nextFolderIndex: -1
+            subFileCount: 2
+            name: "worlds\retail\snowmtn\sectionsandlayers\fortassault\x00"
+        - 
+            nameOffset: 566
+            nextSubFolderIndex: 16
+            nextFolderIndex: -1
+            subFileCount: 0
+            name: "worlds\retail\volcano\x00"
+        - 
+            nameOffset: 588
+            nextSubFolderIndex: 17
+            nextFolderIndex: -1
+            subFileCount: 0
+            name: "worlds\retail\volcano\sectionsandlayers\x00"
+        - 
+            nameOffset: 628
+            nextSubFolderIndex: -1
+            nextFolderIndex: -1
+            subFileCount: 2
+            name: "worlds\retail\volcano\sectionsandlayers\fortassault\x00"

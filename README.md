@@ -16,7 +16,8 @@ This repository contains all the currently known patterns of the file formats us
 | MESH    | `sow/mesh`     | [patterns/sow/mesh.hexpat](https://github.com/Shadow-of-War-Modding-Community/ImHex-Patterns/blob/main/patterns/sow/mesh.hexpat)             | Shadow of War MESH File    |
 | SCRIPTS | `sow/scripts`  | [patterns/sow/scripts.hexpat](https://github.com/Shadow-of-War-Modding-Community/ImHex-Patterns/blob/main/patterns/sow/scripts.hexpat)       | Shadow of War SCRIPTS File |
 | SKEL    | `sow/skel`     | [patterns/sow/skel.hexpat](https://github.com/Shadow-of-War-Modding-Community/ImHex-Patterns/blob/main/patterns/sow/skel.hexpat)             | Shadow of War SKEL File    |
-| STRDB   | `sow/strdb`    | [patterns/sow/strdb.hexpat](https://github.com/Shadow-of-War-Modding-Community/ImHex-Patterns/blob/main/patterns/sow/strdb.hexpat)            | Shadow of War STRDB File  |
+| STRDB   | `sow/strdb`    | [patterns/sow/strdb.hexpat](https://github.com/Shadow-of-War-Modding-Community/ImHex-Patterns/blob/main/patterns/sow/strdb.hexpat)           | Shadow of War STRDB File   |
+| TEXR    | `sow/tex`      | [patterns/sow/tex.hexpat](https://github.com/Shadow-of-War-Modding-Community/ImHex-Patterns/blob/main/patterns/sow/tex.hexpat)               | Shadow of War TEX File     |
 
 ### Magic Files
 |      Name      |                                                                      Path                                                                    |                      Description                      |

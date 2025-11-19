@@ -1,0 +1,980 @@
+---
+header: 
+    version: 1
+    stringTableSize: 12089
+fileSection: 
+    stringTable: "materials\0dev\engine\deferred_debug.mat\x00materials\0dev\engine\luminancedownsample.mat\x00materials\0dev\engine\copytohistory.mat\x00shaders\shadertrees\debug\debugline.fxo\x00shaders\shadertrees\lighting\staticlightvolumescale.fxo\x00shaders\shadertrees\engine\bloom\bloom_blend.fxo\x00shaders\shadertrees\engine\drawprimvideobinkhdr.fxo\x00materials\0dev\engine\occlusionquery.mat\x00materials\0dev\flatcolors\flatblack_alpha.tex\x00shaders\shadertrees\lighting\pointlight.fxo\x00shaders\shadertrees\lighting\cubelight.fxo\x00materials\0dev\engine\standardgpuparticle_simemit_weather.mat\x00materials\0dev\engine\groupedgpuparticle_copy.mat\x00materials\0dev\engine\temporalaa.mat\x00materials\0dev\engine\vegetation_copycounters.mat\x00globalbundles\globalrenderingresources.bndl\x00materials\0dev\engine\shadowtreevis.mat\x00shaders\shadertrees\compute\customparticle_sort.fxo\x00shaders\shadertrees\engine\bloom\bloom_filter.fxo\x00materials\0dev\engine\bloom_filter.mat\x00shaders\shadertrees\debug\debugbox.fxo\x00shaders\shadertrees\engine\colorgrading\colorgrading_atmosphere.fxo\x00materials\0dev\engine\classifyscreentile.mat\x00materials\0dev\engine\temporalaanovel.mat\x00materials\0dev\engine\dof_gaussianblur.mat\x00materials\0dev\engine\vegetation_resettime.mat\x00shaders\shadertrees\engine\motionblur\objmotion_blend.fxo\x00materials\0dev\engine\missingshaderoverride.mat\x00materials\0dev\engine\uvspace_blood.tex\x00shaders\shadertrees\lighting\staticlightoctree.fxo\x00shaders\shadertrees\engine\gpuperformancequery.fxo\x00materials\0dev\engine\dg_box.mat\x00materials\0dev\engine\sss_lut.texa\x00materials\0dev\engine\standardgpuparticle_simemit.mat\x00materials\0dev\engine\shadowatlasclear.mat\x00internal\engine\default.anix\x00shaders\shadertrees\compute\vegetation_num_verts.fxo\x00shaders\shadertrees\engine\occlusionquery.fxo\x00fx\common\colorgrading\rivendelllut8x8.tex\x00materials\0dev\engine\deferred_tiledlightsphere.mat\x00shaders\shadertrees\engine\depthpeeling.fxo\x00materials\0dev\engine\shadowtreedownsampleintervals.mat\x00shaders\shadertrees\compute\cloth_physics.fxo\x00materials\0dev\engine\bloom_downsample.mat\x00shaders\shadertrees\lighting\tiledaccumfrustum.fxo\x00shaders\shadertrees\lighting\shadowmask.fxo\x00shaders\shadertrees\engine\ambientocclusion\specdiffocclusion.fxo\x00shaders\shadertrees\engine\motionblur\sharpeningaa.fxo\x00materials\0dev\engine\deferred_debuggbuffermaterial.mat\x00materials\0dev\engine\fog_overlay.mat\x00shaders\shadertrees\lighting\fillcenterlitdata.fxo\x00shaders\shadertrees\lighting\fogoverlay.fxo\x00materials\0dev\debug\debugline\debuglinesystemnoz.mat\x00materials\0dev\engine\texture_norm_decode_copy.mat\x00materials\0dev\engine\deferred_hybridspotlight.mat\x00shaders\shadertrees\engine\atmospheric\depthaverage_downsample.fxo\x00shaders\shadertrees\compute\texturebasenormdecodecopy.fxo\x00shaders\shadertrees\engine\atmospheric\minmax_downsample.fxo\x00shaders\shadertrees\engine\dof\dof_colordownsample.fxo\x00materials\0dev\engine\deferred_pointlight.mat\x00materials\0dev\engine\unsupportedshaderoverride.mat\x00materials\0dev\engine\gamma_ramp.mat\x00shaders\shadertrees\lighting\hybridspotlight.fxo\x00shaders\shadertrees\engine\shadowtreevis.fxo\x00materials\0dev\engine\deferred_outdoorlight.mat\x00materials\0dev\engine\uvspace_flow.mat\x00materials\0dev\engine\compute_sst_shadow_mask.mat\x00materials\0dev\engine\deferred_depth_copy.mat\x00shaders\shadertrees\engine\bloom\radialblur_blur.fxo\x00materials\0dev\engine\placeholdertexture.tex\x00shaders\shadertrees\compute\texturecopyto2darray.fxo\x00shaders\shadertrees\engine\outputdepth.fxo\x00materials\0dev\engine\compute_shadow_mask.mat\x00materials\0dev\debug\debugline\debuglinesystem.mat\x00shaders\shadertrees\engine\bloom\radialblur_blurhorizontal.fxo\x00shaders\shadertrees\engine\shadowtreecsmfromsst_pc.fxo\x00shaders\shadertrees\engine\shadowtreedownsampleintervals.fxo\x00shaders\shadertrees\engine\bloom\bloom_blurhorizontal.fxo\x00materials\0dev\engine\gpuperformancequery.mat\x00shaders\shadertrees\engine\uvspace\impact.fxo\x00materials\0dev\engine\deferred_octree.mat\x00materials\0dev\engine\radialblur_blurvertical.mat\x00shaders\shadertrees\engine\gamma\gamma_ramp.fxo\x00materials\0dev\engine\radialblur_blurhorizontal.mat\x00materials\0dev\flatcolors\flatblack.tex\x00materials\0dev\engine\vegetation_overrideinstance.mat\x00shaders\shadertrees\lighting\spotlight.fxo\x00shaders\shadertrees\lighting\tiledaccumbox.fxo\x00materials\0dev\engine\luminancescale.tex\x00shaders\shadertrees\translucent\overlay_template_vec2.fxo\x00shaders\shadertrees\engine\drawprimvideobink.fxo\x00materials\0dev\engine\dof_nearcircleofconfusion.mat\x00shaders\shadertrees\engine\classifyresolve.fxo\x00materials\0dev\engine\bloom_blurvertical.mat\x00materials\0dev\engine\bloom_combine.mat\x00shaders\shadertrees\engine\drawprimvideobinkalpha.fxo\x00materials\0dev\engine\emissive_lut.texa\x00materials\0dev\engine\volumetriccloud_imposter.mat\x00materials\0dev\grids\missingshader_d.tex\x00materials\0dev\engine\deferred_motion_blend.mat\x00materials\0dev\engine\defaultshadows.mat\x00shaders\shadertrees\engine\deferred\deferredambientlight.fxo\x00materials\0dev\engine\dg_capsule.mat\x00shaders\shadertrees\engine\bloom\bloom_downsample.fxo\x00shaders\shadertrees\engine\missingshaderoverride.fxo\x00shaders\shadertrees\solid\specular.fxo\x00materials\0dev\engine\hdrtonemap.mat\x00shaders\shadertrees\engine\motionblur\temporalaanovelocity.fxo\x00shaders\shadertrees\engine\uvspace\flow.fxo\x00shaders\shadertrees\engine\deferred\gbufferdebugspecular.fxo\x00shaders\shadertrees\engine\drawprimvideobinkreconstructhdr.fxo\x00materials\0dev\engine\deferred_ambientlight.mat\x00materials\0dev\engine\gbufferunwrittenclear.mat\x00materials\0dev\engine\noise2d.tex\x00materials\0dev\engine\bloom_blend.mat\x00shaders\shadertrees\translucent\overlay_template_vec3.fxo\x00materials\0dev\engine\texture_copy.mat\x00materials\0dev\engine\objmotion_prepdepthvelocity.mat\x00shaders\shadertrees\translucent\overlay_template_gtts.fxo\x00shaders\shadertrees\engine\bloom\radialblur_blurvertical.fxo\x00materials\0dev\engine\radialblur_filter.mat\x00materials\0dev\engine\uvspace_impact.mat\x00materials\0dev\engine\standardgpuparticle_clearindirectbuf.mat\x00materials\0dev\engine\fillcenterlitdata.mat\x00shaders\shadertrees\engine\bloom\bloom_blurvertical.fxo\x00shaders\shadertrees\compute\cloth_physics_reset.fxo\x00shaders\shadertrees\compute\standardparticle_simemit.fxo\x00shaders\shadertrees\compute\groupedgpuparticle_copy.fxo\x00shaders\shadertrees\compute\vegetation_copycounters.fxo\x00materials\0dev\engine\standardgpuparticle_sort.mat\x00shaders\shadertrees\engine\deferred\deferreddebug.fxo\x00shaders\shadertrees\debug\legacylinesystem\debugline_noz.fxo\x00shaders\shadertrees\lighting\tonemapwithexposure.fxo\x00materials\0dev\engine\bayerdither.tex\x00materials\0dev\engine\deferred_tiledlighting.mat\x00shaders\shadertrees\lighting\fogshadowaccumulate.fxo\x00shaders\shadertrees\compute\vegetation_resettime.fxo\x00shaders\shadertrees\lighting\computesstshadowmask.fxo\x00shaders\shadertrees\compute\standardparticle_simemit_weather.fxo\x00materials\0dev\engine\projectors\lightproj_array.texa\x00materials\0dev\engine\dof_colordownsample.mat\x00shaders\shadertrees\engine\defaultshadows.fxo\x00shaders\shadertrees\compute\vegetation_resetcounters.fxo\x00shaders\shadertrees\compute\customparticle_clearindirectbuffer.fxo\x00materials\0dev\engine\envmap_brdf_lut.tex\x00materials\0dev\engine\deferred_slv.mat\x00materials\0dev\engine\deferred_shadow_mask.mat\x00materials\0dev\engine\deferred_tiledlightbox.mat\x00materials\0dev\engine\dg_sphere.mat\x00globalbundles\globalrenderingconfig.bndl\x00materials\0dev\engine\deferred_cubeprojector.mat\x00materials\0dev\engine\dof_applydepthoffield.mat\x00shaders\shadertrees\engine\deferred\deferred_depth_copy.fxo\x00shaders\shadertrees\engine\dof\dof_applydepthoffield.fxo\x00materials\0dev\engine\radialblur_blur.mat\x00shaders\shadertrees\engine\dof\dof_nearcircleofconfusion.fxo\x00materials\0dev\engine\classifyresolve.mat\x00materials\0dev\engine\vegetation_num_verts.mat\x00shaders\shadertrees\lighting\tiledlighting.fxo\x00materials\0dev\engine\dg_shadowmaps.mat\x00shaders\shadertrees\engine\unsupportedshaderoverride.fxo\x00shaders\shadertrees\engine\dof\dof_gaussianblur.fxo\x00materials\0dev\engine\computedynamicexposure.mat\x00materials\0dev\engine\deferred_debuggbuffernormals.mat\x00materials\0dev\engine\bloom_blurhorizontal.mat\x00shaders\shadertrees\compute\standardparticle_sort.fxo\x00materials\0dev\engine\projectors\cube\cubeproj_array.texa\x00materials\0dev\engine\deferred_spotprojector.mat\x00materials\0dev\engine\noise3d.tex\x00shaders\shadertrees\lighting\hybriddirlight.fxo\x00shaders\shadertrees\engine\bloom\bloom_combine.fxo\x00shaders\shadertrees\compute\standardparticle_clearindirectbuffer.fxo\x00materials\0dev\engine\sharpeningaa.mat\x00shaders\shadertrees\debug\debugcapsule.fxo\x00materials\0dev\engine\dg_cylinder.mat\x00shaders\shadertrees\debug\debugshadowmaps.fxo\x00materials\0dev\engine\deferred_hybridpointlight.mat\x00materials\0dev\engine\hairlookup_array.cres\x00shaders\shadertrees\engine\luminancedownsample.fxo\x00shaders\shadertrees\debug\debugcylinder.fxo\x00shaders\shadertrees\engine\deferred\deferred_motion_blend.fxo\x00shaders\shadertrees\engine\atmospheric\depthtranslucent_downsample.fxo\x00materials\0dev\engine\specdiffocclusion.mat\x00materials\0dev\colorgrading\colorgrading.mat\x00shaders\shadertrees\engine\bloom\radialblur_filter.fxo\x00shaders\shadertrees\engine\classifyscreentile.fxo\x00shaders\shadertrees\engine\deferred\gbufferdebugnormals.fxo\x00shaders\shadertrees\compute\vegetation_overrideinstance.fxo\x00shaders\shadertrees\engine\deferred\deferredrestorecolor.fxo\x00materials\0dev\flatcolors\flatnormalmap.tex\x00shaders\shadertrees\lighting\computeshadowmask.fxo\x00materials\0dev\engine\shadowtreecsmfromsst.mat\x00shaders\shadertrees\engine\deferred\gbufferunwrittenclear.fxo\x00materials\0dev\engine\deferred_directionallight.mat\x00materials\0dev\engine\vegetation_resetcounters.mat\x00shaders\shadertrees\engine\computedynamicexposure.fxo\x00shaders\shadertrees\engine\motionblur\copytohistory.fxo\x00materials\0dev\engine\deferred_restorecolor.mat\x00shaders\shadertrees\engine\motionblur\objmotion_prepdepthvelocity.fxo\x00shaders\shadertrees\lighting\hybridpointlight.fxo\x00materials\0dev\engine\hairlookup_array.texa\x00materials\0dev\engine\deferred_debuggbufferspecular.mat\x00shaders\shadertrees\engine\motionblur\temporalaa.fxo\x00materials\0dev\engine\customgpuparticle_sort48.mat\x00materials\0dev\colorgrading\baselinelut8x8.tex\x00materials\0dev\engine\ssao_randomrot_sincos.tex\x00materials\0dev\engine\texturecopyto2darray.mat\x00shaders\shadertrees\lighting\tiledaccumsphere.fxo\x00materials\0dev\engine\clothphysics.mat\x00shaders\shadertrees\debug\debugsphere.fxo\x00shaders\shadertrees\lighting\directionallight.fxo\x00shaders\shadertrees\debug\legacylinesystem\debugline.fxo\x00materials\0dev\engine\customgpuparticle_clearindirectbuffer.mat\x00shaders\shadertrees\engine\shadowatlasclear.fxo\x00materials\0dev\engine\minmax_downsample.mat\x00shaders\shadertrees\lighting\outdoorlight.fxo\x00materials\0dev\engine\deferred_hybriddirlight.mat\x00materials\0dev\engine\deferred_slvscale.mat\x00materials\0dev\engine\lightintensityscale.tex\x00materials\0dev\engine\dg_line.mat\x00materials\0dev\engine\depth_downscale.mat\x00shaders\shadertrees\lighting\staticlightvolume.fxo\x00shaders\shadertrees\compute\customparticle_sort48.fxo\x00shaders\shadertrees\engine\deferred\gbufferdebugmaterialbuffer.fxo\x00shaders\shadertrees\compute\texturecopy.fxo\x00materials\0dev\engine\deferred_debuggbufferdiffuse.mat\x00shaders\shadertrees\translucent\volumetric\volumetriccloud_imposter.fxo\x00shaders\shadertrees\translucent\overlay_template_g.fxo\x00shaders\shadertrees\engine\drawprimvideonv12.fxo\x00materials\0dev\engine\depthtranslucent_downsample.mat\x00shaders\shadertrees\translucent\overlay_template_gt.fxo\x00materials\0dev\engine\customgpuparticle_sort.mat\x00shaders\shadertrees\engine\drawprimmodulateadditive.fxo\x00materials\0dev\engine\deferred_tiledlightfrustum.mat\x00materials\0dev\engine\fogshadowaccumulate.mat\x00shaders\shadertrees\engine\deferred\deferreddebuglightoverdraw.fxo\x00materials\0dev\engine\clothphysicsreset.mat\x00materials\0dev\engine\objmotion_blend.mat\x00materials\0dev\engine\deferred_debuglightoverdraw.mat\x00shaders\shadertrees\engine\drawprimmodulatenoblend.fxo\x00shaders\shadertrees\engine\drawprimmodulatetranslucent.fxo\x00shaders\shadertrees\engine\deferred\gbufferdebugdiffuse.fxo\x00shaders\shadertrees\engine\drawprimvideobinkalphahdr.fxo\x00"
+    fileCount: 243
+    files: 
+        - 
+            hash: 58863867
+            offset: 0
+            path: "materials\0dev\engine\deferred_debug.mat\x00"
+        - 
+            hash: 63988167
+            offset: 41
+            path: "materials\0dev\engine\luminancedownsample.mat\x00"
+        - 
+            hash: 70878463
+            offset: 87
+            path: "materials\0dev\engine\copytohistory.mat\x00"
+        - 
+            hash: 78571728
+            offset: 127
+            path: "shaders\shadertrees\debug\debugline.fxo\x00"
+        - 
+            hash: 95011918
+            offset: 167
+            path: "shaders\shadertrees\lighting\staticlightvolumescale.fxo\x00"
+        - 
+            hash: 124844779
+            offset: 223
+            path: "shaders\shadertrees\engine\bloom\bloom_blend.fxo\x00"
+        - 
+            hash: 134264865
+            offset: 272
+            path: "shaders\shadertrees\engine\drawprimvideobinkhdr.fxo\x00"
+        - 
+            hash: 136587978
+            offset: 324
+            path: "materials\0dev\engine\occlusionquery.mat\x00"
+        - 
+            hash: 160971327
+            offset: 365
+            path: "materials\0dev\flatcolors\flatblack_alpha.tex\x00"
+        - 
+            hash: 240749036
+            offset: 411
+            path: "shaders\shadertrees\lighting\pointlight.fxo\x00"
+        - 
+            hash: 242309711
+            offset: 455
+            path: "shaders\shadertrees\lighting\cubelight.fxo\x00"
+        - 
+            hash: 243978618
+            offset: 498
+            path: "materials\0dev\engine\standardgpuparticle_simemit_weather.mat\x00"
+        - 
+            hash: 259176306
+            offset: 560
+            path: "materials\0dev\engine\groupedgpuparticle_copy.mat\x00"
+        - 
+            hash: 288709049
+            offset: 610
+            path: "materials\0dev\engine\temporalaa.mat\x00"
+        - 
+            hash: 295871559
+            offset: 647
+            path: "materials\0dev\engine\vegetation_copycounters.mat\x00"
+        - 
+            hash: 296334555
+            offset: 697
+            path: "globalbundles\globalrenderingresources.bndl\x00"
+        - 
+            hash: 305459669
+            offset: 741
+            path: "materials\0dev\engine\shadowtreevis.mat\x00"
+        - 
+            hash: 307694002
+            offset: 781
+            path: "shaders\shadertrees\compute\customparticle_sort.fxo\x00"
+        - 
+            hash: 331184354
+            offset: 833
+            path: "shaders\shadertrees\engine\bloom\bloom_filter.fxo\x00"
+        - 
+            hash: 335900170
+            offset: 883
+            path: "materials\0dev\engine\bloom_filter.mat\x00"
+        - 
+            hash: 383798083
+            offset: 922
+            path: "shaders\shadertrees\debug\debugbox.fxo\x00"
+        - 
+            hash: 448101782
+            offset: 961
+            path: "shaders\shadertrees\engine\colorgrading\colorgrading_atmosphere.fxo\x00"
+        - 
+            hash: 457859933
+            offset: 1029
+            path: "materials\0dev\engine\classifyscreentile.mat\x00"
+        - 
+            hash: 471756805
+            offset: 1074
+            path: "materials\0dev\engine\temporalaanovel.mat\x00"
+        - 
+            hash: 508233532
+            offset: 1116
+            path: "materials\0dev\engine\dof_gaussianblur.mat\x00"
+        - 
+            hash: 543955971
+            offset: 1159
+            path: "materials\0dev\engine\vegetation_resettime.mat\x00"
+        - 
+            hash: 544791835
+            offset: 1206
+            path: "shaders\shadertrees\engine\motionblur\objmotion_blend.fxo\x00"
+        - 
+            hash: 546959594
+            offset: 1264
+            path: "materials\0dev\engine\missingshaderoverride.mat\x00"
+        - 
+            hash: 561894811
+            offset: 1312
+            path: "materials\0dev\engine\uvspace_blood.tex\x00"
+        - 
+            hash: 609692112
+            offset: 1352
+            path: "shaders\shadertrees\lighting\staticlightoctree.fxo\x00"
+        - 
+            hash: 618662504
+            offset: 1403
+            path: "shaders\shadertrees\engine\gpuperformancequery.fxo\x00"
+        - 
+            hash: 660244999
+            offset: 1454
+            path: "materials\0dev\engine\dg_box.mat\x00"
+        - 
+            hash: 668648487
+            offset: 1487
+            path: "materials\0dev\engine\sss_lut.texa\x00"
+        - 
+            hash: 685541564
+            offset: 1522
+            path: "materials\0dev\engine\standardgpuparticle_simemit.mat\x00"
+        - 
+            hash: 696886617
+            offset: 1576
+            path: "materials\0dev\engine\shadowatlasclear.mat\x00"
+        - 
+            hash: 704952757
+            offset: 1619
+            path: "internal\engine\default.anix\x00"
+        - 
+            hash: 717057977
+            offset: 1648
+            path: "shaders\shadertrees\compute\vegetation_num_verts.fxo\x00"
+        - 
+            hash: 727945547
+            offset: 1701
+            path: "shaders\shadertrees\engine\occlusionquery.fxo\x00"
+        - 
+            hash: 740135922
+            offset: 1747
+            path: "fx\common\colorgrading\rivendelllut8x8.tex\x00"
+        - 
+            hash: 803117279
+            offset: 1790
+            path: "materials\0dev\engine\deferred_tiledlightsphere.mat\x00"
+        - 
+            hash: 816801427
+            offset: 1842
+            path: "shaders\shadertrees\engine\depthpeeling.fxo\x00"
+        - 
+            hash: 883154495
+            offset: 1886
+            path: "materials\0dev\engine\shadowtreedownsampleintervals.mat\x00"
+        - 
+            hash: 885034688
+            offset: 1942
+            path: "shaders\shadertrees\compute\cloth_physics.fxo\x00"
+        - 
+            hash: 885827102
+            offset: 1988
+            path: "materials\0dev\engine\bloom_downsample.mat\x00"
+        - 
+            hash: 894707645
+            offset: 2031
+            path: "shaders\shadertrees\lighting\tiledaccumfrustum.fxo\x00"
+        - 
+            hash: 929291018
+            offset: 2082
+            path: "shaders\shadertrees\lighting\shadowmask.fxo\x00"
+        - 
+            hash: 931138032
+            offset: 2126
+            path: "shaders\shadertrees\engine\ambientocclusion\specdiffocclusion.fxo\x00"
+        - 
+            hash: 938219816
+            offset: 2192
+            path: "shaders\shadertrees\engine\motionblur\sharpeningaa.fxo\x00"
+        - 
+            hash: 958521485
+            offset: 2247
+            path: "materials\0dev\engine\deferred_debuggbuffermaterial.mat\x00"
+        - 
+            hash: 986019779
+            offset: 2303
+            path: "materials\0dev\engine\fog_overlay.mat\x00"
+        - 
+            hash: 987843943
+            offset: 2341
+            path: "shaders\shadertrees\lighting\fillcenterlitdata.fxo\x00"
+        - 
+            hash: 1021021672
+            offset: 2392
+            path: "shaders\shadertrees\lighting\fogoverlay.fxo\x00"
+        - 
+            hash: 1041037552
+            offset: 2436
+            path: "materials\0dev\debug\debugline\debuglinesystemnoz.mat\x00"
+        - 
+            hash: 1051300565
+            offset: 2490
+            path: "materials\0dev\engine\texture_norm_decode_copy.mat\x00"
+        - 
+            hash: 1105710192
+            offset: 2541
+            path: "materials\0dev\engine\deferred_hybridspotlight.mat\x00"
+        - 
+            hash: 1163013751
+            offset: 2592
+            path: "shaders\shadertrees\engine\atmospheric\depthaverage_downsample.fxo\x00"
+        - 
+            hash: 1190853888
+            offset: 2659
+            path: "shaders\shadertrees\compute\texturebasenormdecodecopy.fxo\x00"
+        - 
+            hash: 1196444119
+            offset: 2717
+            path: "shaders\shadertrees\engine\atmospheric\minmax_downsample.fxo\x00"
+        - 
+            hash: 1256322625
+            offset: 2778
+            path: "shaders\shadertrees\engine\dof\dof_colordownsample.fxo\x00"
+        - 
+            hash: 1258543448
+            offset: 2833
+            path: "materials\0dev\engine\deferred_pointlight.mat\x00"
+        - 
+            hash: 1286296185
+            offset: 2879
+            path: "materials\0dev\engine\unsupportedshaderoverride.mat\x00"
+        - 
+            hash: 1293211016
+            offset: 2931
+            path: "materials\0dev\engine\gamma_ramp.mat\x00"
+        - 
+            hash: 1296466574
+            offset: 2968
+            path: "shaders\shadertrees\lighting\hybridspotlight.fxo\x00"
+        - 
+            hash: 1300352606
+            offset: 3017
+            path: "shaders\shadertrees\engine\shadowtreevis.fxo\x00"
+        - 
+            hash: 1307014132
+            offset: 3062
+            path: "materials\0dev\engine\deferred_outdoorlight.mat\x00"
+        - 
+            hash: 1319556622
+            offset: 3110
+            path: "materials\0dev\engine\uvspace_flow.mat\x00"
+        - 
+            hash: 1367285588
+            offset: 3149
+            path: "materials\0dev\engine\compute_sst_shadow_mask.mat\x00"
+        - 
+            hash: 1370559826
+            offset: 3199
+            path: "materials\0dev\engine\deferred_depth_copy.mat\x00"
+        - 
+            hash: 1371303044
+            offset: 3245
+            path: "shaders\shadertrees\engine\bloom\radialblur_blur.fxo\x00"
+        - 
+            hash: 1400149494
+            offset: 3298
+            path: "materials\0dev\engine\placeholdertexture.tex\x00"
+        - 
+            hash: 1484702486
+            offset: 3343
+            path: "shaders\shadertrees\compute\texturecopyto2darray.fxo\x00"
+        - 
+            hash: 1503316678
+            offset: 3396
+            path: "shaders\shadertrees\engine\outputdepth.fxo\x00"
+        - 
+            hash: 1505451934
+            offset: 3439
+            path: "materials\0dev\engine\compute_shadow_mask.mat\x00"
+        - 
+            hash: 1560019059
+            offset: 3485
+            path: "materials\0dev\debug\debugline\debuglinesystem.mat\x00"
+        - 
+            hash: 1643928768
+            offset: 3536
+            path: "shaders\shadertrees\engine\bloom\radialblur_blurhorizontal.fxo\x00"
+        - 
+            hash: 1668518650
+            offset: 3599
+            path: "shaders\shadertrees\engine\shadowtreecsmfromsst_pc.fxo\x00"
+        - 
+            hash: 1673528520
+            offset: 3654
+            path: "shaders\shadertrees\engine\shadowtreedownsampleintervals.fxo\x00"
+        - 
+            hash: 1686009981
+            offset: 3715
+            path: "shaders\shadertrees\engine\bloom\bloom_blurhorizontal.fxo\x00"
+        - 
+            hash: 1736153119
+            offset: 3773
+            path: "materials\0dev\engine\gpuperformancequery.mat\x00"
+        - 
+            hash: 1801152019
+            offset: 3819
+            path: "shaders\shadertrees\engine\uvspace\impact.fxo\x00"
+        - 
+            hash: 1811248484
+            offset: 3865
+            path: "materials\0dev\engine\deferred_octree.mat\x00"
+        - 
+            hash: 1825876720
+            offset: 3907
+            path: "materials\0dev\engine\radialblur_blurvertical.mat\x00"
+        - 
+            hash: 1837997972
+            offset: 3957
+            path: "shaders\shadertrees\engine\gamma\gamma_ramp.fxo\x00"
+        - 
+            hash: 1846858182
+            offset: 4005
+            path: "materials\0dev\engine\radialblur_blurhorizontal.mat\x00"
+        - 
+            hash: 1859719431
+            offset: 4057
+            path: "materials\0dev\flatcolors\flatblack.tex\x00"
+        - 
+            hash: 1903600484
+            offset: 4097
+            path: "materials\0dev\engine\vegetation_overrideinstance.mat\x00"
+        - 
+            hash: 1905114802
+            offset: 4151
+            path: "shaders\shadertrees\lighting\spotlight.fxo\x00"
+        - 
+            hash: 1906066894
+            offset: 4194
+            path: "shaders\shadertrees\lighting\tiledaccumbox.fxo\x00"
+        - 
+            hash: 1928740216
+            offset: 4241
+            path: "materials\0dev\engine\luminancescale.tex\x00"
+        - 
+            hash: 1936802542
+            offset: 4282
+            path: "shaders\shadertrees\translucent\overlay_template_vec2.fxo\x00"
+        - 
+            hash: 1957322281
+            offset: 4340
+            path: "shaders\shadertrees\engine\drawprimvideobink.fxo\x00"
+        - 
+            hash: 1978386567
+            offset: 4389
+            path: "materials\0dev\engine\dof_nearcircleofconfusion.mat\x00"
+        - 
+            hash: 2005628580
+            offset: 4441
+            path: "shaders\shadertrees\engine\classifyresolve.fxo\x00"
+        - 
+            hash: 2018779167
+            offset: 4488
+            path: "materials\0dev\engine\bloom_blurvertical.mat\x00"
+        - 
+            hash: 2030335559
+            offset: 4533
+            path: "materials\0dev\engine\bloom_combine.mat\x00"
+        - 
+            hash: 2039130937
+            offset: 4573
+            path: "shaders\shadertrees\engine\drawprimvideobinkalpha.fxo\x00"
+        - 
+            hash: 2040569831
+            offset: 4627
+            path: "materials\0dev\engine\emissive_lut.texa\x00"
+        - 
+            hash: 2044867235
+            offset: 4667
+            path: "materials\0dev\engine\volumetriccloud_imposter.mat\x00"
+        - 
+            hash: 2054491290
+            offset: 4718
+            path: "materials\0dev\grids\missingshader_d.tex\x00"
+        - 
+            hash: 2058503651
+            offset: 4759
+            path: "materials\0dev\engine\deferred_motion_blend.mat\x00"
+        - 
+            hash: 2072017689
+            offset: 4807
+            path: "materials\0dev\engine\defaultshadows.mat\x00"
+        - 
+            hash: 2080250332
+            offset: 4848
+            path: "shaders\shadertrees\engine\deferred\deferredambientlight.fxo\x00"
+        - 
+            hash: 2099315633
+            offset: 4909
+            path: "materials\0dev\engine\dg_capsule.mat\x00"
+        - 
+            hash: 2100829782
+            offset: 4946
+            path: "shaders\shadertrees\engine\bloom\bloom_downsample.fxo\x00"
+        - 
+            hash: 2111885939
+            offset: 5000
+            path: "shaders\shadertrees\engine\missingshaderoverride.fxo\x00"
+        - 
+            hash: 2143946774
+            offset: 5053
+            path: "shaders\shadertrees\solid\specular.fxo\x00"
+        - 
+            hash: 2151312803
+            offset: 5092
+            path: "materials\0dev\engine\hdrtonemap.mat\x00"
+        - 
+            hash: 2158564089
+            offset: 5129
+            path: "shaders\shadertrees\engine\motionblur\temporalaanovelocity.fxo\x00"
+        - 
+            hash: 2164414163
+            offset: 5192
+            path: "shaders\shadertrees\engine\uvspace\flow.fxo\x00"
+        - 
+            hash: 2186486286
+            offset: 5236
+            path: "shaders\shadertrees\engine\deferred\gbufferdebugspecular.fxo\x00"
+        - 
+            hash: 2194362315
+            offset: 5297
+            path: "shaders\shadertrees\engine\drawprimvideobinkreconstructhdr.fxo\x00"
+        - 
+            hash: 2233978344
+            offset: 5360
+            path: "materials\0dev\engine\deferred_ambientlight.mat\x00"
+        - 
+            hash: 2239563321
+            offset: 5408
+            path: "materials\0dev\engine\gbufferunwrittenclear.mat\x00"
+        - 
+            hash: 2250506619
+            offset: 5456
+            path: "materials\0dev\engine\noise2d.tex\x00"
+        - 
+            hash: 2252513569
+            offset: 5490
+            path: "materials\0dev\engine\bloom_blend.mat\x00"
+        - 
+            hash: 2255514127
+            offset: 5528
+            path: "shaders\shadertrees\translucent\overlay_template_vec3.fxo\x00"
+        - 
+            hash: 2267286623
+            offset: 5586
+            path: "materials\0dev\engine\texture_copy.mat\x00"
+        - 
+            hash: 2274074917
+            offset: 5625
+            path: "materials\0dev\engine\objmotion_prepdepthvelocity.mat\x00"
+        - 
+            hash: 2288830177
+            offset: 5679
+            path: "shaders\shadertrees\translucent\overlay_template_gtts.fxo\x00"
+        - 
+            hash: 2295184794
+            offset: 5737
+            path: "shaders\shadertrees\engine\bloom\radialblur_blurvertical.fxo\x00"
+        - 
+            hash: 2313780907
+            offset: 5798
+            path: "materials\0dev\engine\radialblur_filter.mat\x00"
+        - 
+            hash: 2315557454
+            offset: 5842
+            path: "materials\0dev\engine\uvspace_impact.mat\x00"
+        - 
+            hash: 2322866432
+            offset: 5883
+            path: "materials\0dev\engine\standardgpuparticle_clearindirectbuf.mat\x00"
+        - 
+            hash: 2336334348
+            offset: 5946
+            path: "materials\0dev\engine\fillcenterlitdata.mat\x00"
+        - 
+            hash: 2458473351
+            offset: 5990
+            path: "shaders\shadertrees\engine\bloom\bloom_blurvertical.fxo\x00"
+        - 
+            hash: 2463785897
+            offset: 6046
+            path: "shaders\shadertrees\compute\cloth_physics_reset.fxo\x00"
+        - 
+            hash: 2468005718
+            offset: 6098
+            path: "shaders\shadertrees\compute\standardparticle_simemit.fxo\x00"
+        - 
+            hash: 2486395388
+            offset: 6155
+            path: "shaders\shadertrees\compute\groupedgpuparticle_copy.fxo\x00"
+        - 
+            hash: 2523090641
+            offset: 6211
+            path: "shaders\shadertrees\compute\vegetation_copycounters.fxo\x00"
+        - 
+            hash: 2524406438
+            offset: 6267
+            path: "materials\0dev\engine\standardgpuparticle_sort.mat\x00"
+        - 
+            hash: 2528828505
+            offset: 6318
+            path: "shaders\shadertrees\engine\deferred\deferreddebug.fxo\x00"
+        - 
+            hash: 2533811607
+            offset: 6372
+            path: "shaders\shadertrees\debug\legacylinesystem\debugline_noz.fxo\x00"
+        - 
+            hash: 2561954477
+            offset: 6433
+            path: "shaders\shadertrees\lighting\tonemapwithexposure.fxo\x00"
+        - 
+            hash: 2563069655
+            offset: 6486
+            path: "materials\0dev\engine\bayerdither.tex\x00"
+        - 
+            hash: 2585730498
+            offset: 6524
+            path: "materials\0dev\engine\deferred_tiledlighting.mat\x00"
+        - 
+            hash: 2586927582
+            offset: 6573
+            path: "shaders\shadertrees\lighting\fogshadowaccumulate.fxo\x00"
+        - 
+            hash: 2590146235
+            offset: 6626
+            path: "shaders\shadertrees\compute\vegetation_resettime.fxo\x00"
+        - 
+            hash: 2603090783
+            offset: 6679
+            path: "shaders\shadertrees\lighting\computesstshadowmask.fxo\x00"
+        - 
+            hash: 2605304660
+            offset: 6733
+            path: "shaders\shadertrees\compute\standardparticle_simemit_weather.fxo\x00"
+        - 
+            hash: 2618263136
+            offset: 6798
+            path: "materials\0dev\engine\projectors\lightproj_array.texa\x00"
+        - 
+            hash: 2650458095
+            offset: 6852
+            path: "materials\0dev\engine\dof_colordownsample.mat\x00"
+        - 
+            hash: 2663375258
+            offset: 6898
+            path: "shaders\shadertrees\engine\defaultshadows.fxo\x00"
+        - 
+            hash: 2682691293
+            offset: 6944
+            path: "shaders\shadertrees\compute\vegetation_resetcounters.fxo\x00"
+        - 
+            hash: 2685332427
+            offset: 7001
+            path: "shaders\shadertrees\compute\customparticle_clearindirectbuffer.fxo\x00"
+        - 
+            hash: 2717548304
+            offset: 7068
+            path: "materials\0dev\engine\envmap_brdf_lut.tex\x00"
+        - 
+            hash: 2743207813
+            offset: 7110
+            path: "materials\0dev\engine\deferred_slv.mat\x00"
+        - 
+            hash: 2746753330
+            offset: 7149
+            path: "materials\0dev\engine\deferred_shadow_mask.mat\x00"
+        - 
+            hash: 2780244243
+            offset: 7196
+            path: "materials\0dev\engine\deferred_tiledlightbox.mat\x00"
+        - 
+            hash: 2786240395
+            offset: 7245
+            path: "materials\0dev\engine\dg_sphere.mat\x00"
+        - 
+            hash: 2825614380
+            offset: 7281
+            path: "globalbundles\globalrenderingconfig.bndl\x00"
+        - 
+            hash: 2842845343
+            offset: 7322
+            path: "materials\0dev\engine\deferred_cubeprojector.mat\x00"
+        - 
+            hash: 2844309454
+            offset: 7371
+            path: "materials\0dev\engine\dof_applydepthoffield.mat\x00"
+        - 
+            hash: 2870561836
+            offset: 7419
+            path: "shaders\shadertrees\engine\deferred\deferred_depth_copy.fxo\x00"
+        - 
+            hash: 2879787248
+            offset: 7479
+            path: "shaders\shadertrees\engine\dof\dof_applydepthoffield.fxo\x00"
+        - 
+            hash: 2885413146
+            offset: 7536
+            path: "materials\0dev\engine\radialblur_blur.mat\x00"
+        - 
+            hash: 2886311497
+            offset: 7578
+            path: "shaders\shadertrees\engine\dof\dof_nearcircleofconfusion.fxo\x00"
+        - 
+            hash: 2896086747
+            offset: 7639
+            path: "materials\0dev\engine\classifyresolve.mat\x00"
+        - 
+            hash: 2965835009
+            offset: 7681
+            path: "materials\0dev\engine\vegetation_num_verts.mat\x00"
+        - 
+            hash: 2976260432
+            offset: 7728
+            path: "shaders\shadertrees\lighting\tiledlighting.fxo\x00"
+        - 
+            hash: 2992768349
+            offset: 7775
+            path: "materials\0dev\engine\dg_shadowmaps.mat\x00"
+        - 
+            hash: 3011800706
+            offset: 7815
+            path: "shaders\shadertrees\engine\unsupportedshaderoverride.fxo\x00"
+        - 
+            hash: 3012572652
+            offset: 7872
+            path: "shaders\shadertrees\engine\dof\dof_gaussianblur.fxo\x00"
+        - 
+            hash: 3021343406
+            offset: 7924
+            path: "materials\0dev\engine\computedynamicexposure.mat\x00"
+        - 
+            hash: 3030912016
+            offset: 7973
+            path: "materials\0dev\engine\deferred_debuggbuffernormals.mat\x00"
+        - 
+            hash: 3030927077
+            offset: 8028
+            path: "materials\0dev\engine\bloom_blurhorizontal.mat\x00"
+        - 
+            hash: 3063499982
+            offset: 8075
+            path: "shaders\shadertrees\compute\standardparticle_sort.fxo\x00"
+        - 
+            hash: 3079246764
+            offset: 8129
+            path: "materials\0dev\engine\projectors\cube\cubeproj_array.texa\x00"
+        - 
+            hash: 3087230562
+            offset: 8187
+            path: "materials\0dev\engine\deferred_spotprojector.mat\x00"
+        - 
+            hash: 3088677106
+            offset: 8236
+            path: "materials\0dev\engine\noise3d.tex\x00"
+        - 
+            hash: 3097622443
+            offset: 8270
+            path: "shaders\shadertrees\lighting\hybriddirlight.fxo\x00"
+        - 
+            hash: 3104250465
+            offset: 8318
+            path: "shaders\shadertrees\engine\bloom\bloom_combine.fxo\x00"
+        - 
+            hash: 3124258575
+            offset: 8369
+            path: "shaders\shadertrees\compute\standardparticle_clearindirectbuffer.fxo\x00"
+        - 
+            hash: 3127591006
+            offset: 8438
+            path: "materials\0dev\engine\sharpeningaa.mat\x00"
+        - 
+            hash: 3145087693
+            offset: 8477
+            path: "shaders\shadertrees\debug\debugcapsule.fxo\x00"
+        - 
+            hash: 3152416076
+            offset: 8520
+            path: "materials\0dev\engine\dg_cylinder.mat\x00"
+        - 
+            hash: 3155936931
+            offset: 8558
+            path: "shaders\shadertrees\debug\debugshadowmaps.fxo\x00"
+        - 
+            hash: 3209504844
+            offset: 8604
+            path: "materials\0dev\engine\deferred_hybridpointlight.mat\x00"
+        - 
+            hash: 3238122031
+            offset: 8656
+            path: "materials\0dev\engine\hairlookup_array.cres\x00"
+        - 
+            hash: 3241464848
+            offset: 8700
+            path: "shaders\shadertrees\engine\luminancedownsample.fxo\x00"
+        - 
+            hash: 3257047426
+            offset: 8751
+            path: "shaders\shadertrees\debug\debugcylinder.fxo\x00"
+        - 
+            hash: 3260139533
+            offset: 8795
+            path: "shaders\shadertrees\engine\deferred\deferred_motion_blend.fxo\x00"
+        - 
+            hash: 3289953307
+            offset: 8857
+            path: "shaders\shadertrees\engine\atmospheric\depthtranslucent_downsample.fxo\x00"
+        - 
+            hash: 3294154928
+            offset: 8928
+            path: "materials\0dev\engine\specdiffocclusion.mat\x00"
+        - 
+            hash: 3298317665
+            offset: 8972
+            path: "materials\0dev\colorgrading\colorgrading.mat\x00"
+        - 
+            hash: 3322529381
+            offset: 9017
+            path: "shaders\shadertrees\engine\bloom\radialblur_filter.fxo\x00"
+        - 
+            hash: 3329649502
+            offset: 9072
+            path: "shaders\shadertrees\engine\classifyscreentile.fxo\x00"
+        - 
+            hash: 3332010517
+            offset: 9122
+            path: "shaders\shadertrees\engine\deferred\gbufferdebugnormals.fxo\x00"
+        - 
+            hash: 3332427662
+            offset: 9182
+            path: "shaders\shadertrees\compute\vegetation_overrideinstance.fxo\x00"
+        - 
+            hash: 3345318211
+            offset: 9242
+            path: "shaders\shadertrees\engine\deferred\deferredrestorecolor.fxo\x00"
+        - 
+            hash: 3381282013
+            offset: 9303
+            path: "materials\0dev\flatcolors\flatnormalmap.tex\x00"
+        - 
+            hash: 3423362921
+            offset: 9347
+            path: "shaders\shadertrees\lighting\computeshadowmask.fxo\x00"
+        - 
+            hash: 3427359682
+            offset: 9398
+            path: "materials\0dev\engine\shadowtreecsmfromsst.mat\x00"
+        - 
+            hash: 3441199203
+            offset: 9445
+            path: "shaders\shadertrees\engine\deferred\gbufferunwrittenclear.fxo\x00"
+        - 
+            hash: 3448836022
+            offset: 9507
+            path: "materials\0dev\engine\deferred_directionallight.mat\x00"
+        - 
+            hash: 3454972613
+            offset: 9559
+            path: "materials\0dev\engine\vegetation_resetcounters.mat\x00"
+        - 
+            hash: 3487392815
+            offset: 9610
+            path: "shaders\shadertrees\engine\computedynamicexposure.fxo\x00"
+        - 
+            hash: 3491199191
+            offset: 9664
+            path: "shaders\shadertrees\engine\motionblur\copytohistory.fxo\x00"
+        - 
+            hash: 3499046223
+            offset: 9720
+            path: "materials\0dev\engine\deferred_restorecolor.mat\x00"
+        - 
+            hash: 3518568525
+            offset: 9768
+            path: "shaders\shadertrees\engine\motionblur\objmotion_prepdepthvelocity.fxo\x00"
+        - 
+            hash: 3533743280
+            offset: 9838
+            path: "shaders\shadertrees\lighting\hybridpointlight.fxo\x00"
+        - 
+            hash: 3536834796
+            offset: 9888
+            path: "materials\0dev\engine\hairlookup_array.texa\x00"
+        - 
+            hash: 3537055593
+            offset: 9932
+            path: "materials\0dev\engine\deferred_debuggbufferspecular.mat\x00"
+        - 
+            hash: 3550625075
+            offset: 9988
+            path: "shaders\shadertrees\engine\motionblur\temporalaa.fxo\x00"
+        - 
+            hash: 3572320142
+            offset: 10041
+            path: "materials\0dev\engine\customgpuparticle_sort48.mat\x00"
+        - 
+            hash: 3650138767
+            offset: 10092
+            path: "materials\0dev\colorgrading\baselinelut8x8.tex\x00"
+        - 
+            hash: 3690544083
+            offset: 10139
+            path: "materials\0dev\engine\ssao_randomrot_sincos.tex\x00"
+        - 
+            hash: 3733479518
+            offset: 10187
+            path: "materials\0dev\engine\texturecopyto2darray.mat\x00"
+        - 
+            hash: 3752050558
+            offset: 10234
+            path: "shaders\shadertrees\lighting\tiledaccumsphere.fxo\x00"
+        - 
+            hash: 3770297060
+            offset: 10284
+            path: "materials\0dev\engine\clothphysics.mat\x00"
+        - 
+            hash: 3772280753
+            offset: 10323
+            path: "shaders\shadertrees\debug\debugsphere.fxo\x00"
+        - 
+            hash: 3773074458
+            offset: 10365
+            path: "shaders\shadertrees\lighting\directionallight.fxo\x00"
+        - 
+            hash: 3775085964
+            offset: 10415
+            path: "shaders\shadertrees\debug\legacylinesystem\debugline.fxo\x00"
+        - 
+            hash: 3785417737
+            offset: 10472
+            path: "materials\0dev\engine\customgpuparticle_clearindirectbuffer.mat\x00"
+        - 
+            hash: 3817367194
+            offset: 10536
+            path: "shaders\shadertrees\engine\shadowatlasclear.fxo\x00"
+        - 
+            hash: 3849788387
+            offset: 10584
+            path: "materials\0dev\engine\minmax_downsample.mat\x00"
+        - 
+            hash: 3857971576
+            offset: 10628
+            path: "shaders\shadertrees\lighting\outdoorlight.fxo\x00"
+        - 
+            hash: 3865083447
+            offset: 10674
+            path: "materials\0dev\engine\deferred_hybriddirlight.mat\x00"
+        - 
+            hash: 3866893471
+            offset: 10724
+            path: "materials\0dev\engine\deferred_slvscale.mat\x00"
+        - 
+            hash: 3893355095
+            offset: 10768
+            path: "materials\0dev\engine\lightintensityscale.tex\x00"
+        - 
+            hash: 3912401850
+            offset: 10814
+            path: "materials\0dev\engine\dg_line.mat\x00"
+        - 
+            hash: 3924954856
+            offset: 10848
+            path: "materials\0dev\engine\depth_downscale.mat\x00"
+        - 
+            hash: 3932645712
+            offset: 10890
+            path: "shaders\shadertrees\lighting\staticlightvolume.fxo\x00"
+        - 
+            hash: 3947507678
+            offset: 10941
+            path: "shaders\shadertrees\compute\customparticle_sort48.fxo\x00"
+        - 
+            hash: 3954416426
+            offset: 10995
+            path: "shaders\shadertrees\engine\deferred\gbufferdebugmaterialbuffer.fxo\x00"
+        - 
+            hash: 3981362037
+            offset: 11062
+            path: "shaders\shadertrees\compute\texturecopy.fxo\x00"
+        - 
+            hash: 3981488326
+            offset: 11106
+            path: "materials\0dev\engine\deferred_debuggbufferdiffuse.mat\x00"
+        - 
+            hash: 3988295643
+            offset: 11161
+            path: "shaders\shadertrees\translucent\volumetric\volumetriccloud_imposter.fxo\x00"
+        - 
+            hash: 3989789806
+            offset: 11233
+            path: "shaders\shadertrees\translucent\overlay_template_g.fxo\x00"
+        - 
+            hash: 3996075086
+            offset: 11288
+            path: "shaders\shadertrees\engine\drawprimvideonv12.fxo\x00"
+        - 
+            hash: 4095883639
+            offset: 11337
+            path: "materials\0dev\engine\depthtranslucent_downsample.mat\x00"
+        - 
+            hash: 4101251554
+            offset: 11391
+            path: "shaders\shadertrees\translucent\overlay_template_gt.fxo\x00"
+        - 
+            hash: 4110646034
+            offset: 11447
+            path: "materials\0dev\engine\customgpuparticle_sort.mat\x00"
+        - 
+            hash: 4131264279
+            offset: 11496
+            path: "shaders\shadertrees\engine\drawprimmodulateadditive.fxo\x00"
+        - 
+            hash: 4131572802
+            offset: 11552
+            path: "materials\0dev\engine\deferred_tiledlightfrustum.mat\x00"
+        - 
+            hash: 4136157219
+            offset: 11605
+            path: "materials\0dev\engine\fogshadowaccumulate.mat\x00"
+        - 
+            hash: 4173777529
+            offset: 11651
+            path: "shaders\shadertrees\engine\deferred\deferreddebuglightoverdraw.fxo\x00"
+        - 
+            hash: 4184936053
+            offset: 11718
+            path: "materials\0dev\engine\clothphysicsreset.mat\x00"
+        - 
+            hash: 4236940307
+            offset: 11762
+            path: "materials\0dev\engine\objmotion_blend.mat\x00"
+        - 
+            hash: 4256108725
+            offset: 11804
+            path: "materials\0dev\engine\deferred_debuglightoverdraw.mat\x00"
+        - 
+            hash: 4267643161
+            offset: 11858
+            path: "shaders\shadertrees\engine\drawprimmodulatenoblend.fxo\x00"
+        - 
+            hash: 4269011394
+            offset: 11913
+            path: "shaders\shadertrees\engine\drawprimmodulatetranslucent.fxo\x00"
+        - 
+            hash: 4282586827
+            offset: 11972
+            path: "shaders\shadertrees\engine\deferred\gbufferdebugdiffuse.fxo\x00"
+        - 
+            hash: 4287558545
+            offset: 12032
+            path: "shaders\shadertrees\engine\drawprimvideobinkalphahdr.fxo\x00"
