@@ -14,10 +14,10 @@ struct Tile {
 
 struct Vegetation {
     float16 x, y, z;
-    u8 unk1;
-    u8 unk2;
-    u32 unk3;
-    u8 unk4;
+    u8 size;
+    s8 constant;
+    u32 hash; // Probably a hash as every value is unique
+    u8 defaultPushDown; 
     u8 unk5;
     u8 unk6;
     u8 unk7;
