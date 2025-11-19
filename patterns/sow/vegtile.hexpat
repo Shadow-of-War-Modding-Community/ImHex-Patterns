@@ -13,11 +13,11 @@ struct Tile {
 };
 
 struct Vegetation {
-    float16 x, y, z;
+    float16 relX, relY, relZ;
     u8 size;
     s8 constant;
     u32 hash; // Probably a hash as every value is unique
-    u8 defaultPushDown; 
+    u8 defaultPushDown; // The amount the grass is initially pushed down. Will be set to 255 internally after the player runs over it
     u8 unk5;
     u8 unk6;
     u8 unk7;
