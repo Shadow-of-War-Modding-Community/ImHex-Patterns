@@ -78,12 +78,12 @@ struct Header {
                 Texture2D_Desc desc;
         }
         
-        u8          unk12;
-        s8          unk13;
-        s8          unk14;
-        u8          unk15;
-        u8          unk16;
-        u8          unk17;
+        u8 unk12;
+        s8 unk13;
+        s8 unk14;
+        u8 unk15;
+        u8 unk16;
+        u8 arraySize;
         
         if (type == TextureType::TEXTURE1DARRAY || 
             type == TextureType::TEXTURE2DARRAY || 
