@@ -56,10 +56,10 @@ enum Channel : u8 {
 };
 
 struct Connection {
-    s32 lodGroup  [[comment("Index of the LOD Group")]];
+    u32 lodGroup  [[comment("Index of the LOD Group")]];
     s32 lod       [[comment("Index of the LOD in the LOD Group (Constant)")]];
-    s32 material  [[comment("Index of the Material")]];
-    s32 unk       [[comment("Unknown (Constant)")]];
+    u32 material  [[comment("Index of the Material")]];
+    u32 unk       [[comment("Unknown (Constant)")]];
 };
 
 struct LodInfo {
@@ -71,16 +71,16 @@ struct LodInfo {
 };
 
 struct MeshInfo {
-    u32 dataOffset         [[comment("Offset of the Data")]];
-    u32 verticesOffset     [[comment("Offset of the Vertices")]];
-    u32 verticesCount      [[comment("Number of Vertices")]];
-    u32 faceIndicesOffset  [[comment("Offset of the Face Indices")]];
-    u32 faceIndicesCount   [[comment("Number of Face Indices")]];
-    u32 vertexGroupsOffset [[comment("Offset of the Vertex Groups")]];
-    u32 vertexGroupsCount  [[comment("Number of Vertex Groups")]];
-    u32 unknown7;
-    u32 unknown8;
-    u32 vertexBufferLayout [[comment("Index of the Vertex Buffer Layout")]];
+    u32   dataOffset         [[comment("Offset of the Data")]];
+    u32   verticesOffset     [[comment("Offset of the Vertices")]];
+    u32   verticesCount      [[comment("Number of Vertices")]];
+    u32   faceIndicesOffset  [[comment("Offset of the Face Indices")]];
+    u32   faceIndicesCount   [[comment("Number of Face Indices")]];
+    u32   vertexGroupsOffset [[comment("Offset of the Vertex Groups")]];
+    u32   vertexGroupsCount  [[comment("Number of Vertex Groups")]];
+    float unknown7;
+    float unknown8;
+    u32   vertexBufferLayout [[comment("Index of the Vertex Buffer Layout")]];
 };
 
 struct LodThresholds {
@@ -246,7 +246,7 @@ struct MeshInfoSection {
     u32   meshLodCount                                  [[comment("Number of Mesh LODs")]];
     u32   shadowLodCount                                [[comment("Number of Shadow LODs")]];
     u32   vertexBufferLayoutCount                       [[comment("Number of Vertex Buffer Layouts")]];
-    u32   ULongReadCount;
+    u32   vertexAttributeCount                          [[comment("Number of Vertex Attributes")]];
     float unknownFloat; // 400 or 1200, ID for unknown1?
     float unknown1[4];
     u32   boneCount                                     [[comment("Number of Bones in the Skeleton")]];
