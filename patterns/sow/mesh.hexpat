@@ -1,11 +1,58 @@
 #pragma description Shadow of War MESH File
 #pragma MIME sow/mesh
 
-#pragma pattern_limit 1000000
+#pragma pattern_limit 10000000
 
 import sow.enums;
-import sow.types;
+//import sow.types;
 import std.core;
+import std.fxpt;
+import std.io;
+
+fn format_float16(ref u16 value) {
+    return std::fxpt::to_float(value, 16);
+};
+
+using float16 = u16 [[format("format_float16"), transform("format_float16")]];
+
+fn format_vector2(ref auto vec2) {
+    return std::format("({}, {})", vec2.x, vec2.y);
+};
+
+fn format_vector3(ref auto vec3) {
+    return std::format("({}, {}, {})", vec3.x, vec3.y, vec3.z);
+};
+
+fn format_vector4(ref auto vec4) {
+    return std::format("({}, {}, {}, {})", vec4.x, vec4.y, vec4.z, vec4.w);
+};
+
+struct Vector2<T> {
+    T x [[comment("X-Component of the Vector")]];
+    T y [[comment("Y-Component of the Vector")]];
+} [[static, format("format_vector2")]];
+
+struct Vector3<T> {
+    T x [[comment("X-Component of the Vector")]];
+    T y [[comment("Y-Component of the Vector")]];
+    T z [[comment("Z-Component of the Vector")]];
+} [[static, format("format_vector3")]];
+
+struct Vector4<T> {
+    T x [[comment("X-Component of the Vector")]];
+    T y [[comment("Y-Component of the Vector")]];
+    T z [[comment("Z-Component of the Vector")]];
+    T w [[comment("W-Component of the Vector")]];
+} [[static, format("format_vector4")]];
+
+using Quaternion = Vector4<float>;
+
+struct RGBA<T> {
+  T red   [[color("FF0000"), comment("Red-Channel of the Color")]];
+  T green [[color("00FF00"), comment("Green-Channel of the Color")]];
+  T blue  [[color("0000FF"), comment("Blue-Channel of the Color")]];
+  T alpha [[color("FFFFFF"), comment("Alpha-Channel of the Color")]];
+} [[static, hex::inline_visualize("color", std::fxpt::to_fixed(red, 8), std::fxpt::to_fixed(green, 8), std::fxpt::to_fixed(blue, 8), std::fxpt::to_fixed(alpha, 8))]];
 
 enum SectionID : u32 {
     MESH_DESC_SECTION = 0xEBAEC3FA,
@@ -13,74 +60,59 @@ enum SectionID : u32 {
     MESH_DATA_SECTION = 0x95DBDB69,
 };
 
-enum Buffer : u8 {
-    BUFFER_0  =  0,
-    BUFFER_1  =  1,
+enum AttributeType : u8 {
+    FLOAT32_1 =  0,
+    FLOAT32_2 =  1,
+    FLOAT32_3 =  2,
+    FLOAT32_4 =  3,
+    UINT8_4   =  4,
+    TYPE5     =  5,
+    TYPE6     =  6,
+    TYPE7     =  7,
+    TYPE8     =  8,
+    UINT16_2  =  9,
+    TYPE10    = 10,
+    TYPE11    = 11,
+    FLOAT16_4 = 12,
 };
 
-enum Type : u8 {
-    TYPE0      =  0,
-    VECTOR2F32 =  1,
-    VECTOR3F32 =  2,
-    VECTOR4F32 =  3,
-    VECTOR4U8  =  4,
-    TYPE5      =  5,
-    TYPE6      =  6,
-    TYPE7      =  7,
-    TYPE8      =  8,
-    VECTOR2I16 =  9,
-    TYPE10     = 10,
-    TYPE11     = 11,
-    VECTOR4F16 = 12,
-};
-
-enum Attribute : u8 {
-    POSITION    =  0,
-    NORMAL      =  1,
-    TANGENT     =  2,
-    BITANGENT   =  3,
-    TEXCOORD    =  4,
-    COLOR       =  5,
-    WEIGHT      =  6,
-    VERTEXGROUP =  7,
-    ATTRIBUTE8  =  8,
-    ATTRIBUTE9  =  9,
-    ATTRIBUTE10 = 10,
-    ATTRIBUTE11 = 11,
-    ATTRIBUTE12 = 12,
-};
-
-enum Channel : u8 {
-    CHANNEL_0  =  0,
-    CHANNEL_1  =  1,
+enum AttributeUsage : u8 {
+    POSITION    = 0,
+    NORMAL      = 1,
+    TANGENT     = 2,
+    BINORMAL    = 3,
+    TEXCOORD    = 4,
+    COLOR       = 5,
+    BLENDWEIGHT = 6,
+    BLENDGROUP  = 7,
 };
 
 struct Connection {
-    s32 lodGroup  [[comment("Index of the LOD Group")]];
+    u32 lodGroup  [[comment("Index of the LOD Group")]];
     s32 lod       [[comment("Index of the LOD in the LOD Group (Constant)")]];
-    s32 material  [[comment("Index of the Material")]];
-    s32 unk       [[comment("Unknown (Constant)")]];
+    u32 material  [[comment("Index of the Material")]];
+    u32 unk       [[comment("Unknown (Constant)")]];
 };
 
 struct LodInfo {
     u32 vertexDataSize      [[comment("Size of the Vertex Data")]];
     u32 faceDataSize        [[comment("Size of the Face Data")]];
-    u32 VertexGroupDataSize [[comment("Size of the Vertex Group Data")]];
+    u32 vertexGroupDataSize [[comment("Size of the Vertex Group Data")]];
     u32 meshCount           [[comment("Number of Meshes")]];
     u16 faceCount[16]       [[comment("Number of Faces")]];
 };
 
 struct MeshInfo {
-    u32 dataOffset         [[comment("Offset of the Data")]];
-    u32 verticesOffset     [[comment("Offset of the Vertices")]];
-    u32 verticesCount      [[comment("Number of Vertices")]];
-    u32 faceIndicesOffset  [[comment("Offset of the Face Indices")]];
-    u32 faceIndicesCount   [[comment("Number of Face Indices")]];
-    u32 vertexGroupsOffset [[comment("Offset of the Vertex Groups")]];
-    u32 vertexGroupsCount  [[comment("Number of Vertex Groups")]];
-    u32 unknown7;
-    u32 unknown8;
-    u32 vertexBufferLayout [[comment("Index of the Vertex Buffer Layout")]];
+    u32   dataOffset         [[comment("Offset of the Data")]];
+    u32   verticesOffset     [[comment("Offset of the Vertices")]];
+    u32   verticesCount      [[comment("Number of Vertices")]];
+    u32   faceIndicesOffset  [[comment("Offset of the Face Indices")]];
+    u32   faceIndicesCount   [[comment("Number of Face Indices")]];
+    u32   vertexGroupsOffset [[comment("Offset of the Vertex Groups")]];
+    u32   vertexGroupsCount  [[comment("Number of Vertex Groups")]];
+    float unknown7;
+    float unknown8;
+    u32   vertexBufferLayout [[comment("Index of the Vertex Buffer Layout")]];
 };
 
 struct LodThresholds {
@@ -100,16 +132,16 @@ struct LodSection {
     LodConnections lodConnections            [[comment("Connections between the LODs and the Distance Thresholds")]];
 };
 
-struct AttributeLayout {
-    Buffer    buffer    [[comment("Index of the Buffer")]];
-    Type      type      [[comment("Index of the Tyoe")]];
-    Attribute attribute [[comment("Index of the Attribute")]];
-    Channel   channel   [[comment("Index of the Channel")]];
+struct AttributeInfo {
+    u8             stream     [[comment("Attribute Stream")]];
+    AttributeType  type       [[comment("Attribute Type")]];
+    AttributeUsage usage      [[comment("Attribute Usage")]];
+    u8             usageIndex [[comment("Attribute Usage Index")]];
 };
 
 struct VertexBufferLayout {
-    u32 attributeCount                               [[comment("Number of Attributes")]];
-    AttributeLayout attributesLayout[attributeCount] [[comment("Layout of the Attributes")]];
+    u32 attributeCount                           [[comment("Number of Attributes")]];
+    AttributeInfo attributesInfo[attributeCount] [[comment("Info of the Attributes")]];
 };
 
 struct VertexBufferLayoutSection {
@@ -121,7 +153,7 @@ struct Bone {
     BoneName   name        [[comment("Name of the Bone")]];
     s16        parentIndex [[comment("Index of the Parent Bone")]];
     u16        childCount  [[comment("Number of Child Bones")]];
-    Vector3f   translation [[comment("Position of the Bone in 3D space")]];
+    Vector3<float>   translation [[comment("Position of the Bone in 3D space")]];
     Quaternion rotation    [[comment("Rotation of the Bone in 3D space")]];
     float      scale       [[comment("Scaling of the Bone in 3D space")]];
 } [[name(name)]];
@@ -129,104 +161,6 @@ struct Bone {
 struct BoneSection {
     u32  boneSectionID; // 0x93D9A424
     Bone bones[parent.boneCount] [[comment("Collection of Bones in the Skeleton")]];
-};
-
-struct Position<T> {
-    T x [[comment("X-Coordinate of the Position")]];
-    T y [[comment("Y-Coordinate of the Position")]];
-    T z [[comment("Z-Coordinate of the Position")]];
-    T w [[comment("W-Component, often used in Homogeneous Coordinates")]]; // Always 1.0
-};
-
-struct Weights<T> {
-    T weight[4] [[comment("Weight associated with a Vertex Group")]];
-};
-
-struct VertexGroups<T> {
-    T vertexGroup[4] [[comment("Vertex Group associated with a Weight")]];
-};
-
-struct TextureCoordinate<T> {
-    T u [[comment("U-Coordinate (Horizontal Texture Coordinate)")]];
-    T v [[comment("V-Coordinate (Vertical Texture Coordinate)")]];
-};
-
-struct Normal<T> {
-    T x [[comment("X-Component of the Normal")]];
-    T y [[comment("Y-Component of the Normal")]];
-    T z [[comment("Z-Component of the Normal")]];
-};
-
-struct Tangent<T> {
-    T x [[comment("X-Component of the Tangent")]];
-    T y [[comment("Y-Component of the Tangent")]];
-    T z [[comment("Z-Component of the Tangent")]];
-};
-
-struct Bitangent<T> {
-    T x [[comment("X-Component of the Bitangent")]];
-    T y [[comment("Y-Component of the Bitangent")]];
-    T z [[comment("Z-Component of the Bitangent")]];
-};
-
-struct Color<T> {
-    T r [[comment("Red-Channel of the Color")]];
-    T g [[comment("Blue-Channel of the Color")]];
-    T b [[comment("Green-Channel of the Color")]];
-    T a [[comment("Alpha-Channel of the Color")]];
-};
-
-struct VertexBuffer0 {
-    match (meshInfoSection.bufferLayoutSection.vertexBufferLayout[0].attributesLayout[0].type, meshInfoSection.bufferLayoutSection.vertexBufferLayout[0].attributesLayout[0].attribute) {
-        (Type::VECTOR4F16, Attribute::POSITION):    Position<float16> position     [[comment("Position of the Vertex in 3D space")]];
-        (Type::VECTOR4F32, Attribute::POSITION):    Position<float>   position     [[comment("Position of the Vertex in 3D space")]];
-        (Type::VECTOR4U8,  Attribute::WEIGHT):      Weights<u8>       weights      [[comment("Weights associated with Vertex Groups")]];
-        (Type::VECTOR4U8,  Attribute::VERTEXGROUP): VertexGroups<u8>  vertexGroups [[comment("Indices of Vertex Groups")]];
-    }
-};
-
-struct VertexBuffer1 {
-    match (meshInfoSection.bufferLayoutSection.vertexBufferLayout[0].attributesLayout[0].type, meshInfoSection.bufferLayoutSection.vertexBufferLayout[0].attributesLayout[0].attribute) {
-        (Type::VECTOR2I16, Attribute::TEXCOORD):    TextureCoordinate<u16>         textureCoordinate        [[comment("Texture Coordinates")]];
-        (Type::VECTOR2F32, Attribute::TEXCOORD):    TextureCoordinate<float>       textureCoordinate        [[comment("Texture Coordinates")]];
-        (Type::VECTOR4F32, Attribute::NORMAL):      Normal<float>     normal       [[comment("Normal of the Vertex")]];
-        (Type::VECTOR4F32, Attribute::TANGENT):     Tangent<float>    tangent      [[comment("Tangent of the Vertex")]];
-        (Type::VECTOR4F32, Attribute::BITANGENT):   Bitangent<float>  bitangent    [[comment("Normal of the Vertex")]];
-        (Type::VECTOR4F32, Attribute::NORMAL):      Normal<float>     normal       [[comment("Normal of the Vertex")]];
-        (Type::VECTOR4U8,  Attribute::COLOR):       Color<u8>         color        [[comment("Color of the Vertex")]];
-    }
-};
-
-struct Vertex {
-    
-    match (meshInfoSection.bufferLayoutSection.vertexBufferLayout[0].attributesLayout[0].buffer) {
-        (Buffer::BUFFER_0): VertexBuffer0 vertexBuffer0[0];
-        (Buffer::BUFFER_1): VertexBuffer1 vertexBuffer1[0];
-    }
-};
-
-struct VertexArray {
-    Vertex vertices[meshInfoSection.meshInfo[std::core::array_index()].verticesCount] [[comment("Vertices in the Mesh")]];
-};
-
-struct Face {
-    u16 index1 [[comment("Index of the first Vertex in this Face")]];
-    u16 index2 [[comment("Index of the second Vertex in this Face")]];
-    u16 index3 [[comment("Index of the third Vertex in this Face")]];
-};
-
-struct VertexGroup {
-    u8 boneIndex;
-};
-
-struct Mesh {
-    Vertex      vertices;
-    Face        faces;
-    VertexGroup vertexGroups;
-};
-
-struct LOD {
-    Mesh meshes;
 };
 
 struct Header {
@@ -259,7 +193,7 @@ struct MeshInfoSection {
     u32   meshLodCount                                  [[comment("Number of Mesh LODs")]];
     u32   shadowLodCount                                [[comment("Number of Shadow LODs")]];
     u32   vertexBufferLayoutCount                       [[comment("Number of Vertex Buffer Layouts")]];
-    u32   ULongReadCount;
+    u32   vertexAttributeCount                          [[comment("Number of Vertex Attributes")]];
     float unknownFloat; // 400 or 1200, ID for unknown1?
     float unknown1[4];
     u32   boneCount                                     [[comment("Number of Bones in the Skeleton")]];
@@ -290,11 +224,100 @@ struct MeshDataSection {
     VertexData vertexData[meshDescSection.dataSectionCount];
     FaceData faceData[meshDescSection.dataSectionCount];
     VertexGroupData vertexGroupData[meshDescSection.dataSectionCount];
-    //Mesh meshes[meshInfoSection.subMeshCount];
-    //VertexArray vertexArray;
 };
 
 Header header @ 0x00                                                                                         [[comment("Header containing File Information")]];
 MeshDescSection meshDescSection @ (sizeof(header))                                                           [[comment("Section containing Mesh Descriptions")]];
 MeshInfoSection meshInfoSection @ (sizeof(header) + header.meshDescSectionSize)                              [[comment("Section containing Mesh Information")]];
 MeshDataSection meshDataSection @ (sizeof(header) + header.meshDescSectionSize + header.meshInfoSectionSize) [[comment("Section containing Mesh Data")]];
+
+
+
+u32 absoluteVertexDataOffset = addressof(meshDataSection.vertexData);
+u32 absoluteFaceDataOffset = addressof(meshDataSection.faceData);
+u32 absoluteVertexGroupDataOffset = addressof(meshDataSection.vertexGroupData);
+
+u32 meshIndex = 0;
+
+struct VertexAttribute0 {
+    AttributeInfo info @ addressof(parent.vertexLayout.attributesInfo[std::core::array_index()]) [[hidden]];
+    match (
+        info.stream,
+        info.type,
+        info.usage,
+        info.usageIndex
+    ) {
+        (0, AttributeType::FLOAT16_4, AttributeUsage::POSITION,    0): Vector4<float16> position     [[comment("Position of the Vertex in 3D space")]];
+        (0, AttributeType::FLOAT32_4, AttributeUsage::POSITION,    0): Vector4<float>   position     [[comment("Position of the Vertex in 3D space")]];
+        (0, AttributeType::UINT8_4,   AttributeUsage::BLENDWEIGHT, 0): Vector4<u8>      weights      [[comment("Weights associated with Vertex Groups")]];
+        (0, AttributeType::UINT8_4,   AttributeUsage::BLENDGROUP,  0): Vector4<u8>      vertexGroups [[comment("Indices of Vertex Groups")]];
+    }
+} [[inline]];
+
+struct Vertex0 {
+    VertexBufferLayout vertexLayout @ addressof(parent.vertexLayout) [[hidden]];
+    VertexAttribute0 attributes[vertexLayout.attributeCount] [[inline]];
+};
+
+struct VertexAttribute1 {
+    AttributeInfo info @ addressof(parent.vertexLayout.attributesInfo[std::core::array_index()]) [[hidden]];
+    match (
+        info.stream,
+        info.type,
+        info.usage,
+        info.usageIndex
+    ) {
+        (1, AttributeType::UINT16_2,  AttributeUsage::TEXCOORD, 0): Vector2<float16> texCoord0 [[comment("Texture Coordinates")]];
+        (1, AttributeType::FLOAT32_2, AttributeUsage::TEXCOORD, 0): Vector2<float>   texCoord0 [[comment("Texture Coordinates")]];
+        (1, AttributeType::UINT16_2,  AttributeUsage::TEXCOORD, 1): Vector2<float16> texCoord1 [[comment("Texture Coordinates")]];
+        (1, AttributeType::FLOAT32_2, AttributeUsage::TEXCOORD, 1): Vector2<float>   texCoord1 [[comment("Texture Coordinates")]];
+        (1, AttributeType::FLOAT32_3, AttributeUsage::NORMAL,   0): Vector3<float>   normal    [[comment("Normal of the Vertex")]];
+        (1, AttributeType::FLOAT32_3, AttributeUsage::TANGENT,  0): Vector3<float>   tangent   [[comment("Tangent of the Vertex")]];
+        (1, AttributeType::FLOAT32_3, AttributeUsage::BINORMAL, 0): Vector3<float>   bitangent [[comment("Normal of the Vertex")]];
+        (1, AttributeType::UINT8_4,   AttributeUsage::COLOR,    0): RGBA<u8>         color     [[comment("Color of the Vertex")]];
+    }
+} [[inline]];
+
+struct Vertex1 {
+    VertexBufferLayout vertexLayout @ addressof(parent.vertexLayout) [[hidden]];
+    VertexAttribute1 attributes[vertexLayout.attributeCount] [[inline]];
+};
+
+struct Face {
+    u16 index1 [[comment("Index of the first Vertex in this Face")]];
+    u16 index2 [[comment("Index of the second Vertex in this Face")]];
+    u16 index3 [[comment("Index of the third Vertex in this Face")]];
+};
+
+struct Mesh {
+    MeshInfo info @ addressof(meshInfoSection.meshInfo[meshIndex]);
+    VertexBufferLayout vertexLayout @ addressof(meshInfoSection.vertexBufferLayoutSection.vertexBufferLayout[info.vertexBufferLayout]);
+    Vertex0 vertices0[info.verticesCount] @ absoluteVertexDataOffset + info.verticesOffset;
+    Vertex1 vertices1[info.verticesCount] @ absoluteVertexDataOffset + info.verticesOffset + sizeof(vertices0);
+    u16 indices[info.faceIndicesCount] @ absoluteFaceDataOffset + info.faceIndicesOffset;
+    u8  vertexGroups[info.vertexGroupsCount] @ absoluteVertexGroupDataOffset + info.vertexGroupsOffset;
+    
+    meshIndex += 1;
+};
+
+struct Lod {
+    LodInfo info @ addressof(meshInfoSection.lodInfo[std::core::array_index()]);   
+    Mesh meshes[info.meshCount] @ $;
+    
+    absoluteVertexDataOffset += info.vertexDataSize;
+    absoluteFaceDataOffset += info.faceDataSize;
+    absoluteVertexGroupDataOffset += info.vertexGroupDataSize;
+};
+
+struct Model {
+    Lod lods[meshInfoSection.lodCount];
+};
+
+bool buildModel in;
+
+struct ModelBuilder {
+    if (buildModel)
+        Model model;
+} [[inline]];
+
+ModelBuilder model @ $;
