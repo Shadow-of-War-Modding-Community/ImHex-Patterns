@@ -5,15 +5,26 @@ import std.string;
 import hex.core;
 import std.fxpt;
 
-enum Type : u32 {
-    FLOAT3 =     2,
-    FLOAT4 =     3,
-    INT32  =     4,
-    FLOAT  =     5,
-    UINT32 =     6,
-    STRING =     8,
-    FLOAT2 =    11,
-    PATH   = 65537,
+const u32 MAX_PROPERTY_COUNT = 128;
+
+enum DataType : u16 {
+    PATH   =  1,
+    FLOAT3 =  2,
+    FLOAT4 =  3,
+    INT32  =  4,
+    FLOAT  =  5,
+    UINT32 =  6,
+    STRING =  8,
+    FLOAT2 = 11,
+};
+
+enum PropertyType : u8 {
+    CONSTANT = 0,
+    TEXTURE  = 1,
+};
+
+enum Usage : u8 {
+    DEFAULT = 0,
 };
 
 struct Vector2<T> {
@@ -56,50 +67,52 @@ struct Header {
     u32  version;
     u32  shaderID;
     u32  propertyDataSize;
-    u16  propertyCount1;
-    u16  propertyCount2;
+    u16  propertyCount1; // Dynamic sized properties (strings)
+    u16  propertyCount2; // Static sized properties
     u32  shaderDataSize;
-    u32  unknownSize;
+    u32  unknown;
     u16  shaderLength;
     char shader[shaderLength];
 };
 
 struct Property {
-    Type type;
+    DataType dataType;
+    PropertyType propertyType;
+    Usage usage;
     u16  nameLength;
     char name[nameLength];
     u32  offset;
 
-    match (type) {
-        (Type::FLOAT2):
-            if (std::string::starts_with(name, "k_v")) Vector2<float> vector @ sizeof(header) + offset;
-            else Vector2<float> vector @ sizeof(header) + offset;
-        (Type::FLOAT3): {
+    match (dataType) {
+        (DataType::FLOAT2):
+            if (std::string::starts_with(name, "k_v")) Vector2<float> vector @ addressof(propertyData[offset]);
+            else Vector2<float> vector @ addressof(propertyData[offset]);
+        (DataType::FLOAT3): {
             if (std::string::starts_with(name, "k_v")) {
-                if (std::string::ends_with(name, "SpecularTint")) SpecularTint specular @ sizeof(header) + offset;
-                else Vector3<float> vector @ sizeof(header) + offset;
+                if (std::string::ends_with(name, "SpecularTint")) SpecularTint specular @ addressof(propertyData[offset]);
+                else Vector3<float> vector @ addressof(propertyData[offset]);
             }
-            else if (std::string::starts_with(name, "k_c")) RGB<float> color @ sizeof(header) + offset [[name("color##xx")]];
-            else Vector3<float> vector @ sizeof(header) + offset;
+            else if (std::string::starts_with(name, "k_c")) RGB<float> color @ addressof(propertyData[offset]) [[name("color##xx")]];
+            else Vector3<float> vector @ addressof(propertyData[offset]);
         }
-        (Type::FLOAT4):
-            if (std::string::starts_with(name, "k_v")) Vector4<float> vector @ sizeof(header) + offset;
-            else Vector4<float> vector @ sizeof(header) + offset;
-        (Type::INT32):
-            if (std::string::starts_with(name, "k_n")) s32 number @ sizeof(header) + offset;
-            else s32 int32 @ sizeof(header) + offset;
-        (Type::FLOAT):
-            if (std::string::starts_with(name, "k_f")) float floatingPoint @ sizeof(header) + offset [[name("float")]];
-            else float floatingPoint @ sizeof(header) + offset [[name("float")]];
-        (Type::UINT32):
-            if (std::string::starts_with(name, "k_b")) bool boolean @ sizeof(header) + offset;
-            else u32 uint32 @ sizeof(header) + offset;
-        (Type::STRING):
-            if (std::string::starts_with(name, "Surface")) String surface @ sizeof(header) + offset;
-            else String string @ sizeof(header) + offset;
-        (Type::PATH): {
-            if (std::string::starts_with(name, "t")) String texture @ sizeof(header) + offset;
-            else String path @ sizeof(header) + offset;
+        (DataType::FLOAT4):
+            if (std::string::starts_with(name, "k_v")) Vector4<float> vector @ addressof(propertyData[offset]);
+            else Vector4<float> vector @ addressof(propertyData[offset]);
+        (DataType::INT32):
+            if (std::string::starts_with(name, "k_n")) s32 number @ addressof(propertyData[offset]);
+            else s32 int32 @ addressof(propertyData[offset]);
+        (DataType::FLOAT):
+            if (std::string::starts_with(name, "k_f")) float floatingPoint @ addressof(propertyData[offset]) [[name("float")]];
+            else float floatingPoint @ addressof(propertyData[offset]) [[name("float")]];
+        (DataType::UINT32):
+            if (std::string::starts_with(name, "k_b")) bool boolean @ addressof(propertyData[offset]);
+            else u32 uint32 @ addressof(propertyData[offset]);
+        (DataType::STRING):
+            if (std::string::starts_with(name, "Surface")) String surface @ addressof(propertyData[offset]);
+            else String string @ addressof(propertyData[offset]);
+        (DataType::PATH): {
+            if (std::string::starts_with(name, "t")) String texture @ addressof(propertyData[offset]);
+            else String path @ addressof(propertyData[offset]);
             hex::core::add_virtual_file(texture.data, this); // Check the "Virtual Filesystem" tab at the Console
         }
     }
@@ -107,4 +120,9 @@ struct Property {
 } [[name(name)]];
 
 Header   header @ 0x0;
-Property properties[header.propertyCount1 + header.propertyCount2] @ sizeof(header) + header.propertyDataSize;
+const u32 propertyCount = header.propertyCount1 + header.propertyCount2;
+if (propertyCount > MAX_PROPERTY_COUNT)
+    return;
+
+char     propertyData[header.propertyDataSize] @ $;
+Property properties[header.propertyCount1 + header.propertyCount2] @ $;
