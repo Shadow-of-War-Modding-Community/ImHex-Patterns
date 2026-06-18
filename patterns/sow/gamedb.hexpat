@@ -1,94 +1,207 @@
 #pragma description Shadow of War GAMEDB File
 #pragma MIME sow/gamedb
 
-#pragma pattern_limit 5000000
-#pragma array_limit 5000000
+#pragma pattern_limit 50000000
+#pragma array_limit 50000000
+
+
+// Imports
+
+import type.types.c;
+import std.io;
 
 
 // Functions
 
-fn relative_to_stringtable(u128 offset) {
-    return addressof(stringTable.data);
+fn relative_to_valuetable(u128 offset) {
+    return addressof(ValueTable);
 };
 
 
 // Types
 
 struct String {
-    char string[];
-} [[inline]];
+    char data[];
+} [[format("format_string")]];
 
-struct StringPtr {
-    String *stringPtr : u32 [[pointer_base("relative_to_stringtable")]];
-} [[inline]];
+struct SizedString {
+    uint16_t size;
+    char     data[size];
+} [[format("format_string")]];
+
+fn format_string(ref auto string) {
+    return string.data;
+};
+
+struct Pointer<T> {
+    T* offset : uint32_t [[pointer_base("relative_to_valuetable")]];
+} [[format("format_pointer")]];
+
+fn format_pointer(ref auto pointer) {
+    return pointer.offset;
+};
+
+struct Vector2 {
+    float x;
+    float y;
+} [[format("format_vector2")]];
+
+fn format_vector2(ref auto vector2) {
+    return std::format("({}, {})", vector2.x, vector2.y);
+};
+
+struct Vector3 {
+    float x;
+    float y;
+    float z;
+} [[format("format_vector3")]];
+
+fn format_vector3(ref auto vector3) {
+    return std::format("({}, {}, {})", vector3.x, vector3.y, vector3.z);
+};
+
+struct Vector4 {
+    float x;
+    float y;
+    float z;
+    float w;
+} [[format("format_vector4")]];
+
+fn format_vector4(ref auto vector4) {
+    return std::format("({}, {}, {}, {})", vector4.x, vector4.y, vector4.z, vector4.w);
+};
+
+bitfield RecordLink {
+    RecordIndex   : 20;
+    CategoryIndex : 12;
+};
 
 
-// Data Structures
+// File Structures
 
 struct Header {
-    char magic[4]; // GADB
-    u32  version;
-    u32  stringTableSize;
-    u32  recordCount;
-    u32  unk2;
-    u32  unk3;
-    u32  unk4;
-    u32  unknownBlockCount;
-    u32  unk6;
-    u32  unk7;
-    u32  stringTableOffset;
+    char     Magic[4];
+    uint32_t Version;
+    uint32_t ValueTableSize;
+    uint32_t CategoryCount;
+    uint32_t RecordCount;
+    uint32_t StructureCount;
+    uint32_t ValueCount;
+    uint32_t AttributeCount;
+    uint32_t UnknownSize;
+    uint32_t Unknown;
+    uint32_t HeaderSize;
+} [[static, format("format_header")]];
+
+fn format_header(ref auto header) {
+    return std::format("{} {}", header.Magic, header.Version);
 };
 
-struct StringTable {
-    u16  stringSize;
-    char string[stringSize];
-    char data[header.stringTableSize];
+enum AttributeType : uint8_t {
+    Invalid    =  0,
+    Bool       =  1,
+    Float      =  2,
+    Int32      =  3,
+    String     =  4,
+    Enum       =  5,
+    WString    =  6,
+    Vector2    =  7,
+    Vector3    =  8,
+    Vector4    =  9,
+    RecordLink = 10,
+    Struct     = 11,
 };
 
-struct UnknownBlock {
-    u32     unknown1;
-    u32     unknown2;
-    u8      unknown3;
-    u8      unknown4;
-    u8      unknown5;
-    u16     unknown6;
-    u16     unknown7;
+enum AttributeUsage : uint8_t {
+    Default   = 0,
+    File      = 1,
+    Effect    = 2,
+    Animation = 3,
+};
+
+bitfield AttributeFlags {
+    AttributeType  Type  : 6;
+    AttributeUsage Usage : 2;
 } [[static]];
 
-struct UnknownChunk1 {
-    UnknownBlock unknownBlocks[header.unknownBlockCount];
+struct Attribute {
+    uint32_t       Hash1;
+    uint32_t       Hash2;
+    uint8_t        Index1;
+    uint8_t        Index2;
+    AttributeFlags Flags;
+    uint16_t       ValueCount;
+    uint16_t       ValueIndex;
+} [[static]];
+
+struct AttributeValue {
+    Attribute Attribute @ addressof(Attributes[parent.AttributeIndex]) [[inline]];
+    if (Attribute.ValueCount) {
+        match (Attribute.Flags.Type) {
+            (AttributeType::Bool):       bool       Values[Attribute.ValueCount] @ addressof(parent.Values[Attribute.ValueIndex]);
+            (AttributeType::Float):      float      Values[Attribute.ValueCount] @ addressof(parent.Values[Attribute.ValueIndex]);
+            (AttributeType::Int32):      int32_t    Values[Attribute.ValueCount] @ addressof(parent.Values[Attribute.ValueIndex]);
+            (AttributeType::String):     String     Values[Attribute.ValueCount] @ addressof(ValueTable) + parent.Values[Attribute.ValueIndex];
+            (AttributeType::WString):    String     Values[Attribute.ValueCount] @ addressof(ValueTable) + parent.Values[Attribute.ValueIndex];
+            (AttributeType::Enum):       String     Values[Attribute.ValueCount] @ addressof(ValueTable) + parent.Values[Attribute.ValueIndex];
+            (AttributeType::Vector2):    Vector2    Values[Attribute.ValueCount] @ addressof(ValueTable) + parent.Values[Attribute.ValueIndex];
+            (AttributeType::Vector3):    Vector3    Values[Attribute.ValueCount] @ addressof(ValueTable) + parent.Values[Attribute.ValueIndex];
+            (AttributeType::Vector4):    Vector4    Values[Attribute.ValueCount] @ addressof(ValueTable) + parent.Values[Attribute.ValueIndex];
+            (AttributeType::RecordLink): RecordLink Values[Attribute.ValueCount] @ addressof(parent.Values[Attribute.ValueIndex]);
+        }
+    }
 };
 
-struct UnknownBlock2 {
-    s32 unknown1;
-    u16 unknown2;
-    u16 unknown3;
-    padding[4];
-    StringPtr stringPtr;
-    u32 *hash :u32 [[pointer_base("relative_to_stringtable")]];
+struct Structure {
+    uint16_t       ValueCount;
+    uint8_t        AttributeCount;
+    uint32_t       AttributeIndex;
+    uint8_t        Unknown;
+    uint32_t       Values[ValueCount];
+    AttributeValue Attributes[AttributeCount];
 };
 
-struct UnknownChunk2 {
-    padding[4];
-    u32 recordCount;
-    StringPtr stringPtrs[5];
-    UnknownBlock2 unknownBlocks2[12];
+struct Record {
+    Pointer<String> Name;
+    uint16_t        ValueCount;
+    uint8_t         AttributeCount;
+    uint32_t        AttributeIndex;
+    uint8_t         Unknown;
+    uint32_t        Values[ValueCount];
+    AttributeValue  Attributes[AttributeCount];
+} [[format("format_record")]];
+
+fn format_record(ref auto record) {
+    return record.Name;
 };
 
-struct UnknownSection {
-    UnknownChunk1 unknownChunk1;
-    UnknownChunk2 unknownChunk2;
-    //char unknownChunk2[2848] @ 0xE4B9C4;
-    char unknownChunk3[1404] @ 0xE4C4E4;
-    char unknownChunk4[7408] @ 0xE4CA60;
-    char unknownChunk5[1268] @ 0xE4E750;
-    char unknownChunk6[15304] @ 0xE4EC44;
-    char unknownChunk7[3986] @ 0xE5280C;
-    char unknownChunk8[1352] @ 0xE5379E;
-    char unknownChunk9[10766] @ 0xE53CE6;
-    char unknownChunk10[3612] @ 0xE566F4;
+struct Category {
+    Pointer<String> Name;
+    Pointer<String> Schema;
+    Pointer<String> Category;
+    uint32_t        StructureCount;
+    uint32_t        RecordCount;
+    uint32_t        Hash;
+    Structure       Structures[StructureCount];
+    Record          Records[RecordCount];
+} [[format("format_category")]];
+
+fn format_category(ref auto category) {
+    return category.Name;
 };
 
-Header header @ 0x00;
-StringTable stringTable @ header.stringTableOffset;
-UnknownSection unknownSection @ $;
+struct Database {
+    Pointer<String> Name;
+    uint32_t        CategoryCount;
+    Category        Categories[50];
+} [[format("format_database")]];
+
+fn format_database(ref auto database) {
+    return database.Name;
+};
+
+Header      Header @ 0x00;
+SizedString FilePath @ $;
+char        ValueTable[Header.ValueTableSize] @ $;
+Attribute   Attributes[Header.AttributeCount] @ $;
+Database    Database @ $;
