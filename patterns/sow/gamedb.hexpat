@@ -11,6 +11,11 @@ import type.types.c;
 import std.io;
 
 
+// Constants
+
+const u32 NUMBER_OF_CATEGORIES_TO_PROCESS = 50;
+
+
 // Functions
 
 fn relative_to_valuetable(u128 offset) {
@@ -22,6 +27,10 @@ fn relative_to_valuetable(u128 offset) {
 
 struct String {
     char data[];
+} [[format("format_string")]];
+
+struct WString {
+    wchar_t data[];
 } [[format("format_string")]];
 
 struct SizedString {
@@ -42,8 +51,8 @@ fn format_pointer(ref auto pointer) {
 };
 
 struct Vector2 {
-    float x;
-    float y;
+    float x [[color("FF0000")]];
+    float y [[color("00FF00")]];
 } [[format("format_vector2")]];
 
 fn format_vector2(ref auto vector2) {
@@ -51,9 +60,9 @@ fn format_vector2(ref auto vector2) {
 };
 
 struct Vector3 {
-    float x;
-    float y;
-    float z;
+    float x [[color("FF0000")]];
+    float y [[color("00FF00")]];
+    float z [[color("0000FF")]];
 } [[format("format_vector3")]];
 
 fn format_vector3(ref auto vector3) {
@@ -61,26 +70,21 @@ fn format_vector3(ref auto vector3) {
 };
 
 struct Vector4 {
-    float x;
-    float y;
-    float z;
-    float w;
+    float x [[color("FF0000")]];
+    float y [[color("00FF00")]];
+    float z [[color("0000FF")]];
+    float w [[color("FFFFFF")]];
 } [[format("format_vector4")]];
 
 fn format_vector4(ref auto vector4) {
     return std::format("({}, {}, {}, {})", vector4.x, vector4.y, vector4.z, vector4.w);
 };
 
-bitfield RecordLink {
-    RecordIndex   : 20;
-    CategoryIndex : 12;
-};
-
 
 // File Structures
 
 struct Header {
-    char     Magic[4];
+    char     Magic[4]; // GADB
     uint32_t Version;
     uint32_t ValueTableSize;
     uint32_t CategoryCount;
@@ -88,8 +92,8 @@ struct Header {
     uint32_t StructureCount;
     uint32_t ValueCount;
     uint32_t AttributeCount;
-    uint32_t UnknownSize;
-    uint32_t Unknown;
+    uint32_t Checksum;
+    uint32_t Reserved;
     uint32_t HeaderSize;
 } [[static, format("format_header")]];
 
@@ -124,6 +128,16 @@ bitfield AttributeFlags {
     AttributeUsage Usage : 2;
 } [[static]];
 
+bitfield RecordLink {
+    RecordIndex   : 20;
+    CategoryIndex : 12;
+} [[static]];
+
+bitfield Struct {
+    StructureIndex : 20;
+    CategoryIndex  : 12;
+} [[static]];
+
 struct Attribute {
     uint32_t       Hash1;
     uint32_t       Hash2;
@@ -134,20 +148,20 @@ struct Attribute {
     uint16_t       ValueIndex;
 } [[static]];
 
-struct AttributeValue {
-    Attribute Attribute @ addressof(Attributes[parent.AttributeIndex]) [[inline]];
-    if (Attribute.ValueCount) {
-        match (Attribute.Flags.Type) {
-            (AttributeType::Bool):       bool       Values[Attribute.ValueCount] @ addressof(parent.Values[Attribute.ValueIndex]);
-            (AttributeType::Float):      float      Values[Attribute.ValueCount] @ addressof(parent.Values[Attribute.ValueIndex]);
-            (AttributeType::Int32):      int32_t    Values[Attribute.ValueCount] @ addressof(parent.Values[Attribute.ValueIndex]);
-            (AttributeType::String):     String     Values[Attribute.ValueCount] @ addressof(ValueTable) + parent.Values[Attribute.ValueIndex];
-            (AttributeType::WString):    String     Values[Attribute.ValueCount] @ addressof(ValueTable) + parent.Values[Attribute.ValueIndex];
-            (AttributeType::Enum):       String     Values[Attribute.ValueCount] @ addressof(ValueTable) + parent.Values[Attribute.ValueIndex];
-            (AttributeType::Vector2):    Vector2    Values[Attribute.ValueCount] @ addressof(ValueTable) + parent.Values[Attribute.ValueIndex];
-            (AttributeType::Vector3):    Vector3    Values[Attribute.ValueCount] @ addressof(ValueTable) + parent.Values[Attribute.ValueIndex];
-            (AttributeType::Vector4):    Vector4    Values[Attribute.ValueCount] @ addressof(ValueTable) + parent.Values[Attribute.ValueIndex];
-            (AttributeType::RecordLink): RecordLink Values[Attribute.ValueCount] @ addressof(parent.Values[Attribute.ValueIndex]);
+struct AttributeValue : Attribute {
+    if (this.ValueCount) {
+        match (this.Flags.Type) {
+            (AttributeType::Bool):       bool       Values[this.ValueCount] @ addressof(parent.Values[this.ValueIndex]);
+            (AttributeType::Float):      float      Values[this.ValueCount] @ addressof(parent.Values[this.ValueIndex]);
+            (AttributeType::Int32):      int32_t    Values[this.ValueCount] @ addressof(parent.Values[this.ValueIndex]);
+            (AttributeType::String):     String     Values[this.ValueCount] @ addressof(ValueTable[parent.Values[this.ValueIndex]]);
+            (AttributeType::WString):    WString    Values[this.ValueCount] @ addressof(ValueTable[parent.Values[this.ValueIndex]]);
+            (AttributeType::Enum):       String     Values[this.ValueCount] @ addressof(ValueTable[parent.Values[this.ValueIndex]]);
+            (AttributeType::Vector2):    Vector2    Values[this.ValueCount] @ addressof(ValueTable[parent.Values[this.ValueIndex]]);
+            (AttributeType::Vector3):    Vector3    Values[this.ValueCount] @ addressof(ValueTable[parent.Values[this.ValueIndex]]);
+            (AttributeType::Vector4):    Vector4    Values[this.ValueCount] @ addressof(ValueTable[parent.Values[this.ValueIndex]]);
+            (AttributeType::RecordLink): RecordLink Values[this.ValueCount] @ addressof(parent.Values[this.ValueIndex]);
+            (AttributeType::Struct):     Struct     Values[this.ValueCount] @ addressof(parent.Values[this.ValueIndex]);
         }
     }
 };
@@ -156,9 +170,10 @@ struct Structure {
     uint16_t       ValueCount;
     uint8_t        AttributeCount;
     uint32_t       AttributeIndex;
-    uint8_t        Unknown;
+    uint8_t        Flags;
     uint32_t       Values[ValueCount];
-    AttributeValue Attributes[AttributeCount];
+    
+    AttributeValue Attributes[AttributeCount] @ addressof(AttributeTable[AttributeIndex]);
 };
 
 struct Record {
@@ -166,9 +181,10 @@ struct Record {
     uint16_t        ValueCount;
     uint8_t         AttributeCount;
     uint32_t        AttributeIndex;
-    uint8_t         Unknown;
+    uint8_t         Flags;
     uint32_t        Values[ValueCount];
-    AttributeValue  Attributes[AttributeCount];
+    
+    AttributeValue  Attributes[AttributeCount] @ addressof(AttributeTable[AttributeIndex]);
 } [[format("format_record")]];
 
 fn format_record(ref auto record) {
@@ -193,7 +209,7 @@ fn format_category(ref auto category) {
 struct Database {
     Pointer<String> Name;
     uint32_t        CategoryCount;
-    Category        Categories[50];
+    Category        Categories[NUMBER_OF_CATEGORIES_TO_PROCESS];
 } [[format("format_database")]];
 
 fn format_database(ref auto database) {
@@ -203,5 +219,5 @@ fn format_database(ref auto database) {
 Header      Header @ 0x00;
 SizedString FilePath @ $;
 char        ValueTable[Header.ValueTableSize] @ $;
-Attribute   Attributes[Header.AttributeCount] @ $;
+Attribute   AttributeTable[Header.AttributeCount] @ $;
 Database    Database @ $;
